@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java,JavaSE," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="继承 什么时候继承？ 当类中存在所属关系时，就定义继承。狗和狼都是犬科，所以他们都可以继承犬科 所属关系：is a 关系  谁是谁中的一种  优点 提高代码复用性 让类与类之间产生了联系，为多态提供了前提  缺点 打破封装性 解决方法看下面的final关键字  注意 Java中支持单继承，不直接支持多继承，但对C++中多继承进行了改良 单继承：一个子类只能有一个父类 多继承：一个子类可以有多个父类">
+<meta name="keywords" content="Java,JavaSE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java继承及接口">
+<meta property="og:url" content="http://yoursite.com/2018/04/21/Java继承及接口/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="继承 什么时候继承？ 当类中存在所属关系时，就定义继承。狗和狼都是犬科，所以他们都可以继承犬科 所属关系：is a 关系  谁是谁中的一种  优点 提高代码复用性 让类与类之间产生了联系，为多态提供了前提  缺点 打破封装性 解决方法看下面的final关键字  注意 Java中支持单继承，不直接支持多继承，但对C++中多继承进行了改良 单继承：一个子类只能有一个父类 多继承：一个子类可以有多个父类">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p6wpjrumy.bkt.clouddn.com/20180422.png">
+<meta property="og:image" content="http://p6wpjrumy.bkt.clouddn.com/042302.png">
+<meta property="og:updated_time" content="2018-04-24T13:02:56.101Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java继承及接口">
+<meta name="twitter:description" content="继承 什么时候继承？ 当类中存在所属关系时，就定义继承。狗和狼都是犬科，所以他们都可以继承犬科 所属关系：is a 关系  谁是谁中的一种  优点 提高代码复用性 让类与类之间产生了联系，为多态提供了前提  缺点 打破封装性 解决方法看下面的final关键字  注意 Java中支持单继承，不直接支持多继承，但对C++中多继承进行了改良 单继承：一个子类只能有一个父类 多继承：一个子类可以有多个父类">
+<meta name="twitter:image" content="http://p6wpjrumy.bkt.clouddn.com/20180422.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/21/Java继承及接口/"/>
+
+
+
+
+
+  <title>Java继承及接口 | Hexo</title>
+  <!-- 背景动画 -->
+  <script type="text/javascript" src="/js/src/particle.js"></script>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/21/Java继承及接口/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Orange">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java继承及接口</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-21T16:31:31+08:00">
+                2018-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaSE/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaSE</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><ul>
+<li>什么时候继承？</li>
+<li>当类中存在所属关系时，就定义继承。狗和狼都是犬科，所以他们都可以继承犬科</li>
+<li>所属关系：is a 关系  谁是谁中的一种</li>
+</ul>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>提高代码复用性</li>
+<li>让类与类之间产生了联系，为多态提供了前提</li>
+</ul>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>打破封装性</li>
+<li>解决方法看下面的final关键字</li>
+</ul>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul>
+<li>Java中支持单继承，不直接支持多继承，但对C++中多继承进行了改良</li>
+<li>单继承：一个子类只能有一个父类</li>
+<li>多继承：一个子类可以有多个父类（Java不直接支持，但是改良了）</li>
+<li>因为如果多个父类中有相同成员，会产生调用的不确定性（Java中通过”多实现”的方式）</li>
+<li>Java支持多重继承</li>
+</ul>
+<h3 id="继承体系"><a href="#继承体系" class="headerlink" title="继承体系"></a>继承体系</h3><ul>
+<li>C继承B，B继承A，就会出现继承体系</li>
+<li>如何使用<ul>
+<li>创建该子类中的顶层类，了解该体系的基本使用功能</li>
+<li>创建体系中的最子类对象，完成功能的使用</li>
+</ul>
+</li>
+</ul>
+<h3 id="子父类中成员特点"><a href="#子父类中成员特点" class="headerlink" title="子父类中成员特点"></a>子父类中成员特点</h3><ul>
+<li>子父类中，成员的特点体现<ul>
+<li>成员变量</li>
+<li>成员函数</li>
+<li>构造函数</li>
+</ul>
+</li>
+</ul>
+<h4 id="成员变量"><a href="#成员变量" class="headerlink" title="成员变量"></a>成员变量</h4><ul>
+<li>本类中成员和局部变量同名用this区分</li>
+<li>子父类中的成员变量用super区分</li>
+<li>this super 用法很相似<ul>
+<li>this 代表一个本类对象的引用</li>
+<li>super 代表一个父类空间</li>
+</ul>
+</li>
+<li>子类不能直接访问父类中私有的内容</li>
+</ul>
+<h5 id="成员变量内存图解"><a href="#成员变量内存图解" class="headerlink" title="成员变量内存图解"></a>成员变量内存图解</h5><ul>
+<li>以如下代码为例<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class Father&#123;</span><br><span class="line">    int num = 4;</span><br><span class="line">&#125;</span><br><span class="line">public class extends Son&#123;</span><br><span class="line">    int num = 5;</span><br><span class="line">    void show()&#123;</span><br><span class="line">        System.out.println(this.num+super.num);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class Demo&#123;</span><br><span class="line">    public static void main(Sting[] args)&#123;</span><br><span class="line">        Son s = new Son();</span><br><span class="line">        s.show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="http://p6wpjrumy.bkt.clouddn.com/20180422.png" alt=""></p>
+<ul>
+<li>运行Demo类，main方法进栈，执行下一句话，创建一个子类对象，因为它是继承的父类，所以方法区需要先加载父类函数及构造方法，再加载子类构造方法。接下来在堆中开辟空间，给予地址，num值在父类子类中都有体现，所以存储时num值系统会通过关键字标注好。show方法入栈，this关键字指向son的num，super关键字指向father的num。</li>
+</ul>
+<h4 id="成员函数特点（覆盖）"><a href="#成员函数特点（覆盖）" class="headerlink" title="成员函数特点（覆盖）"></a>成员函数特点（覆盖）</h4><ul>
+<li>当子父类中出现成员函数一模一样的情况，会运行子类的函数，这种现象就是覆盖操作，这是函数在子父类中的特性。</li>
+<li><p>函数两个特性</p>
+<ul>
+<li>重载：同一个类中 overload</li>
+<li>覆盖：子类中，也成为重写，复写 override</li>
+</ul>
+</li>
+<li><p>注意事项： </p>
+<ul>
+<li>子类方法覆盖父类方法时，子类权限必须大于等于父类权限才可以引发覆盖</li>
+<li>静态只能覆盖静态，或被静态覆盖</li>
+</ul>
+</li>
+<li><p>什么时候使用覆盖操作？</p>
+<ul>
+<li>当对一个类进行子类的扩展时，子类需要保留父类的功能声明，但是要定义子类中该功能的特有内容时，就使用覆盖操作完成</li>
+</ul>
+</li>
+</ul>
+<h5 id="成员函数特点应用"><a href="#成员函数特点应用" class="headerlink" title="成员函数特点应用"></a>成员函数特点应用</h5><ul>
+<li>观察下面的代码，Phone类拥有两个方法，现在需要在他的基础上更改增加show方法的功能，就可以采用成员函数覆盖的方法</li>
+<li>为什么不更改原代码的函数？为了安全起见，如果出错，那样很难复原。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public class Phone&#123;</span><br><span class="line">    public void call()&#123;&#125;</span><br><span class="line">    public void show()&#123;</span><br><span class="line">         System.out.println(&quot;number&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class newPhone extends Phone&#123;</span><br><span class="line">  public void call()&#123;</span><br><span class="line">      super.call()；</span><br><span class="line">  &#125;</span><br><span class="line">  public void show()&#123;</span><br><span class="line">      super.show();</span><br><span class="line">      System.out.println(&quot;name&quot;);</span><br><span class="line">      System.out.println(&quot;picture&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class Demo&#123;</span><br><span class="line">  public static void main()&#123;</span><br><span class="line">      newPhone p = new newPhone();</span><br><span class="line">      p.call();</span><br><span class="line">      p.show(); </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="子父类中的构造函数"><a href="#子父类中的构造函数" class="headerlink" title="子父类中的构造函数"></a>子父类中的构造函数</h3><h4 id="子类的实例化过程"><a href="#子类的实例化过程" class="headerlink" title="子类的实例化过程"></a>子类的实例化过程</h4><ul>
+<li><p>看下图代码，运行主函数后会是怎么样的结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class Father &#123;</span><br><span class="line">    Father()&#123;</span><br><span class="line">        System.out.print(&quot;Father&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class Son extends Father &#123;</span><br><span class="line">    public Son()&#123;</span><br><span class="line">        System.out.print(&quot;Son&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class test &#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">         new Student();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行结果FatherSon，有Son我们理解，调用的是Son类，可是为什么有Father啊</p>
+</li>
+</ul>
+<h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ul>
+<li>在子类构造对象时，发现访问子类构造参数时，父类也运行了，Why？</li>
+<li>在子类的构造函数第一行有一个默认的隐式语句。super();</li>
+<li>子类中所有的构造函数默认都会访问父类中的空参构造函数</li>
+</ul>
+<h4 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h4><ul>
+<li>为什么子类实例化的时候，要访问父类中的构造函数那？</li>
+<li><p>那是因为子类继承了父类，获取到了父类中的内容（属性），所以在使用父类内容之前要先看父类是如何对自己的内容进行初始化的。<br>所以子类在构造对象时，就必须访问父类中的构造函数。为了完成这个必须的动作，就在子类的构造函数中加入了super语句。<br>如果父类中没有定义空参数构造函数，那么子类的构造函数必须用super明确要调用父类中的那个构造函数。</p>
+</li>
+<li><p>super语句必须要定义子类构造函数第一行。因为父类的初始化动作要先完成</p>
+</li>
+<li><p>如下面代码所示，子类构造函数中如果使用this调用了本类构造函数时，那么super没有了，因为super和this都只能定义在第一行，不过可以保证的是，子类中肯定会有其他构造函数访问父类的构造函数和数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class Father &#123;</span><br><span class="line">        Father()&#123;</span><br><span class="line">            System.out.print(&quot;F&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">public class Son extends Father &#123;</span><br><span class="line">    Public Son()&#123;</span><br><span class="line">        super();</span><br><span class="line">        System.out.print(&quot;Son1&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    public Son(int x)&#123;</span><br><span class="line">        this();</span><br><span class="line">        //super(); </span><br><span class="line">        System.out.print(&quot;Son2&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>所有的类在创建时其实都是继承的object类,如下图的Demo类，注释掉的内容都是自动生成的隐式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Demo //extends object()</span><br><span class="line">&#123;</span><br><span class="line">    /*</span><br><span class="line">        Demo()&#123;</span><br><span class="line">            super();</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">    */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h4><ul>
+<li>以下面代码为示,<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">public class Father &#123;</span><br><span class="line">    Father()&#123;</span><br><span class="line">        //super();</span><br><span class="line">        show();</span><br><span class="line">        //return;</span><br><span class="line">    &#125;</span><br><span class="line">    public void show()&#123;</span><br><span class="line">        System.out.println(&quot;Father show&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class Son extends Father&#123;</span><br><span class="line">    int num = 8;</span><br><span class="line">    public Son()&#123;</span><br><span class="line">        super();</span><br><span class="line">        //-&gt;通过super初始化父类内容时，子类的成员变量并未显示初始化。</span><br><span class="line">        //等super()父类初始化结束后，才对子类成员变量初始化</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    public void show() &#123;</span><br><span class="line">        System.out.println(&quot;Son show &quot;+num);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class test &#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        Son s = new Son();</span><br><span class="line">        s.show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">/*</span><br><span class="line">运行结果：Son show 0</span><br><span class="line">          Son show 8</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="http://p6wpjrumy.bkt.clouddn.com/042302.png" alt=""></p>
+<h4 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h4><ul>
+<li>一个对象的实例化过程<ul>
+<li>1、JVM会读取指定路径下的Person.class文件，并加载进内存，并会加载Person的父类（如果有直接父类的情况下）</li>
+<li>2、在堆内存中开辟空间，分配地址</li>
+<li>3、并在对象空间中，对对象中的属性进行默认初始化</li>
+<li>4、调用相应的构造函数进行初始化</li>
+<li>5、在构造函数中，第一行会先调用父类中构造函数进行初始化</li>
+<li>6、父类在初始化完毕后，再对子类的属性进行显示初始化</li>
+<li>7、再进行子类函数的构造初始化</li>
+<li>8、初始化完毕后，将地址值赋给引用变量</li>
+</ul>
+</li>
+</ul>
+<h2 id="final关键字"><a href="#final关键字" class="headerlink" title="final关键字"></a>final关键字</h2><ul>
+<li>1、final是一个修饰符，可以修饰类，方法，变量</li>
+<li>2、final修饰的类不可以被继承，该类为最终类</li>
+<li>3、final修饰的方法不可以被覆盖</li>
+<li><p>4、final修饰的变量是一个常量，只能赋值一次  </p>
+</li>
+<li><p>为什么使用final修饰变量？</p>
+</li>
+<li>其实在程序中如果一个数据是固定的，那么直接使用这个数据就可以了，但是这样阅读性差，所以应该给这个数据起个名称。而且这个变量名称的值不能变化，所以加上final固定</li>
+</ul>
+<h3 id="final应用"><a href="#final应用" class="headerlink" title="final应用"></a>final应用</h3><ul>
+<li>如下面的圆周率想定义后不被人修改，即可加上final修饰</li>
+<li>注：被修饰后变量即是常量，表示方法为 “所有单词都大写，如果多个单词，中间用_连接”</li>
+<li>注：final修饰的变量必须手动进行初始化，且前面一般加上static，方便调用<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Circle&#123;</span><br><span class="line">    static final double PI = 3.14;</span><br><span class="line">    void method()&#123;</span><br><span class="line">        System.out.println(PI);</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><ul>
+<li>抽象：笼统，模糊，不具体 </li>
+</ul>
+<h3 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>1、方法只有声明没有实现时，该方法就是抽象方法，需要被abstract修饰。抽象方法必须定义在抽象类中，该类也必须被abstract修饰</li>
+<li>2、抽象类不可以被实例化，不可以被new 创建对象。因为调用抽象方法无意义</li>
+<li>3、抽象类必须有其子类覆盖了所有的抽象方法后，该子类才可以实例化，否则这个子类还是抽象类</li>
+</ul>
+<h3 id="细节-1"><a href="#细节-1" class="headerlink" title="细节"></a>细节</h3><ul>
+<li>1、抽象类中有构造函数吗？<ul>
+<li>有，用于给子类对象初始化</li>
+</ul>
+</li>
+<li>2、抽象类可以不定义抽象方法吗？<ul>
+<li>可以，但是很少见，目的是不让该类创建对象。AWT的适配器对象就是这种类。通常这个类中的方法有方法体，但是没有内容  </li>
+</ul>
+</li>
+<li>3、抽象关键字不可以和哪些关键字共存？<ul>
+<li>private 抽象方法需要被覆盖，加上私有不能覆盖</li>
+<li>static 加上静态后可以用类调用方法，但是抽象方法运行无意义</li>
+<li>final final修饰后不能被继承，抽象类或方法就没有用了</li>
+</ul>
+</li>
+<li>4、抽象类与一般类的异同点？<ul>
+<li>抽象类和一般类都是用来描述事物的，都在内存定义了成员</li>
+<li>一般类有足够信息描述事物，抽象类描述事物信息一般都不足</li>
+<li>一般类中不能定义抽象方法，抽象类中可定义抽象方法或非抽象方法</li>
+<li>一般类能被实例化，抽象类不可以被实例化</li>
+</ul>
+</li>
+<li>5、抽象类一定是父类吗？<ul>
+<li>是的，因为需要子类覆盖其方法后，才可以对子类实例化</li>
+</ul>
+</li>
+</ul>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><ul>
+<li>当一个抽象类中的方法都是抽象类的时候，可以将该抽象类用另一种形式定义和表示，就是接口 interface。</li>
+<li>定义接口使用的关键字不是class 是interface</li>
+<li>接口当中常见的成员：（这些成员都有固定的修饰符，都是公共权限）<ul>
+<li>全局常量：public static final</li>
+<li>抽象方法：public static</li>
+</ul>
+</li>
+</ul>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><ul>
+<li><p>类与类之间是继承方式，类与接口之间是实现方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public interface Demo&#123;</span><br><span class="line">    public static final int NUM = 1;</span><br><span class="line">    public static void show1();</span><br><span class="line">    public static void show2();</span><br><span class="line">&#125;</span><br><span class="line">public class DemoImpl implements Demo&#123;</span><br><span class="line">    public void show1()</span><br><span class="line">    &#123;&#125;</span><br><span class="line">    public void show2()</span><br><span class="line">    &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">public class Test&#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        DemoImpl d = new DemoImpl();</span><br><span class="line">        //下面三行语句都正确</span><br><span class="line">        System.out.println(d.NUM);</span><br><span class="line">        System.out.println(DemoImpl.NUM);</span><br><span class="line">        System.out.println(Demo.NUM);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接口不可以实例化，只能由实现了接口的子类并覆盖了接口中所有的抽象方法后，该子类才可以实例化，否则，这个就是一个抽象类</p>
+</li>
+</ul>
+<h3 id="多实现"><a href="#多实现" class="headerlink" title="多实现"></a>多实现</h3><ul>
+<li>Java中不直接支持多继承，因为会出现调用的不确定性，所以Java将多继承机制进行改良，在Java中变成了多实现</li>
+<li>一个类支持多个接口 </li>
+<li><p>一个类在继承另一个类的同时，还可以实现多个接口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public interface A&#123;</span><br><span class="line">    public abstract void show1();</span><br><span class="line">&#125;</span><br><span class="line">public interface B&#123;</span><br><span class="line">    public abstract void show2();</span><br><span class="line">&#125;</span><br><span class="line">public class Q&#123;</span><br><span class="line">    public void method()</span><br><span class="line">    &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">//Test类继承Q类意味着他们属于一个体系</span><br><span class="line">//实现A,B接口是为了扩展功能</span><br><span class="line">class Test extends Q implements A,B&#123;</span><br><span class="line">    public void show1()</span><br><span class="line">    &#123;&#125;</span><br><span class="line">    public void show2()</span><br><span class="line">    &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接口的出现避免了单继承的局限性，一个类</p>
+</li>
+</ul>
+<h3 id="注意-1"><a href="#注意-1" class="headerlink" title="注意"></a>注意</h3><ul>
+<li>接口与接口之间是继承关系，而且接口之间可以多继承</li>
+<li>Java不能多继承的原因是因为方法体导致的运行不确定性，不过接口无方法体，所以接口可以多继承</li>
+</ul>
+<h3 id="特点-2"><a href="#特点-2" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>接口是对外暴露的规则</li>
+<li>接口是程序的功能扩展</li>
+<li>接口的出现降低耦合性</li>
+<li>接口可以用来多实现</li>
+<li>类与接口之间是实现关系，而且类可以继承一个类的同时实现多个接口</li>
+<li>接口与接口之间可以有继承关系</li>
+</ul>
+<h3 id="接口抽象类区别"><a href="#接口抽象类区别" class="headerlink" title="接口抽象类区别"></a>接口抽象类区别</h3><ul>
+<li>相同点：都是向上不断抽取而来</li>
+<li>不同点：</li>
+<li>抽象类：<ul>
+<li>抽象类需要被继承，且只能单继承</li>
+<li>抽象类可以定义抽象方法和非抽象方法，子类继承后可以直接使用抽象方法</li>
+<li>抽象类继承是 is a 关系，是在定义该体系的基本共性内容</li>
+</ul>
+</li>
+<li>接口：<ul>
+<li>接口需要被实现，可以多实现</li>
+<li>接口只能定义抽象方法，必须由子类去实现</li>
+<li>借口实现是 like a 关系，在定义体系的额外功能</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/JavaSE/" rel="tag"># JavaSE</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/21/Java单例模式/" rel="next" title="Java单例模式">
+                <i class="fa fa-chevron-left"></i> Java单例模式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Orange</p>
+              <p class="site-description motion-element" itemprop="description">welcome everyone to my blog!</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#继承"><span class="nav-number">1.</span> <span class="nav-text">继承</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优点"><span class="nav-number">1.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点"><span class="nav-number">1.2.</span> <span class="nav-text">缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意"><span class="nav-number">1.3.</span> <span class="nav-text">注意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继承体系"><span class="nav-number">1.4.</span> <span class="nav-text">继承体系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子父类中成员特点"><span class="nav-number">1.5.</span> <span class="nav-text">子父类中成员特点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#成员变量"><span class="nav-number">1.5.1.</span> <span class="nav-text">成员变量</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#成员变量内存图解"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">成员变量内存图解</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#成员函数特点（覆盖）"><span class="nav-number">1.5.2.</span> <span class="nav-text">成员函数特点（覆盖）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#成员函数特点应用"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">成员函数特点应用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子父类中的构造函数"><span class="nav-number">1.6.</span> <span class="nav-text">子父类中的构造函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#子类的实例化过程"><span class="nav-number">1.6.1.</span> <span class="nav-text">子类的实例化过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特点"><span class="nav-number">1.6.2.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#细节"><span class="nav-number">1.6.3.</span> <span class="nav-text">细节</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图解"><span class="nav-number">1.6.4.</span> <span class="nav-text">图解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过程"><span class="nav-number">1.6.5.</span> <span class="nav-text">过程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#final关键字"><span class="nav-number">2.</span> <span class="nav-text">final关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#final应用"><span class="nav-number">2.1.</span> <span class="nav-text">final应用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抽象类"><span class="nav-number">3.</span> <span class="nav-text">抽象类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特点-1"><span class="nav-number">3.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#细节-1"><span class="nav-number">3.2.</span> <span class="nav-text">细节</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口"><span class="nav-number">4.</span> <span class="nav-text">接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">4.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现"><span class="nav-number">4.2.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多实现"><span class="nav-number">4.3.</span> <span class="nav-text">多实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意-1"><span class="nav-number">4.4.</span> <span class="nav-text">注意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特点-2"><span class="nav-number">4.5.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接口抽象类区别"><span class="nav-number">4.6.</span> <span class="nav-text">接口抽象类区别</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Orange</span>
+
+  
+</div>
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+
+</body>
+</html>
