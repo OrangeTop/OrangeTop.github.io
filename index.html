@@ -244,6 +244,407 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/27/Java内部类/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Orange">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/27/Java内部类/" itemprop="url">Java内部类</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-27T16:55:55+08:00">
+                2018-04-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaSE/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaSE</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><ul>
+<li>内部类 如其名，就是类的内部定义的一个类</li>
+<li>内部类访问特点<ul>
+<li>内部类可以直接访问外部类的成员</li>
+<li>外部类要访问内部类，必须建立内部类的对象</li>
+</ul>
+</li>
+<li>一般用于类的设计</li>
+<li>分析事物时，发现该事物描述中还有事物，而且这个事物还在访问被描述的事物，这时就把含有的事物定义成内部类来描述</li>
+</ul>
+<h3 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h3><ul>
+<li>如何直接访问外部类中的内部类的成员<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class Outer &#123;</span><br><span class="line">    private int num = 3;</span><br><span class="line">    public class Inner &#123;</span><br><span class="line">        void show()&#123;</span><br><span class="line">            System.out.println(&quot;num = &quot;+num);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class Test &#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        Outer.Inner in = new Outer().new Inner();</span><br><span class="line">        in.show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="static"><a href="#static" class="headerlink" title="static"></a>static</h4><ul>
+<li>如果内部类是静态的，该如何访问内部类方法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public class Outer &#123;</span><br><span class="line">        private int num = 3;</span><br><span class="line">        public static class Inner &#123;</span><br><span class="line">            void show()&#123;</span><br><span class="line">                System.out.println(&quot;num = &quot;+num);</span><br><span class="line">            &#125;</span><br><span class="line">            //如果内部类中定义了静态成员，该内部类必须也是静态的</span><br><span class="line">            static void fun()&#123;</span><br><span class="line">                System.out.println(&quot;fun&quot;);</span><br><span class="line">            &#125; </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public class Test &#123;</span><br><span class="line">        public static void main(String[] args)&#123;</span><br><span class="line">            //如果内部类是静态的，相当于一个外部类</span><br><span class="line">            Outer.Inner in = new Outer.Inner();</span><br><span class="line">            in.show();</span><br><span class="line">            //如果内部类是静态的，成员是静态的</span><br><span class="line">            Outer.Inner.fun();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h3><ul>
+<li><p>观察如下代码判断运行结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public class Outer &#123;</span><br><span class="line">    private int num = 3;</span><br><span class="line">    public class Inner &#123;</span><br><span class="line">        int num = 4;</span><br><span class="line">        public void show()&#123;</span><br><span class="line">            int num = 5;</span><br><span class="line">            System.out.println(num);</span><br><span class="line">            System.out.println(this.num);</span><br><span class="line">            System.out.println(Inner.this.num);</span><br><span class="line">            System.out.println(Outer.this.num);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;  </span><br><span class="line">    public void method()&#123;</span><br><span class="line">        new Inner().show();</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br><span class="line">public class Test &#123;</span><br><span class="line">            public static void main(String[] args)&#123;</span><br><span class="line">                new Outer.method();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>结果是：5 4 4 3</p>
+</li>
+<li>为什么内部类能直接访问外部类中成员那？</li>
+<li>那是因为内部类持有了外部类的引用。 外部类名.this</li>
+</ul>
+<h3 id="局部内部类"><a href="#局部内部类" class="headerlink" title="局部内部类"></a>局部内部类</h3><ul>
+<li>内部类可以存放在局部位置上</li>
+<li>内部类在局部变量位置上只能访问局部中被final修饰的局部变量<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class Outer &#123;</span><br><span class="line">        private int num = 3;  </span><br><span class="line">        public void method()&#123;</span><br><span class="line">            //如果不加final，会报错</span><br><span class="line">            final int x = 9;</span><br><span class="line">            public class Inner &#123;</span><br><span class="line">                public void show()&#123;</span><br><span class="line">                    System.out.println(x);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            Inner in = new Inner();</span><br><span class="line">            in.show();</span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;</span><br><span class="line">    public class Test &#123;</span><br><span class="line">                public static void main(String[] args)&#123;</span><br><span class="line">                    new Outer.method();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h2><ul>
+<li>匿名内部类，就是内部类的简写格式</li>
+<li>前提：内部类必须继承或实现一个外部类或接口</li>
+<li>匿名用户类：其实就是一个用户匿名子对象</li>
+<li>格式：new 父类or接口 (){ 子类内容 </li>
+<li>通常使用场景之一：</li>
+<li>当函数参数是接口类型时，而且接口中的方法不超过三个，可以用匿名内部类作为实际参数进行传递<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">interface inter&#123;</span><br><span class="line">    public void show1();</span><br><span class="line">    public void show1();</span><br><span class="line">&#125;</span><br><span class="line">class Outer&#123;</span><br><span class="line">    public void method()&#123;</span><br><span class="line">        /*可以这么写</span><br><span class="line">        new inter()&#123;</span><br><span class="line">            public void show1()&#123;&#125;</span><br><span class="line">            public void show1()&#123;&#125;</span><br><span class="line">        &#125;*/</span><br><span class="line">        //也可以这么写</span><br><span class="line">        inter in = new inter()&#123;</span><br><span class="line">            public void show1()&#123;&#125;</span><br><span class="line">                            public void show1()&#123;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">        /*居然还可以这么写</span><br><span class="line">        new inter()&#123;</span><br><span class="line">            public void show1()&#123;&#125;</span><br><span class="line">            public void show1()&#123;&#125;</span><br><span class="line">        &#125;.show1();</span><br><span class="line">        */</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="小细节"><a href="#小细节" class="headerlink" title="小细节"></a>小细节</h2><h3 id="静态问题"><a href="#静态问题" class="headerlink" title="静态问题"></a>静态问题</h3><ul>
+<li><p>试试能不能编译如下代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class InnerClassDemo &#123;</span><br><span class="line">    class Inner&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        new Inner();</span><br><span class="line">    &#125;</span><br><span class="line">    public void method()&#123;</span><br><span class="line">        new Inner();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>‘InnerClassDemo.this’ cannot be referenced from a static context</p>
+</li>
+<li>为什么 method 也写了同样的内容却没有报错？</li>
+<li>因为 main 是静态的，只能直接调用静态成员</li>
+</ul>
+<h3 id="转型问题"><a href="#转型问题" class="headerlink" title="转型问题"></a>转型问题</h3><ul>
+<li><p>运行如下代码，将注释1取消注释，观察结果，再注释掉1，取消掉注释2，观察结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public class Outer &#123;</span><br><span class="line">    public void method()&#123;</span><br><span class="line">        /*注释1</span><br><span class="line">        new Object()&#123;</span><br><span class="line">            public void show()&#123;</span><br><span class="line">                System.out.println(&quot;i can run&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;.show();</span><br><span class="line">        */</span><br><span class="line">        /*注释2</span><br><span class="line">        Object obj = new Object()&#123;</span><br><span class="line">                    public void show()&#123;</span><br><span class="line">                        System.out.println(&quot;i can run&quot;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;;</span><br><span class="line">                obj.show();</span><br><span class="line">        */</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class Test &#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        new Outer.method();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为什么第一次编译运行正确，第二次编译错误？</p>
+</li>
+<li>因为匿名内部类这个子类对象被向上转型为 object 类型，这样就不能再使用子类特有的方法了</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/27/Java多态/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Orange">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/27/Java多态/" itemprop="url">Java多态</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-27T10:16:06+08:00">
+                2018-04-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaSE/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaSE</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="对象的多态性"><a href="#对象的多态性" class="headerlink" title="对象的多态性"></a>对象的多态性</h3><ul>
+<li><p>以代码为示例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class Animals &#123;</span><br><span class="line">    public void speak()&#123;</span><br><span class="line">        System.out.println(&quot;i am animals&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class Cat extends Animals&#123;</span><br><span class="line">    public void speak()&#123;</span><br><span class="line">        System.out.println(&quot;i am cat&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class Test &#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        //一个对象，两种形态</span><br><span class="line">        Animals cat = new Cat();</span><br><span class="line">        cat.speak();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行后的结果为”i am cat”</p>
+</li>
+<li>猫这类事物既具备猫的形态，又具备动物形态，这就是对象的多样性，简单说，一个对象对应着多种类型</li>
+<li>多态在代码中的体现<ul>
+<li>父类或者接口的引用指向了其子类的对象</li>
+</ul>
+</li>
+</ul>
+<h3 id="多态的好处"><a href="#多态的好处" class="headerlink" title="多态的好处"></a>多态的好处</h3><ul>
+<li><p>提高了代码扩展性，前期定义的代码可以使用后期的内容。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">public abstract class Animals &#123;</span><br><span class="line">    public abstract void eat();</span><br><span class="line">&#125;</span><br><span class="line">public class Cat extends Animals&#123;</span><br><span class="line">    public void eat()&#123;</span><br><span class="line">        System.out.println(&quot;吃鱼&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    public void catchMouse()&#123;</span><br><span class="line">        System.out.println(&quot;抓老鼠&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class Dog &#123;</span><br><span class="line">    public void eat()&#123;</span><br><span class="line">        System.out.println(&quot;啃骨头&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    public void guardDoor()&#123;</span><br><span class="line">        System.out.println(&quot;看门&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class Test &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        Cat c1 = new Cat();</span><br><span class="line">        Dog d1 = new Dog();</span><br><span class="line">        Dog d2 = new Dog();</span><br><span class="line">        method(c1);</span><br><span class="line">        method(d1);</span><br><span class="line">        method(d2);</span><br><span class="line">    &#125;</span><br><span class="line">    public static void method(Animals a)&#123;</span><br><span class="line">        a.eat();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如上图所示代码，如果很多只猫，很多只狗，为了代码复用性，需要在主类中定义一个方法，可是如果动物种类很多，是否要定义不同参数的许多方法那，答案是不用的，只需要定义个参数为Animals对象的即可</p>
+</li>
+</ul>
+<h3 id="多态的局限性及前提"><a href="#多态的局限性及前提" class="headerlink" title="多态的局限性及前提"></a>多态的局限性及前提</h3><ul>
+<li>前期定义的内容，不能调用后期子类定义的特有内容</li>
+<li>多态的前提<ul>
+<li>必须有关系，继承，实现</li>
+<li>要有覆盖</li>
+</ul>
+</li>
+</ul>
+<h3 id="多态转型"><a href="#多态转型" class="headerlink" title="多态转型"></a>多态转型</h3><ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//自动类型提升，猫对象提升了动物类型，但特有功能无法访问</span><br><span class="line">//作用就是限制对猫特有功能的访问</span><br><span class="line">//专业讲就是 向上转型，将子类型隐藏，就不用使用子类的特有方法</span><br><span class="line">Animals a = new Cat();</span><br><span class="line">a.eat();</span><br><span class="line"></span><br><span class="line">//如果还想访问具体动物的特有功能</span><br><span class="line">//可以进行向下转型</span><br><span class="line">Cat c = (Cat)a;//向下转型目的：为了使用子类中的特有方法</span><br><span class="line">c.eat();</span><br><span class="line">c.catchMouse();</span><br><span class="line"></span><br><span class="line">//错误示例</span><br><span class="line">Animals a1 = new Dog();</span><br><span class="line">Cat c1 = (Cat)a1;       //ClassCastException类型转换异常</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注意：对于转型来说，自始至终都是子类对象在做着类型的变化</p>
+</li>
+</ul>
+<h3 id="类型判断"><a href="#类型判断" class="headerlink" title="类型判断"></a>类型判断</h3><ul>
+<li>还是以之前的代码为示例，如果method方法内想进行输出猫，狗的特有功能该怎么做那？<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public void method(Animals a)&#123;</span><br><span class="line">    a.eat();</span><br><span class="line">    if(a instanceof Cat)&#123;</span><br><span class="line">        //instanceof：用于判断对象的具体类型，只能用于引用数据类型判断</span><br><span class="line">        //通常在向下转型前用于健壮性的判断</span><br><span class="line">        Cat c = Cat(a);</span><br><span class="line">        c.catchMouse();</span><br><span class="line">    &#125;else if(a instanceof dog)&#123;</span><br><span class="line">        Dog d = Dog(a);</span><br><span class="line">        d.guardDoor();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="多态时成员特点"><a href="#多态时成员特点" class="headerlink" title="多态时成员特点"></a>多态时成员特点</h3><h4 id="成员变量"><a href="#成员变量" class="headerlink" title="成员变量"></a>成员变量</h4><ul>
+<li>编译时：参考引用型变量所属的类中是否有调用的成员变量，有则编译通过，没有则编译失败</li>
+<li>运行时：参考引用型变量所属的类中是否有调用的成员变量，并运行该所属类中的成员变量</li>
+<li>编译和运行都参考左边，如 animals a = new Cat();</li>
+</ul>
+<h4 id="成员函数（非静态）"><a href="#成员函数（非静态）" class="headerlink" title="成员函数（非静态）"></a>成员函数（非静态）</h4><ul>
+<li>编译时：参考引用型变量所属的类中是否有调用的函数，有则编译通过，没有则编译失败</li>
+<li>运行时：参考对象所属的类中是否有调用的函数，</li>
+<li><p>简单说：编译看左边，运行看右边</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class Father &#123;</span><br><span class="line">    public void show()&#123;</span><br><span class="line">        System.out.println(&quot;i am father&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class Son extends Father&#123;</span><br><span class="line">    public void show() &#123;</span><br><span class="line">        System.out.println(&quot;i am son&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class Test()&#123;</span><br><span class="line">    Father f = new Son();</span><br><span class="line">    f.show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行后的结果 i am son</p>
+</li>
+</ul>
+<h4 id="静态函数"><a href="#静态函数" class="headerlink" title="静态函数"></a>静态函数</h4><ul>
+<li>编译时：参考引用型变量所属的类中是否有调用的静态方法，有则编译通过，没有则编译失败</li>
+<li>运行时：参考对象所属的类中是否有调用的静态方法</li>
+<li>简单说：编译和运行都看左边</li>
+<li><p>其实对于静态方法，是不需要对象的，直接类名调用即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class Father &#123;</span><br><span class="line">        public static void show()&#123;</span><br><span class="line">            System.out.println(&quot;i am father&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public class Son extends Father&#123;</span><br><span class="line">        public static void show() &#123;</span><br><span class="line">            System.out.println(&quot;i am son&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public class Test()&#123;</span><br><span class="line">        Father f = new Son();</span><br><span class="line">        f.show();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行结果为 i am father</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/21/Java继承及接口/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -538,6 +939,7 @@
 <h3 id="注意-1"><a href="#注意-1" class="headerlink" title="注意"></a>注意</h3><ul>
 <li>接口与接口之间是继承关系，而且接口之间可以多继承</li>
 <li>Java不能多继承的原因是因为方法体导致的运行不确定性，不过接口无方法体，所以接口可以多继承</li>
+<li>接口类型的引用，都是指向自己类型子类的对象</li>
 </ul>
 <h3 id="特点-2"><a href="#特点-2" class="headerlink" title="特点"></a>特点</h3><ul>
 <li>接口是对外暴露的规则</li>
@@ -2052,410 +2454,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/07/Java运算符基础/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Orange">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/07/Java运算符基础/" itemprop="url">Java运算符基础</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-07T16:41:33+08:00">
-                2018-04-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaSE/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaSE</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>今天重温的主要是Java运算符，在这里我把之前已经遗忘的一些点记录下来，以后回顾的时候可以翻阅。</li>
-</ul>
-<h3 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h3><h4 id="异或："><a href="#异或：" class="headerlink" title="^异或："></a>^异或：</h4><ul>
-<li>符号两边的结果相同为False，不同则为True<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">True  ^ True  = False ;</span><br><span class="line">False ^ True  = True  ;</span><br><span class="line">True  ^ False = True  ;</span><br><span class="line">False ^ False = False ;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="！非："><a href="#！非：" class="headerlink" title="！非："></a>！非：</h4><ul>
-<li>两次非运算就是原数<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">!true  = false ;</span><br><span class="line">!!true = true  ;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><h4 id="amp-和-amp-amp-的区别："><a href="#amp-和-amp-amp-的区别：" class="headerlink" title="&amp;和&amp;&amp;的区别："></a>&amp;和&amp;&amp;的区别：</h4><ul>
-<li><p>让我们先来看一段代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int x = 1;</span><br><span class="line">if(x&gt;2 &amp;&amp; x&lt;5)</span><br><span class="line">    System.out.println();</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在上面的情况中，在对 &amp;&amp; 左边的式子进行判断后，得出左边的式子值是false，因为两数相与，只要有一个flase，整体式子的结果就是false。所以停止运算右侧式子，直接给出false的结果。</p>
-</li>
-<li><p>但是使用 &amp; 运算符的时候，无论左边式子是什么，右边都参与运算。</p>
-</li>
-<li><p>&amp;&amp; 和 &amp; 运算结果一样，过程有一些小区别<br>&amp;  ：无论左边式子是什么，右边都参与运算<br>&amp;&amp; ：当式子左边为false时，右边不参与运算，结果为false</p>
-</li>
-</ul>
-<h4 id="和-的区别"><a href="#和-的区别" class="headerlink" title="|和||的区别"></a>|和||的区别</h4><ul>
-<li>上面我们说了 &amp; 和 &amp;&amp; 的区别，其实原理是一样的</li>
-<li>|| 和 | 运算结果一样，过程有一些小区别<br>|  ：无论左边式子是什么，右边都参与运算<br>|| ：当式子左边为true时，右边不参与运算，结果为true</li>
-</ul>
-<h3 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h3><h4 id="amp-位运算"><a href="#amp-位运算" class="headerlink" title="&amp; 位运算"></a>&amp; 位运算</h4><ul>
-<li><p>下面我用一个小例子来演示</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">6 &amp; 3 = ?</span><br><span class="line">内存中</span><br><span class="line">  0000-0000 0000-0000 0000-0000 0000-0110</span><br><span class="line">&amp; 0000-0000 0000-0000 0000-0000 0000-0011</span><br><span class="line">-----------------------------------------</span><br><span class="line">  0000-0000 0000-0000 0000-0000 0000-0010</span><br><span class="line">∴ 6 &amp; 3 = 2</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>6 &amp; 3 在内存中变化的实质是，转换为2进制，各位相对应的进行 &amp; 运算</p>
-</li>
-<li><p>应用场景：<br>  取0100 0000 1100 0101的后四位，如何进行操作？<br>  答 ：用0000 0000 0000 1111与其进行 &amp; 运算。</p>
-</li>
-</ul>
-<h4 id="位运算-1"><a href="#位运算-1" class="headerlink" title="| 位运算"></a>| 位运算</h4><ul>
-<li>原理同上 例如 6 | 3 = 7</li>
-</ul>
-<h4 id="位运算-2"><a href="#位运算-2" class="headerlink" title="^ 位运算"></a>^ 位运算</h4><ul>
-<li><p>原理同上</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">6 ^ 3 = ?</span><br><span class="line">内存中(简化)</span><br><span class="line">     0110</span><br><span class="line">   ^ 0011</span><br><span class="line">    ------</span><br><span class="line">     0101</span><br><span class="line">∴ 6 ^ 3 = 5</span><br><span class="line"></span><br><span class="line">继续 ^ 3</span><br><span class="line">5 ^ 3 = ?</span><br><span class="line">演算后</span><br><span class="line">   5 ^ 3 = 6</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>不知道大家发没发现这个运算的一些小秘密，那就是一个数连续两次与相同的数进行异或运算后，结果会是最初的数。用公式写就是： a ^ b ^ b = a </p>
-</li>
-<li>那么这个究竟可以用作干什么那？可以用于文件的加密！</li>
-</ul>
-<h4 id="反码"><a href="#反码" class="headerlink" title="~ 反码"></a>~ 反码</h4><ul>
-<li><p>大家可以在自己的电脑上试一下下面的代码，看看是不是自己猜测的值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int a = 2;</span><br><span class="line">System.out.println(~a);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>结果是 -3 ，很多人可能都以为反码的意思就是将a的二进制10取反为01，猜测结果是1</p>
-</li>
-<li>为什么不是这样的运算过程那？</li>
-</ul>
-<h5 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h5><p>这就要从计算机常用的几个码说起了。首先，java存储的是有符号数，在计算机中，有符号数通常是使用补码存储的，java也不例外。先来看看什么叫原码，反码，补码。</p>
-<h5 id="原码"><a href="#原码" class="headerlink" title="原码"></a>原码</h5><p>原码就是符号位加上真值的绝对值,即用第一位表示符号, 其余位表示值. 比如如果是8位二进制:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[+1]原 = 0000 0001</span><br></pre></td></tr></table></figure></p>
-<h5 id="反码-1"><a href="#反码-1" class="headerlink" title="反码"></a>反码</h5><p>正数的反码是其本身<br>负数的反码是在其原码的基础上,符号位不变，其余各个位取反.<br>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[+1] = [00000001]原 = [00000001]反</span><br></pre></td></tr></table></figure></p>
-<h5 id="补码"><a href="#补码" class="headerlink" title="补码"></a>补码</h5><p>正数的补码就是其本身<br>负数的补码是在反码的基础上+1。<br>例如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[+1] = [00000001]原 = [00000001]反 = [00000001]补</span><br></pre></td></tr></table></figure></p>
-<h5 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h5><p>所以回到一开始的问题，int a = 2 a在计算机中是以补码存储的。</p>
-<ul>
-<li>对于2这个正数来说，补码、反码、原码都是相同的，又由于是数值型，在这里我先用八位bit来表示一下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">原码:0000 0010</span><br><span class="line">反码:0000 0010</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>补码:0000 0010</p>
-<ul>
-<li><p>取反<br>取反过程是在补码的基础上进行的，由于是按位取反，无论符号位还是数值位都要取反，所以结果如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">取反后的补码: 1111 1101</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>换算为值<br>那么取反后的补码的实际值是多少呢？我们需要先把他转化为原码，过程如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">反码 = 1111 1101 - 1 = 1111 1100</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>原码 = 反码符号位不变，其余取反 = 1000 0011</p>
-<p>所以，最后的值-3</p>
-<h4 id="lt-lt-左移"><a href="#lt-lt-左移" class="headerlink" title="&lt;&lt; 左移"></a>&lt;&lt; 左移</h4><ul>
-<li><p>这个符号之前并没有听说过，在这次学习中进行了掌握（开始我还以为是C++的cout那）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">3 &lt;&lt; 2 = ?</span><br><span class="line">内存中</span><br><span class="line">0000-0000 0000-0000 0000-0000 0000-0011</span><br><span class="line">结果</span><br><span class="line">0000-0000 0000-0000 0000-0000 0000-1100</span><br><span class="line">∴ 3 &lt;&lt; 2 = 12</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>上面的运算实质是 3的2进制 整题左移两位，多余的舍弃，空位用0补</p>
-</li>
-<li>一个数进行左移运算时，左移n位，即是该数乘以2的n次幂</li>
-</ul>
-<h4 id="gt-gt-右移"><a href="#gt-gt-右移" class="headerlink" title="&gt;&gt; 右移"></a>&gt;&gt; 右移</h4><ul>
-<li>原理几乎一样，只有略微的不同<br>原来最高位是什么，用什么补空位（因为最高位为1时是负数）</li>
-<li>右移n位，即是该数除以2的n次幂<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-12 &gt;&gt; 2 = ?</span><br><span class="line">答： -3</span><br><span class="line"> 12 &gt;&gt; 2 = ?</span><br><span class="line">答：  3</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="gt-gt-gt-无符号右移"><a href="#gt-gt-gt-无符号右移" class="headerlink" title="&gt;&gt;&gt; 无符号右移"></a>&gt;&gt;&gt; 无符号右移</h4><ul>
-<li>高位空位，全部填0，用0补位<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-12 &gt;&gt;&gt; 2 = ?</span><br><span class="line">答：  3</span><br><span class="line"> 12 &gt;&gt;&gt; 2 = ?</span><br><span class="line">答：  3</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h4><ul>
-<li><p>请用效率最高的方法求出 2*8 的值。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(2&lt;&lt;3);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>两个整数值互换（不使用第三方变量）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">方法1：（不建议使用，如果数值过大，可能丢失精度）</span><br><span class="line">int a = 3, b = 5;</span><br><span class="line">a = a + b;</span><br><span class="line">b = a - b;</span><br><span class="line">a = a - b</span><br><span class="line"></span><br><span class="line">方法2：（利用异或位运算）</span><br><span class="line">int a = 3, b = 5;</span><br><span class="line">a = a ^ b;</span><br><span class="line">b = a ^ b;</span><br><span class="line">a = a ^ b;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="三元运算符"><a href="#三元运算符" class="headerlink" title="三元运算符"></a>三元运算符</h3><ul>
-<li>（条件表达式）？表达式1：表达式2</li>
-<li>若条件为true ，结果为表达式1<br>若条件为false，结果为表达式2<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">练习：在x , y中取 值较大的整数</span><br><span class="line">int x = 3, y = 4;</span><br><span class="line">int max = ( x&gt;y )? x : y;</span><br><span class="line">System.out.println(max);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="swich-和-if-else-与-三元运算符"><a href="#swich-和-if-else-与-三元运算符" class="headerlink" title="swich 和 if else 与 三元运算符"></a>swich 和 if else 与 三元运算符</h3><ul>
-<li><p>三元运算符必须有结果，if else可有，可不有结果。当if else有具体运算结果时，可以使用三元运算符。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">swich使用示范：</span><br><span class="line">    int x = 3;</span><br><span class="line">    swich(x)</span><br><span class="line">    &#123;</span><br><span class="line">        case 1:</span><br><span class="line">                System.out.println(x);</span><br><span class="line">                break;</span><br><span class="line">        case 2:</span><br><span class="line">                System.out.println(x);</span><br><span class="line">                break;</span><br><span class="line">        case 3:</span><br><span class="line">                System.out.println(x);</span><br><span class="line">                break;                     </span><br><span class="line">        case default:</span><br><span class="line">                System.out.println(x);</span><br><span class="line">                break;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>if：</p>
-<pre><code>对几个具体值进行判断
-对区间判断
-对运算结果boolean类型表达式判断
-</code></pre><p>swich：</p>
-<pre><code>对几个具体值进行判断
-值的个数通常是固定的
-</code></pre></li>
-<li>对几个固定值判断，建议使用swich，swich将答案存在内存中，效率高</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/06/Java-链表实现/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Orange">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/06/Java-链表实现/" itemprop="url">Java 链表实现</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-06T21:17:41+08:00">
-                2018-04-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据结构/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>分享一下我用java实现的链表<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br></pre></td><td class="code"><pre><span class="line">public class LinkList&lt;T&gt; &#123;</span><br><span class="line">    private Node&lt;T&gt; head;   //头节点</span><br><span class="line">    private Node&lt;T&gt; tail;   //尾节点</span><br><span class="line">    /**</span><br><span class="line">     * 构造空链表</span><br><span class="line">     */</span><br><span class="line">    public LinkList()&#123;</span><br><span class="line">        head = tail = null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 链表内部的节点类</span><br><span class="line">     */</span><br><span class="line">    private static class Node&lt;T&gt;&#123;</span><br><span class="line">        T data;         //节点的数据</span><br><span class="line">        Node&lt;T&gt; next;   //该节点指向下一个节点的指针</span><br><span class="line">        Node(T data)&#123;</span><br><span class="line">            this.data = data;</span><br><span class="line">            this.next = null;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 为空链表增加头节点</span><br><span class="line">     */</span><br><span class="line">    public void addHead(T point)&#123;</span><br><span class="line">        this.head = new Node&lt;T&gt;(point);</span><br><span class="line">        if(tail == null)&#123;</span><br><span class="line">            tail = head;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    /**</span><br><span class="line">     * 为链表增加尾节点</span><br><span class="line">     */</span><br><span class="line">    public void addTail(T point)&#123;</span><br><span class="line">        tail = new Node&lt;T&gt;(point);</span><br><span class="line">        head.next = tail;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 插入节点（头插法）</span><br><span class="line">     */</span><br><span class="line">    public void addNode(T point)&#123;</span><br><span class="line">        if(this.head==null)                     //添加头节点</span><br><span class="line">            addHead(point);</span><br><span class="line">        else if(this.tail==this.head)          //在头节点后添加尾节点</span><br><span class="line">            addTail(point);</span><br><span class="line">        else&#123;</span><br><span class="line">            Node&lt;T&gt; newNode = new Node&lt;T&gt;(point);</span><br><span class="line">            newNode.next = head.next;</span><br><span class="line">            head.next = newNode;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    /**</span><br><span class="line">     * 删除节点（通过数据值）</span><br><span class="line">     */</span><br><span class="line">    public void deleteNode(T data)&#123;</span><br><span class="line">        Node&lt;T&gt; curr = head ,pre = null;</span><br><span class="line">        boolean flag = false;   //判断要删除的节点是否存在</span><br><span class="line">        while(curr != null)&#123;</span><br><span class="line">            if(curr.data.equals(data))&#123;</span><br><span class="line">                if (curr==head)&#123;        //删除头节点</span><br><span class="line">                    System.out.println(&quot;delete the head Node&quot;);</span><br><span class="line">                    head = curr.next;</span><br><span class="line">                    flag = true;</span><br><span class="line">                &#125;else if (curr==tail)&#123;  //删除尾节点</span><br><span class="line">                    System.out.println(&quot;delete the tail Node&quot;);</span><br><span class="line">                    tail = pre;</span><br><span class="line">                    pre.next = null;</span><br><span class="line">                    flag = true;</span><br><span class="line">                &#125;else &#123;                  //删除中间节点</span><br><span class="line">                    System.out.println(&quot;delete the center Node&quot;);</span><br><span class="line">                    pre.next = curr.next;</span><br><span class="line">                    flag = true;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            pre = curr;</span><br><span class="line">            curr = curr.next;</span><br><span class="line">        &#125;</span><br><span class="line">        if (flag == false)</span><br><span class="line">            System.out.println(&quot;链表中不存在该数据&quot;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    /**</span><br><span class="line">     *  查找链表中的元素（通过位置）</span><br><span class="line">     */</span><br><span class="line">    public void findKth(T point)&#123;</span><br><span class="line">        Node&lt;T&gt; curr = head , pre = null;</span><br><span class="line">        int k = 1;</span><br><span class="line">        boolean flag = false;</span><br><span class="line">        while (curr != null)&#123;</span><br><span class="line">            if(point.equals(k))&#123;</span><br><span class="line">                System.out.println(&quot;第&quot;+k+&quot;位的值是&quot;+curr.data);</span><br><span class="line">                flag = true;</span><br><span class="line">            &#125;</span><br><span class="line">            pre = curr;</span><br><span class="line">            curr = curr.next;</span><br><span class="line">            k++;</span><br><span class="line">        &#125;</span><br><span class="line">        if(flag==false)</span><br><span class="line">            System.out.println(&quot;查找的位置在链表中不存在&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     *  查找链表中的元素（通过值）</span><br><span class="line">     */</span><br><span class="line">    public void findByValue(T data)&#123;</span><br><span class="line">        Node&lt;T&gt; curr = head ;</span><br><span class="line">        int k = 1;</span><br><span class="line">        boolean flag = false;</span><br><span class="line">        while(curr!=null)&#123;</span><br><span class="line">            if(curr.data==data)&#123;</span><br><span class="line">                System.out.println(&quot;查找的值在链表中的第&quot;+k+&quot;位&quot;);</span><br><span class="line">                flag = true;</span><br><span class="line">            &#125;</span><br><span class="line">            curr = curr.next;</span><br><span class="line">            k++;</span><br><span class="line">        &#125;</span><br><span class="line">        if(flag==false)</span><br><span class="line">            System.out.println(&quot;查找的值在链表中不存在&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     *  输出链表</span><br><span class="line">     */</span><br><span class="line">    public void printlnLink()&#123;</span><br><span class="line">        Node&lt;T&gt; curr = this.head;</span><br><span class="line">        if(curr==null)&#123;</span><br><span class="line">            System.out.println(&quot;linklist is null&quot;);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            while(curr!=null)&#123;</span><br><span class="line">                System.out.print(curr.data+&quot; &quot;);</span><br><span class="line">                curr = curr.next;</span><br><span class="line">            &#125;System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        LinkList linkList = new LinkList&lt;Integer&gt;();</span><br><span class="line">        linkList.addNode(5);</span><br><span class="line">        linkList.addNode(8);</span><br><span class="line">        linkList.addNode(10);</span><br><span class="line">        linkList.addNode(6);</span><br><span class="line">        linkList.addNode(9);</span><br><span class="line">        System.out.println(&quot;TailNode: &quot;+linkList.tail.data);</span><br><span class="line">        linkList.deleteNode(8);</span><br><span class="line">        linkList.printlnLink();</span><br><span class="line">        linkList.findByValue(5);</span><br><span class="line">        linkList.findKth(10);</span><br><span class="line">        System.out.print(&quot;&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2506,7 +2504,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
