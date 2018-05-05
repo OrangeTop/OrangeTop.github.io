@@ -81,13 +81,13 @@
 
 <meta name="description" content="welcome everyone to my blog!">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="Orange&#39;s Blog">
 <meta property="og:url" content="http://yoursite.com/page/2/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="Orange&#39;s Blog">
 <meta property="og:description" content="welcome everyone to my blog!">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Orange&#39;s Blog">
 <meta name="twitter:description" content="welcome everyone to my blog!">
 
 
@@ -124,7 +124,7 @@
 
 
 
-  <title>Hexo</title>
+  <title>Orange's Blog</title>
   <!-- 背景动画 -->
   <script type="text/javascript" src="/js/src/particle.js"></script>
   
@@ -157,7 +157,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hexo</span>
+        <span class="site-title">Orange's Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -244,6 +244,183 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/10/Java-进制转换-查表法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Orange">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Orange's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/10/Java-进制转换-查表法/" itemprop="url">进制转换</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-10T23:45:30+08:00">
+                2018-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaSE/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaSE</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>今天写一下二进制转换十六进制的程序,改良程序的过程<h4 id="进制转换（以10转16为例）"><a href="#进制转换（以10转16为例）" class="headerlink" title="进制转换（以10转16为例）"></a>进制转换（以10转16为例）</h4></li>
+<li><p>首先想一下十六进制是多少个二进制位，4个。那么int是多少个字节？多少个二进制位？4个字节，32个二进制位</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public void toHex(int num)&#123;</span><br><span class="line">        int temp;</span><br><span class="line">        for (int i = 0;i&lt;8 ;i++) &#123;</span><br><span class="line">            temp = num &amp; 15;</span><br><span class="line">            System.out.print(temp+&quot; &quot;);</span><br><span class="line">            num = num &gt;&gt;&gt; 4;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>上图的结果是12 3 0 0 0 0 0 0，先来讲讲原理，再改良</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  以 num = 60 为例</span><br><span class="line">  0000-0000 0000-0000 0000-0000 0011-1100</span><br><span class="line">&amp; 0000-0000 0000-0000 0000-0000 0000-1111</span><br><span class="line">------------------------------------------</span><br><span class="line">  0000-0000 0000-0000 0000-0000 0000-1100</span><br><span class="line">  </span><br><span class="line">  0000 0000-0000 0000-0000 0000-0000 0011    ( 1100 ）</span><br><span class="line">&amp; 0000-0000 0000-0000 0000-0000 0000-1111</span><br><span class="line">------------------------------------------</span><br><span class="line">  0000-0000 0000-0000 0000-0000 0000-0011</span><br><span class="line">  结果分别是12 3 0 0 0 0 0 0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>先和15（4个低位都是1，其余是0）进行&amp;运算，得到值后，再进行&gt;&gt;&gt;3的运算。这样得到的结果还有12的存在，应该是英文字母的，继续改进</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public void toHex2(int num)&#123;</span><br><span class="line">        int temp;</span><br><span class="line">        for (int i = 0;i&lt;8 ;i++) &#123;</span><br><span class="line">            temp = num &amp; 15;</span><br><span class="line">            if (temp&gt;=10)</span><br><span class="line">                System.out.print((char)(temp-10+&apos;A&apos;)+&quot; &quot;);</span><br><span class="line">            else</span><br><span class="line">                System.out.print(temp+&quot; &quot;);</span><br><span class="line">            num = num &gt;&gt;&gt; 4;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在中间的地方加了一个判断，使用了ASCII的知识，temp-10+’A’ 得到的不是字母，所以在前面还要加上char的强制转换</p>
+</li>
+<li><p>继续改进，现在这些数还是倒序，而且有许多无用位。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public void toHex3(int num)&#123;</span><br><span class="line">        char[] chars = new char[]&#123;&apos;0&apos;,&apos;1&apos;,&apos;2&apos;,&apos;3&apos;,&apos;4&apos;,&apos;5&apos;,</span><br><span class="line">                &apos;6&apos;,&apos;7&apos;,&apos;8&apos;,&apos;9&apos;,&apos;A&apos;,&apos;B&apos;,&apos;C&apos;,&apos;D&apos;,&apos;E&apos;,&apos;F&apos;&#125;;</span><br><span class="line">        char[] arr = new char[8];</span><br><span class="line">        int point = arr.length - 1 ;</span><br><span class="line">        int temp;</span><br><span class="line">        while (num!=0)&#123;</span><br><span class="line">            temp = num &amp; 15;</span><br><span class="line">            arr[point] = chars[temp];</span><br><span class="line">            num = num &gt;&gt;&gt; 4;</span><br><span class="line">            point --;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.print(arr);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>这里使用了数组的查表法，创建两个char的数组，第一个数组是用来将所获取到的0到15的数字转换为十六进制中的字符，第二个数组用来存储最后16进制的结果</p>
+</li>
+<li>在之前的两个程序中，最后输出的值都是反向的，于是我在这里创建了一个指针point，让他的初始值指向数组最后端的角标，每次输入进一个数后，指针前移一位，这样最后输出的时候直接输出数组就可以输出一个转换正确的16进制值。</li>
+</ul>
+<h4 id="进制转换整合"><a href="#进制转换整合" class="headerlink" title="进制转换整合"></a>进制转换整合</h4><ul>
+<li><p>上面的的程序还只能对10-&gt;16转换，可以对其略作修改，使其可以灵活转换各种进制</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public char[] trans(int num,int base,int offse)&#123;</span><br><span class="line">        char[] chars = new char[]&#123;&apos;0&apos;,&apos;1&apos;,&apos;2&apos;,&apos;3&apos;,&apos;4&apos;,&apos;5&apos;,</span><br><span class="line">                &apos;6&apos;,&apos;7&apos;,&apos;8&apos;,&apos;9&apos;,&apos;A&apos;,&apos;B&apos;,&apos;C&apos;,&apos;D&apos;,&apos;E&apos;,&apos;F&apos;&#125;;</span><br><span class="line">        char[] arr = new char[32];</span><br><span class="line">        int point = arr.length - 1 ;</span><br><span class="line">        int temp;</span><br><span class="line">        while (num!=0)&#123;</span><br><span class="line">            temp = num &amp; base;</span><br><span class="line">            arr[point] = chars[temp];</span><br><span class="line">            num = num &gt;&gt;&gt; offse;</span><br><span class="line">            point --;</span><br><span class="line">        &#125;</span><br><span class="line">        return arr;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加单独方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public char[] toBinary(int num)&#123;          //十进制转换二进制</span><br><span class="line">    return trans(num,1,1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public char[] toHexa(int num)&#123;            //十进制转换十六进制</span><br><span class="line">    return trans(num,15,4);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public char[] toOctal(int num)&#123;           //十进制转换八进制</span><br><span class="line">    return trans(num,7,3);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>主类测试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class tranSystem &#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        int num = 854796;</span><br><span class="line">        tranSystem tra = new tranSystem();</span><br><span class="line">        System.out.println(tra.toHexa(num));</span><br><span class="line">        System.out.println(tra.toOctal(num));</span><br><span class="line">        System.out.println(tra.toBinary(num));</span><br><span class="line">    &#125;</span><br><span class="line">    //上面写的方法添加在这里</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Integer.toBinaryString()是java系统自带的转换二进制</p>
+</li>
+</ul>
+<h4 id="查表法"><a href="#查表法" class="headerlink" title="查表法"></a>查表法</h4><ul>
+<li>查表法在日常学习中可以有很多应用，如输入数字，输出星期几等等</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/09/Java-数组常见操作/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -253,7 +430,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Orange's Blog">
     </span>
 
     
@@ -425,7 +602,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Orange's Blog">
     </span>
 
     
@@ -688,7 +865,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Orange's Blog">
     </span>
 
     
@@ -947,7 +1124,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Orange's Blog">
     </span>
 
     
@@ -1092,7 +1269,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Orange's Blog">
     </span>
 
     
@@ -1270,7 +1447,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Orange's Blog">
     </span>
 
     
@@ -1471,7 +1648,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Orange's Blog">
     </span>
 
     
@@ -1594,7 +1771,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Orange's Blog">
     </span>
 
     
@@ -1750,7 +1927,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
