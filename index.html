@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -96,7 +96,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -230,6 +230,441 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/03/Java-异常/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Orange">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/03/Java-异常/" itemprop="url">Java-异常</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-03T20:16:20+08:00">
+                2018-05-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaSE/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaSE</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
+<li>异常：运行时期发生的不正常情况</li>
+<li>在java中用类的形式对不正常情况进行了描述和封装对象</li>
+<li>描述不正常的情况的类，被称为异常类</li>
+<li>以前正常流程代码和问题处理代码相结合，现在将正常流程代码、问题处理代码分离，提高阅读性</li>
+<li>其实异常就是java通过面向对象的思想将问题封装为对象，用异常类对其描述</li>
+<li>不同类用问题用不同的类进行具体的描述，比如角标越界，空指针等等。</li>
+</ul>
+<h2 id="体系"><a href="#体系" class="headerlink" title="体系"></a>体系</h2><ul>
+<li>问题很多，意味着描述的类也很多，将其共性进行向上抽取，形成了异常体系</li>
+<li>最终问题就分成了两大类<ul>
+<li>Throwable：（直译：可抛的）问题发生应该就可以抛出，让调用者知道并处理</li>
+<li>1、一般不可处理的   Error</li>
+<li>2、可以处理的       Exception</li>
+</ul>
+</li>
+<li>该体系的特点就在于 Throwable 及其所有的子类都具有可抛性</li>
+<li>可抛性是怎么体现的那？<ul>
+<li>通过throws throw 这两个关键字所操作的类和对象都具备可抛性</li>
+</ul>
+</li>
+<li>该体系特点：<ul>
+<li>子类的后缀名都是用其父类名作为后缀，阅读性很强</li>
+</ul>
+</li>
+</ul>
+<h3 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h3><ul>
+<li>JVM抛出的严重性问题，这种问题发生一般不针对性处理，直接修改程序</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class ExceptionDemo &#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        int[] arr = new int[1024*1024*800];</span><br><span class="line">        //java.lang.OutOfMemoryError: Java heap space</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Exception"><a href="#Exception" class="headerlink" title="Exception"></a>Exception</h3><ul>
+<li>分为两种：</li>
+<li>编译时受检测异常：Exception和其子类都是，除了特殊子类RuntimeExcetion<ul>
+<li>这种问题一旦出现，希望在编译时就进行检测，让这种问题有对应的处理方式。</li>
+</ul>
+</li>
+<li>编译不检测异常（运行时异常）：RuntimeExcetion和其子类<ul>
+<li>这种问题的发生，让功能无法继续，运算也无法进行，更多是因为调用的原因导致的，或者引发程序内部状态改变，导致的异常。这种问题一般不处理，直接编译通过，在运行时，调用者调用时引发异常从而程序强制停止，此时调用者即可对异常进行修正。</li>
+</ul>
+</li>
+</ul>
+<h3 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h3><ul>
+<li>运到识别的问题，对象进行封装</li>
+<li>把问题抛给调用者</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class Demo &#123;</span><br><span class="line">    public int method(int[] arr,int index)&#123;</span><br><span class="line">        if(arr == null)</span><br><span class="line">            throw new NullPointerException(&quot;你咋空指针了&quot;);</span><br><span class="line">        if(index &gt;= arr.length)</span><br><span class="line">            throw new ArrayIndexOutOfBoundsException(&quot;兄台，数组越界了，角标是：&quot;+index);</span><br><span class="line"></span><br><span class="line">        return arr[index];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class ExceptionDemo &#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        int[] arr = new int[3];</span><br><span class="line">        Demo d = new Demo();</span><br><span class="line">        d.method(arr, 30);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="自定义异常"><a href="#自定义异常" class="headerlink" title="自定义异常"></a>自定义异常</h2><ul>
+<li>对于角标是整数不存在，可以用角标越界表示，对于负数角标的情况，准备用负数角标异常表示，但是这在Java中没有定义过，那就按照Java异常的创建思想，面向对象，将负数角标进行自定义描述，并封装成对象，这种自定义问题描述称为自定义异常。</li>
+<li>注意：如果让一个类称为异常类，必须要继承异常体系，因为只有称为异常体系的子类才有资格具备可抛性。才可以被两个关键字所操作 throws throw</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">    class FuShuIndexException extends Exception&#123;</span><br><span class="line">        FuShuIndexException()&#123;&#125;</span><br><span class="line">        FuShuIndexException(String msg)&#123;</span><br><span class="line">            Super(msg);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    class Demo&#123;</span><br><span class="line">        public int method(int[] arr,int index) throws FuShuIndexException&#123;</span><br><span class="line">            if(arr==null)</span><br><span class="line">                throw new NullPointerException(&quot;数组的引用不能为空&quot;);</span><br><span class="line">    </span><br><span class="line">            if(index &gt;= arr.length)</span><br><span class="line">                throw new ArrayIndexOutOfBoundsException(&quot;数组角标越界=&quot; + index);</span><br><span class="line">            </span><br><span class="line">            if(index &lt; 0)</span><br><span class="line">                throw new FuShuIndexException();</span><br><span class="line">            </span><br><span class="line">            return arr[index];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public class ExceptionDemo &#123;</span><br><span class="line">        public static void main(String[] args) throws FuShuIndexException &#123;</span><br><span class="line">            int[] arr = new int[3];</span><br><span class="line">            Demo d = new Demo();</span><br><span class="line">            d.method(arr, -1);</span><br><span class="line">        &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>自定义的异常，要么继承Exception,要么继承RuntimeException</li>
+</ul>
+<h2 id="抛出-throw"><a href="#抛出-throw" class="headerlink" title="抛出 throw"></a>抛出 throw</h2><ul>
+<li>throw和throws区别：<ul>
+<li>throws使用在函数上，抛出的是异常类，可以跑出多个，用逗号隔开</li>
+<li>throw使用在函数内，抛出的是异常对象</li>
+</ul>
+</li>
+</ul>
+<h2 id="捕捉-catch"><a href="#捕捉-catch" class="headerlink" title="捕捉 catch"></a>捕捉 catch</h2><ul>
+<li>可以对异常进行针对性处理的方式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">具体格式：</span><br><span class="line">    try&#123;</span><br><span class="line">        //需要被检测异常的代码</span><br><span class="line">    &#125;catch(异常类 变量)&#123; //该变量用于接收发生的异常对象</span><br><span class="line">        //真正处理该异常的代码</span><br><span class="line">    &#125;finally&#123;</span><br><span class="line">        //一定会被执行的代码</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>下面是演示代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class Demo &#123;</span><br><span class="line">    public int method(int[] arr,int index)&#123;</span><br><span class="line">        if(arr == null)</span><br><span class="line">            throw new NullPointerException(&quot;你咋空指针了&quot;);</span><br><span class="line">        if(index &gt;= arr.length)</span><br><span class="line">            throw new ArrayIndexOutOfBoundsException(&quot;兄台，数组越界了，角标是：&quot;+index);</span><br><span class="line">        return arr[index];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class ExceptionDemo &#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        int[] arr = new int[3];</span><br><span class="line">        Demo d = new Demo();</span><br><span class="line">        try &#123;</span><br><span class="line">            int num = d.method(null, 30);</span><br><span class="line">            System.out.println(num);</span><br><span class="line">        &#125;catch (NullPointerException e)&#123;</span><br><span class="line">            System.out.println(e.toString());</span><br><span class="line">        &#125;catch (ArrayIndexOutOfBoundsException e)&#123;</span><br><span class="line">            System.out.println(&quot;message:&quot;+e.getMessage());</span><br><span class="line">            System.out.println(&quot;String:&quot;+e.toString());</span><br><span class="line">            //e.printStackTrace();//Jvm默认处理机制就是调用异常这个方法</span><br><span class="line">            System.out.println(&quot;越界&quot;);</span><br><span class="line">        &#125;/*catch (Exception e)&#123;</span><br><span class="line">            //多catch，父类的catch放在最下面</span><br><span class="line">        &#125;*/</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="finally代码块"><a href="#finally代码块" class="headerlink" title="finally代码块"></a>finally代码块</h3><ul>
+<li>除了在catch中强制关闭JVM的情况下，finally中的语句都会被执行</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">    情况1：</span><br><span class="line">    运行结果：finally</span><br><span class="line">*/</span><br><span class="line">try &#123;</span><br><span class="line">    //需要被检测异常的代码</span><br><span class="line">&#125;catch (NullPointerException e)&#123;</span><br><span class="line">    //处理异常的代码</span><br><span class="line">    return;</span><br><span class="line">&#125;finally&#123;   //通常用于关闭（释放）资源</span><br><span class="line">    System.out.println(&quot;finally&quot;);</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(&quot;Over&quot;);</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">    情况2：去掉第9行的return后，运行</span><br><span class="line">    结果：finally Over</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+<h3 id="try-catch-finally-代码组合特点"><a href="#try-catch-finally-代码组合特点" class="headerlink" title="try catch finally 代码组合特点"></a>try catch finally 代码组合特点</h3><ul>
+<li>1、try catch finally</li>
+<li>2、try catch（多个）<ul>
+<li>没有必要资源需要释放时，可以不用定义finally</li>
+</ul>
+</li>
+<li>3、try finally<ul>
+<li>异常无法直接处理，但是资源需要关闭</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">try&#123;</span><br><span class="line">    //开启资源</span><br><span class="line">    throw new Exception;</span><br><span class="line">&#125;finally&#123;</span><br><span class="line">    //关闭资源</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="异常处理原则"><a href="#异常处理原则" class="headerlink" title="异常处理原则"></a>异常处理原则</h2><ul>
+<li>1、函数内部如果抛出需要检测的异常，函数上必须要声明，否则必须在函数内用trycatch捕捉，否则编译失败</li>
+<li>2、如果调用到了声明异常的函数，要么trycatch，要么throws，否则编译失败</li>
+<li>3、什么时候catch，什么时候throws那？<ul>
+<li>功能内容可以解决，用catch</li>
+<li>解决不了，用throws告诉调用者，由调用者解决</li>
+</ul>
+</li>
+<li>4、一个功能如果抛出了多个异常，那么调用时，必须有对应多个catch进行针对性的处理，内部有几个需要检测的异常，就抛几个异常，抛出几个，就catch几个</li>
+</ul>
+<h2 id="异常应用"><a href="#异常应用" class="headerlink" title="异常应用"></a>异常应用</h2><ul>
+<li>用Java描述老师上课，需要电脑，电脑会出现蓝屏冒烟两种故障</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">public class LanPingException extends Exception &#123;</span><br><span class="line">    LanPingException(String msg)&#123;</span><br><span class="line">        super(msg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class MaoYanException extends Exception &#123;</span><br><span class="line">    MaoYanException(String msg)&#123;</span><br><span class="line">        super(msg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;    </span><br><span class="line">public class Computer &#123;</span><br><span class="line">    private int state = 0;</span><br><span class="line">    public void run() throws LanPingException, MaoYanException &#123;</span><br><span class="line">        if (state == 1)</span><br><span class="line">            throw new LanPingException(&quot;蓝屏&quot;);</span><br><span class="line">        if (state == 2)</span><br><span class="line">            throw new MaoYanException(&quot;冒烟&quot;);</span><br><span class="line">        System.out.println(&quot;computer run&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    public void reset()&#123;</span><br><span class="line">        state = 0;</span><br><span class="line">        System.out.println(&quot;电脑重启&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class Teacher &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private Computer comp;</span><br><span class="line">    public Teacher(String name)&#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        comp = new Computer();</span><br><span class="line">    &#125;</span><br><span class="line">    public void prolect() throws MaoYanException&#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            comp.run();</span><br><span class="line">            System.out.println(name+&quot;讲课&quot;);</span><br><span class="line">        &#125;catch (LanPingException e)&#123;</span><br><span class="line">            e.getMessage();</span><br><span class="line">            comp.reset();</span><br><span class="line">            prolect();</span><br><span class="line">        &#125;catch (MaoYanException e)&#123;</span><br><span class="line">            System.out.println(e.toString());</span><br><span class="line">            practice();</span><br><span class="line">            throw e;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public void practice()&#123;</span><br><span class="line">        System.out.println(&quot;电脑坏了，大家练习&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class Demo &#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        Teacher t = new Teacher(&quot;cheng&quot;);</span><br><span class="line">        try &#123;</span><br><span class="line">            t.prolect();</span><br><span class="line">        &#125; catch (MaoYanException e) &#123;</span><br><span class="line">            System.out.println(&quot;......&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>数据库连接出现异常怎么解决那</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class NoAddException extends Exception&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void addData(Data d) throws NoAddException&#123;</span><br><span class="line">    连接数据库</span><br><span class="line">    try&#123;</span><br><span class="line">        添加数据，出现异常</span><br><span class="line">    &#125;catch(NoAddException e)&#123;</span><br><span class="line">        //处理代码</span><br><span class="line">        throw new NoAddException();</span><br><span class="line">    &#125;finally&#123;</span><br><span class="line">        关闭数据库</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
+<li>1、子类在覆盖父类方法的时候，父类的方法如果抛出了异常，那么子类的方法只能抛出父类的异常，或者该异常的子类</li>
+<li><p>2、如果父类抛出多个异常，子类只能抛出父类异常的子集</p>
+</li>
+<li><p>简而言之：子类覆盖父类方法时，只能抛出父类异常或异常子类或子集</p>
+</li>
+<li>注意：若父类方法没抛出异常，子类覆盖时绝对不能抛出异常，只能try</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/03/Java-Object类/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Orange">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/03/Java-Object类/" itemprop="url">Java-Object类</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-03T14:13:06+08:00">
+                2018-05-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaSE/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaSE</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a>Object类</h2><ul>
+<li>Object ：所有类的根类</li>
+<li>Object 是抽取而来的，具备着所有对象都具备的共性内容</li>
+<li>常用的共性内容：<ul>
+<li>equals 方法</li>
+<li>hashCode 方法</li>
+<li>getClass 方法</li>
+<li>toString 方法<h3 id="equals方法"><a href="#equals方法" class="headerlink" title="equals方法"></a>equals方法</h3></li>
+</ul>
+</li>
+<li><p>equals 实现对象上差别可能性最大的相等关系，即，对于任何非空引用值 x 和 y ，当且仅当 x 和 y引用同一个对象时，此方法才返回 true （x==y 具有值 true）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class Person &#123;</span><br><span class="line">    private int age;</span><br><span class="line">    public Person(int age)&#123;</span><br><span class="line">        this.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class ObjectDemo &#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        Person p1 = new Person(20);</span><br><span class="line">        Person p2 = new Person(20);</span><br><span class="line">        Person p3 = p1;</span><br><span class="line">        System.out.println(p1==p2);</span><br><span class="line">        System.out.println(p1.equals(p2));</span><br><span class="line">        System.out.println(p1.equals(p3));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>equals 方法重写，比较成员变量值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class Person &#123;</span><br><span class="line">    private int age;</span><br><span class="line">    public Person(int age)&#123;</span><br><span class="line">        this.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">    /*</span><br><span class="line">    一般都会覆盖此方法，根据对象的特有内容，建立判断对象是否相同的依据</span><br><span class="line">     */</span><br><span class="line">    public boolean equals(Object obj)&#123;//会将参数中的对象进行向上转型</span><br><span class="line">        //为了提高程序鲁棒性，进行判断</span><br><span class="line">        if (!(obj instanceof Person))&#123;</span><br><span class="line">            throw new ClassCastException(&quot;类型错误&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        //为了使用子类的私有方法，进行向下转型</span><br><span class="line">        Person p = (Person) obj;</span><br><span class="line">        return this.age == p.age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="hashCode方法"><a href="#hashCode方法" class="headerlink" title="hashCode方法"></a>hashCode方法</h3><ul>
+<li><p>先演示一下功能，发现运行后的结果很相似，发现hashCode的结果是16进制地址值的10进制数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class ObjectDemo &#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        Person p1 = new Person(20);  </span><br><span class="line">        System.out.println(p1);</span><br><span class="line">        System.out.println(p1.hashCode());</span><br><span class="line">        System.out.println(Integer.toHexString(p1.hashCode()));</span><br><span class="line">        //Person@1540e19d</span><br><span class="line">        //356573597</span><br><span class="line">        //1540e19d</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>hashCode可以进行重写，在person类中加入如下的代码，ObjectDemo运行的结果会发生变化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public int hashCode()&#123;</span><br><span class="line">        return age;</span><br><span class="line">    &#125;</span><br><span class="line">    //Person@14</span><br><span class="line">    //20</span><br><span class="line">    //14</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="getClass方法"><a href="#getClass方法" class="headerlink" title="getClass方法"></a>getClass方法</h3><ul>
+<li>字节码文件是经过编译器预处理过的一种文件，是JAVA的执行文件存在形式，它本身是二进制文件，但是不可以被系统直接执行，而是需要虚拟机解释执行，由于被预处理过，所以比一般的解释代码要快，但是仍然会比系统直接执行的慢<br><img src="http://p6wpjrumy.bkt.clouddn.com/050301.png" alt=""></li>
+<li>人中抽出Person，class抽取出Class（字节码文件类名）<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class ObjectDemo &#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        Person p1 = new Person(20);</span><br><span class="line">        Person p2 = new Person(40);</span><br><span class="line">        Class claz1 = p1.getClass();</span><br><span class="line">        Class claz2 = p2.getClass();</span><br><span class="line">        System.out.println(claz1.equals(claz2));</span><br><span class="line">        //true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="toString方法"><a href="#toString方法" class="headerlink" title="toString方法"></a>toString方法</h3><ul>
+<li><p>这是一个改写字符串方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class ObjectDemo &#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        Person p1 = new Person(20);</span><br><span class="line">        System.out.println(p1);</span><br><span class="line">        System.out.println(p1.getClass().getName()+&quot;@&quot;+Integer.toHexString(p1.hashCode()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行结果：Person@1540e19d Person@1540e19d</p>
+</li>
+<li><p>其实这就是没改写前方法的功能，我们也可以自己进行改写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public String toString()&#123;</span><br><span class="line">        return &quot;Person:&quot;+age;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>这样改写后输出 p1 的结果就是  Person:20</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -2019,441 +2454,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/09/Java-数组常见操作/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Orange">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/09/Java-数组常见操作/" itemprop="url">Java 数组常见操作</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-09T23:26:49+08:00">
-                2018-04-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaSE/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaSE</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>今天整理了一些常用的数组操作，如最大值，查找，排序等等</li>
-</ul>
-<h4 id="数组最大值"><a href="#数组最大值" class="headerlink" title="数组最大值"></a>数组最大值</h4><h5 id="值判断"><a href="#值判断" class="headerlink" title="值判断"></a>值判断</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public int maxValue(int[] a)&#123;</span><br><span class="line">        int max = a[0];</span><br><span class="line">        for(int i=0;i&lt;a.length;i++)&#123;</span><br><span class="line">            if(a[i]&gt;max)</span><br><span class="line">                max = a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        return max;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h5 id="下标判断"><a href="#下标判断" class="headerlink" title="下标判断"></a>下标判断</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public int maxIndex(int[] a)&#123;</span><br><span class="line">        int max = 0;</span><br><span class="line">        for(int i=0; i&lt;a.length;i++)&#123;</span><br><span class="line">            if(a[i]&gt;a[max])</span><br><span class="line">                max = i;</span><br><span class="line">        &#125;</span><br><span class="line">        return a[max];</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="数组操作辅助方法"><a href="#数组操作辅助方法" class="headerlink" title="数组操作辅助方法"></a>数组操作辅助方法</h4><h5 id="交换值"><a href="#交换值" class="headerlink" title="交换值"></a>交换值</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public void swap(int[] arr,int a,int b)&#123;</span><br><span class="line">        int temp = 0;</span><br><span class="line">        temp = arr[a];</span><br><span class="line">        arr[a] = arr[b];</span><br><span class="line">        arr[b] = temp;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h5 id="输出链表"><a href="#输出链表" class="headerlink" title="输出链表"></a>输出链表</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public void printList(int[] arr)&#123;</span><br><span class="line">        for(int i = 0;i&lt;arr.length;i++)</span><br><span class="line">            System.out.print(arr[i]+&quot; &quot;);</span><br><span class="line">        System.out.println();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="数组选择排序"><a href="#数组选择排序" class="headerlink" title="数组选择排序"></a>数组选择排序</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public void chooseSort(int[] arr)&#123;                //选择排序</span><br><span class="line">        int temp = 0;</span><br><span class="line">        for(int i=0;i&lt;arr.length-1;i++) &#123;</span><br><span class="line">            for (int j = i + 1; j &lt; arr.length; j++) &#123;</span><br><span class="line">                if(arr[j]&gt;arr[i])&#123;</span><br><span class="line">                    //swap(arr,i,j);</span><br><span class="line">                    temp = arr[i];</span><br><span class="line">                    arr[i] = arr[j];</span><br><span class="line">                    arr[j] = temp;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h5 id="选择排序改进版"><a href="#选择排序改进版" class="headerlink" title="选择排序改进版"></a>选择排序改进版</h5><ul>
-<li>改进版的选择排序，设置了角标值和数组值<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public void chooseSort2(int[] arr)&#123;</span><br><span class="line">        for(int i=0;i&lt;arr.length-1;i++) &#123;</span><br><span class="line">            int number = arr[i];</span><br><span class="line">            int index = i;</span><br><span class="line">            for (int j = i + 1; j &lt; arr.length; j++) &#123;</span><br><span class="line">                if (number &gt; arr[j]) &#123;</span><br><span class="line">                    number = arr[j];</span><br><span class="line">                    index = j;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            if (index!=i)</span><br><span class="line">                swap(arr,i,index);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="数组冒泡排序"><a href="#数组冒泡排序" class="headerlink" title="数组冒泡排序"></a>数组冒泡排序</h4><ul>
-<li>冒泡排序，五个数为例，共进行4+3+2+1  10次比较<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public void ppSort(int[] arr)&#123;                  //便于理解</span><br><span class="line">        int temp = 0;</span><br><span class="line">        for(int i = 0;i&lt;arr.length-1;i++)</span><br><span class="line">            for (int j=0;j&lt;arr.length-1-i;j++)&#123;</span><br><span class="line">                if(arr[j]&gt;arr[j+1])&#123;</span><br><span class="line">                    //swap(arr,j,j+1);</span><br><span class="line">                    temp = arr[j];</span><br><span class="line">                    arr[j] = arr[j+1];</span><br><span class="line">                    arr[j+1] =temp;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h5 id="冒泡排序改进版"><a href="#冒泡排序改进版" class="headerlink" title="冒泡排序改进版"></a>冒泡排序改进版</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public void ppsort2(int[] arr)&#123;         //改进版冒泡</span><br><span class="line">        int temp = 0;</span><br><span class="line">        for (int i = arr.length-1;i&gt;0;i--)</span><br><span class="line">            for(int j=0;j&lt;i;j++)&#123;</span><br><span class="line">                if(arr[j]&gt;arr[j+1])&#123;</span><br><span class="line">                    //swap(arr,j,j+1);</span><br><span class="line">                    temp = arr[j];</span><br><span class="line">                    arr[j] = arr[j+1];</span><br><span class="line">                    arr[j+1] =temp;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h4><h5 id="通过值查找"><a href="#通过值查找" class="headerlink" title="通过值查找"></a>通过值查找</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public int findByValue(int[] arr,int key)&#123;      //通过值查找</span><br><span class="line">        int index = -1;</span><br><span class="line">        for (int i = 0;i&lt;arr.length;i++)&#123;</span><br><span class="line">            if(key == arr[i])</span><br><span class="line">                index = i + 1;</span><br><span class="line">        &#125;</span><br><span class="line">        return index;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h5 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public int findHalf(int[] arr,int key)&#123;                             //二分查找</span><br><span class="line">        list list = new list();</span><br><span class="line">        list.chooseSort2(arr);</span><br><span class="line">        int max = arr.length-1;</span><br><span class="line">        int min = 0;</span><br><span class="line">        int mid ;</span><br><span class="line">        while(min&lt;=max)&#123;</span><br><span class="line">            mid = (max + min)&gt;&gt;1;</span><br><span class="line">            if(key&gt;arr[mid])</span><br><span class="line">                min = mid + 1;</span><br><span class="line">            else if(key&lt;arr[mid])</span><br><span class="line">                max = mid - 1;</span><br><span class="line">            else</span><br><span class="line">                return mid;</span><br><span class="line">        &#125;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h5 id="练习题"><a href="#练习题" class="headerlink" title="练习题"></a>练习题</h5><ul>
-<li><p>给定一个有序的数组，如果往该数组中存储一个元素，并保证这个数组还是有序的，那么这个元素的存储的角标该如何获取？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public int getJiaoBiao(int[] arr,int key)&#123;         /</span><br><span class="line">            list list = new list();</span><br><span class="line">            list.chooseSort2(arr);</span><br><span class="line">            int min =0;</span><br><span class="line">            int max =arr.length-1;</span><br><span class="line">            int mid;</span><br><span class="line">            while(min&lt;=max)&#123;</span><br><span class="line">                mid = (min+max)&gt;&gt;1;</span><br><span class="line">                if(key&gt;arr[mid])</span><br><span class="line">                    min = mid + 1;</span><br><span class="line">                else if (key&lt;arr[mid])</span><br><span class="line">                    max = mid - 1;</span><br><span class="line">                else</span><br><span class="line">                    return mid;</span><br><span class="line">            &#125;</span><br><span class="line">            return min;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在系统自带的Arrays类中，有这个方法，不过和我这个写的不一样，比我的更好一些，我把源码粘贴上来</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">private static int binarySearch0(int[] a, int fromIndex, int toIndex,</span><br><span class="line">                                     int key) &#123;</span><br><span class="line">        int low = fromIndex;</span><br><span class="line">        int high = toIndex - 1;</span><br><span class="line"></span><br><span class="line">        while (low &lt;= high) &#123;</span><br><span class="line">            int mid = (low + high) &gt;&gt;&gt; 1;</span><br><span class="line">            int midVal = a[mid];</span><br><span class="line"></span><br><span class="line">            if (midVal &lt; key)</span><br><span class="line">                low = mid + 1;</span><br><span class="line">            else if (midVal &gt; key)</span><br><span class="line">                high = mid - 1;</span><br><span class="line">            else</span><br><span class="line">                return mid; // key found</span><br><span class="line">        &#125;</span><br><span class="line">        return -(low + 1);  // key not found.</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>不同的是返回值 比如我的答案如果是6，那么他的答案就会是-7，为什么那？</p>
-</li>
-<li>因为要插入的这个数是不存在于数组中的，所以给他一个负数的位置，那么-7怎么来的？-6-1，因为还有1个值，就是用我的方法得到0的那个值，取了负数还是0，不好分辨，所以就整体取负后再减一</li>
-<li>总结说：存在，返回具体的角标位置，不存在的话 返回 -插入点-1 </li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/08/Java函数及数组内存图解/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Orange">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/08/Java函数及数组内存图解/" itemprop="url">Java数组及内存图解</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-08T21:07:18+08:00">
-                2018-04-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaSE/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaSE</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>今天整理了Java函数，数组，内存加载使用的问题，在这之前我先把昨天剩下的for语句写下来。</li>
-</ul>
-<h3 id="for语句"><a href="#for语句" class="headerlink" title="for语句"></a>for语句</h3><blockquote>
-<p><a href="http://www.runoob.com/java/java-loop.html" target="_blank" rel="noopener">Java for语句基础</a></p>
-</blockquote>
-<ul>
-<li><p>\n 回车<br>\t 制表符<br>\b 退格<br>\r 按下回车键</p>
-</li>
-<li><p>windows系统中回车符其实是由两个符号组成 \r \n<br>linux 回车符只是 \n</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(&quot;\&quot;hello world\&quot;&quot;);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>上段代码最后输出结果是 “hello world” 有引号的，\会将他下一个字符转义</p>
-</li>
-</ul>
-<h4 id="break-跳出"><a href="#break-跳出" class="headerlink" title="break 跳出"></a>break 跳出</h4><ul>
-<li><p>作用范围：swich语句 or 循环语句</p>
-</li>
-<li><p>当break语句单独存在时，下面不要定义其他语句，因为执行不到</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">A:for(int x=0; x&lt;3; x++)&#123;</span><br><span class="line">    B:for(int y=0; y&lt;6; y++)&#123;</span><br><span class="line">        System.out.println(x);</span><br><span class="line">        break A;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>大家观察一下上面的语句，这就是break的特殊用法，可以将for循环定义名字，break选择性的使用。</p>
-</li>
-</ul>
-<h4 id="continue-继续"><a href="#continue-继续" class="headerlink" title="continue 继续"></a>continue 继续</h4><ul>
-<li><p>作用范围：循环结构</p>
-</li>
-<li><p>结束本次循环，继续下次循环</p>
-</li>
-<li><p>continue语句单独存在时，下面不要定义其他语句，因为执行不到</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for(int x=0; x&lt;9; x++)&#123;</span><br><span class="line">    if(x%2 == 0)</span><br><span class="line">        continue;</span><br><span class="line">    System.out.println(x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><ul>
-<li>函数：定义在类中具有特定功能的一段小程序，也称方法。</li>
-</ul>
-<h4 id="定义及格式"><a href="#定义及格式" class="headerlink" title="定义及格式"></a>定义及格式</h4><ul>
-<li>定义函数格式：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">修饰符 返回值类型 函数（参数类型 形参1, ... ... ,）&#123;</span><br><span class="line">    执行语句;</span><br><span class="line">    return 返回值;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>无具体返回值时，返回值类型用void，return可以忽略不写</li>
-</ul>
-<h4 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h4><ul>
-<li><p>1 定义函数可将代码封装</p>
-</li>
-<li><p>2 便于对该功能复用</p>
-</li>
-<li><p>3 函数只有被调用才能执行</p>
-</li>
-</ul>
-<h4 id="两个明确"><a href="#两个明确" class="headerlink" title="两个明确"></a>两个明确</h4><ul>
-<li>1 函数功能结果是什么？</li>
-<li>2 实现过程中是否需要未知内容参与运算？</li>
-</ul>
-<h4 id="函数重载"><a href="#函数重载" class="headerlink" title="函数重载"></a>函数重载</h4><ul>
-<li>1 同一个类中的同名函数</li>
-<li>2 参数个数不同或者是参数类型不同</li>
-<li>3 函数重载与返回值无关</li>
-<li>4 Java严谨性语言，如果函数出现调用不确定性，会编译失败（比如int返回值却是double参数类型）</li>
-</ul>
-<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><blockquote>
-<p><a href="http://www.runoob.com/java/java-array.html" target="_blank" rel="noopener">Java数组基础</a></p>
-</blockquote>
-<h3 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h3><ul>
-<li>内存的划分<ul>
-<li>寄存器</li>
-<li>本地方法区</li>
-<li>方法区</li>
-<li>栈内存</li>
-<li>堆内存</li>
-</ul>
-</li>
-</ul>
-<h4 id="栈内存"><a href="#栈内存" class="headerlink" title="栈内存"></a>栈内存</h4><ul>
-<li>存储的都是局部变量，变量所属作用域一旦结束，该变量就自动释放</li>
-</ul>
-<h4 id="堆内存"><a href="#堆内存" class="headerlink" title="堆内存"></a>堆内存</h4><ul>
-<li>储存数组和对象（数组就是对象），new 建立的都在堆上</li>
-<li>特点：<ol>
-<li>每个实体都有首地址值</li>
-<li>堆内存中每个变量都有默认内存初始值，根据类型不同而不同<br>（int -&gt; 0,double -&gt; 0.0,float -&gt; 0.0f,boolean -&gt; false,char -&gt; ‘\u0000’）</li>
-<li>垃圾回收机制</li>
-</ol>
-</li>
-</ul>
-<h4 id="数组运行内存图解"><a href="#数组运行内存图解" class="headerlink" title="数组运行内存图解"></a>数组运行内存图解</h4><h5 id="一维数组"><a href="#一维数组" class="headerlink" title="一维数组"></a>一维数组</h5><ul>
-<li><p>接下来我就通过这段代码来演示运行时的内存变化</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int[] x = new int[3];</span><br><span class="line">int[] y = new int[3];</span><br><span class="line">x[0] = 9;</span><br><span class="line">y[0] = 34;</span><br><span class="line">x = y;</span><br><span class="line">System.out.println(x[0]);</span><br><span class="line">y = null;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>栈中运行main然后存入x数组名，堆中分配地址（16进制），找到这个地址，开辟数组大小的空间，并给予其初始值。然后将数组地址传回栈中。<br><img src="http://p6wpjrumy.bkt.clouddn.com/~U@C8%5DXA9%5B32W_CT8PJIC4K.png" alt=""></p>
-</li>
-<li>给x[0],y[0]赋值时，就是直接在堆内存中更改数据</li>
-<li>x=y 语句的执行实质上就是将y的地址赋给x，下次再调用x的时候，即直接找到y的地址<br><img src="http://p6wpjrumy.bkt.clouddn.com/3R%29INTHR83Q%7DW66%25OUDESUP.png" alt=""></li>
-<li><p>当y = null; 就是将堆内存 和栈内存的指向关系删去，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int[] x = new int[3];</span><br><span class="line">System.out.println(x[]);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果直接运行上段代码，所得到的结果是一串字符</p>
-</li>
-<li><p>[I@1540e19d （我运行后的值）</p>
-</li>
-<li><p>[: 代表数组<br>I：int 实体类型<br>1540e19d：16进制的哈希值（地址）</p>
-</li>
-</ul>
-<h5 id="二维数组"><a href="#二维数组" class="headerlink" title="二维数组"></a>二维数组</h5><ul>
-<li>直接来是二维数组的图解<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int[][] arr = new int[3][2];</span><br><span class="line">arr[1][1] = 89;</span><br><span class="line">arr[2][2] = 89; //error</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><img src="http://p6wpjrumy.bkt.clouddn.com/1.png" alt=""></p>
-<ul>
-<li><p>大家看下图，以上图为例，所谓二维数组就是栈内存中存下指向堆内存的地址，这个地址是大小为3的数组，初始值为空，然后再创建3个小的数组，每个小数组还有一个地址，将这些地址对应存到之前大小为3的数组中。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int[][] arr = new int[3][2];</span><br><span class="line">System.out.println(arr);</span><br><span class="line">System.out.println(arr[0]);</span><br><span class="line">System.out.println(arr[0][0]);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>输出的结果</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[[I@1540e19d</span><br><span class="line">[I@677327b6</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>再来看看另一种定义下的情况</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int[][] arr = new int[3][];</span><br><span class="line">System.out.println(arr);</span><br><span class="line">System.out.println(arr[0]);</span><br><span class="line">System.out.println(arr[0][0]);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>结果如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[[I@1540e19d</span><br><span class="line">null</span><br><span class="line">Exception in thread &quot;main&quot; java.lang.NullPointerException</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2504,7 +2504,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2581,7 +2581,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 -->
 
