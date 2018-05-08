@@ -244,6 +244,158 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/12/Java面向对象总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Orange">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Orange's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/12/Java面向对象总结/" itemprop="url">Java面向对象总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-12T20:57:54+08:00">
+                2018-04-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaSE/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaSE</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          面向对象面向对象的特点
+1.符合人们的思想习惯
+2.将复杂事情简单化
+3.让曾经在过程中的执行者变成指挥者举例
+比如说，公司中刚刚接取了一个项目，如果这个事情全部都交给老总做的话，可能会耗时很久很久，所以他就需要去找别人来帮他做。需要去面试选人，也就是寻找几个对象替他去完成工作。这就是面向对象的一种
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/12/Java面向对象总结/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/10/Java-进制转换-查表法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -337,44 +489,18 @@
       
         
           
-            <ul>
-<li>今天写一下二进制转换十六进制的程序,改良程序的过程<h4 id="进制转换（以10转16为例）"><a href="#进制转换（以10转16为例）" class="headerlink" title="进制转换（以10转16为例）"></a>进制转换（以10转16为例）</h4></li>
-<li><p>首先想一下十六进制是多少个二进制位，4个。那么int是多少个字节？多少个二进制位？4个字节，32个二进制位</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public void toHex(int num)&#123;</span><br><span class="line">        int temp;</span><br><span class="line">        for (int i = 0;i&lt;8 ;i++) &#123;</span><br><span class="line">            temp = num &amp; 15;</span><br><span class="line">            System.out.print(temp+&quot; &quot;);</span><br><span class="line">            num = num &gt;&gt;&gt; 4;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>上图的结果是12 3 0 0 0 0 0 0，先来讲讲原理，再改良</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  以 num = 60 为例</span><br><span class="line">  0000-0000 0000-0000 0000-0000 0011-1100</span><br><span class="line">&amp; 0000-0000 0000-0000 0000-0000 0000-1111</span><br><span class="line">------------------------------------------</span><br><span class="line">  0000-0000 0000-0000 0000-0000 0000-1100</span><br><span class="line">  </span><br><span class="line">  0000 0000-0000 0000-0000 0000-0000 0011    ( 1100 ）</span><br><span class="line">&amp; 0000-0000 0000-0000 0000-0000 0000-1111</span><br><span class="line">------------------------------------------</span><br><span class="line">  0000-0000 0000-0000 0000-0000 0000-0011</span><br><span class="line">  结果分别是12 3 0 0 0 0 0 0</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>先和15（4个低位都是1，其余是0）进行&amp;运算，得到值后，再进行&gt;&gt;&gt;3的运算。这样得到的结果还有12的存在，应该是英文字母的，继续改进</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public void toHex2(int num)&#123;</span><br><span class="line">        int temp;</span><br><span class="line">        for (int i = 0;i&lt;8 ;i++) &#123;</span><br><span class="line">            temp = num &amp; 15;</span><br><span class="line">            if (temp&gt;=10)</span><br><span class="line">                System.out.print((char)(temp-10+&apos;A&apos;)+&quot; &quot;);</span><br><span class="line">            else</span><br><span class="line">                System.out.print(temp+&quot; &quot;);</span><br><span class="line">            num = num &gt;&gt;&gt; 4;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在中间的地方加了一个判断，使用了ASCII的知识，temp-10+’A’ 得到的不是字母，所以在前面还要加上char的强制转换</p>
-</li>
-<li><p>继续改进，现在这些数还是倒序，而且有许多无用位。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public void toHex3(int num)&#123;</span><br><span class="line">        char[] chars = new char[]&#123;&apos;0&apos;,&apos;1&apos;,&apos;2&apos;,&apos;3&apos;,&apos;4&apos;,&apos;5&apos;,</span><br><span class="line">                &apos;6&apos;,&apos;7&apos;,&apos;8&apos;,&apos;9&apos;,&apos;A&apos;,&apos;B&apos;,&apos;C&apos;,&apos;D&apos;,&apos;E&apos;,&apos;F&apos;&#125;;</span><br><span class="line">        char[] arr = new char[8];</span><br><span class="line">        int point = arr.length - 1 ;</span><br><span class="line">        int temp;</span><br><span class="line">        while (num!=0)&#123;</span><br><span class="line">            temp = num &amp; 15;</span><br><span class="line">            arr[point] = chars[temp];</span><br><span class="line">            num = num &gt;&gt;&gt; 4;</span><br><span class="line">            point --;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.print(arr);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>这里使用了数组的查表法，创建两个char的数组，第一个数组是用来将所获取到的0到15的数字转换为十六进制中的字符，第二个数组用来存储最后16进制的结果</p>
-</li>
-<li>在之前的两个程序中，最后输出的值都是反向的，于是我在这里创建了一个指针point，让他的初始值指向数组最后端的角标，每次输入进一个数后，指针前移一位，这样最后输出的时候直接输出数组就可以输出一个转换正确的16进制值。</li>
-</ul>
-<h4 id="进制转换整合"><a href="#进制转换整合" class="headerlink" title="进制转换整合"></a>进制转换整合</h4><ul>
-<li><p>上面的的程序还只能对10-&gt;16转换，可以对其略作修改，使其可以灵活转换各种进制</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public char[] trans(int num,int base,int offse)&#123;</span><br><span class="line">        char[] chars = new char[]&#123;&apos;0&apos;,&apos;1&apos;,&apos;2&apos;,&apos;3&apos;,&apos;4&apos;,&apos;5&apos;,</span><br><span class="line">                &apos;6&apos;,&apos;7&apos;,&apos;8&apos;,&apos;9&apos;,&apos;A&apos;,&apos;B&apos;,&apos;C&apos;,&apos;D&apos;,&apos;E&apos;,&apos;F&apos;&#125;;</span><br><span class="line">        char[] arr = new char[32];</span><br><span class="line">        int point = arr.length - 1 ;</span><br><span class="line">        int temp;</span><br><span class="line">        while (num!=0)&#123;</span><br><span class="line">            temp = num &amp; base;</span><br><span class="line">            arr[point] = chars[temp];</span><br><span class="line">            num = num &gt;&gt;&gt; offse;</span><br><span class="line">            point --;</span><br><span class="line">        &#125;</span><br><span class="line">        return arr;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>添加单独方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public char[] toBinary(int num)&#123;          //十进制转换二进制</span><br><span class="line">    return trans(num,1,1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public char[] toHexa(int num)&#123;            //十进制转换十六进制</span><br><span class="line">    return trans(num,15,4);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public char[] toOctal(int num)&#123;           //十进制转换八进制</span><br><span class="line">    return trans(num,7,3);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>主类测试</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class tranSystem &#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        int num = 854796;</span><br><span class="line">        tranSystem tra = new tranSystem();</span><br><span class="line">        System.out.println(tra.toHexa(num));</span><br><span class="line">        System.out.println(tra.toOctal(num));</span><br><span class="line">        System.out.println(tra.toBinary(num));</span><br><span class="line">    &#125;</span><br><span class="line">    //上面写的方法添加在这里</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Integer.toBinaryString()是java系统自带的转换二进制</p>
-</li>
-</ul>
-<h4 id="查表法"><a href="#查表法" class="headerlink" title="查表法"></a>查表法</h4><ul>
-<li>查表法在日常学习中可以有很多应用，如输入数字，输出星期几等等</li>
-</ul>
-
           
+今天写一下二进制转换十六进制的程序,改良程序的过程进制转换（以10转16为例）
+首先想一下十六进制是多少个二进制位，4个。那么int是多少个字节？多少个二进制位？4个字节，32个二进制位
+123456789public void toHex(int num)&#123;        int te
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/10/Java-进制转换-查表法/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -514,39 +640,18 @@
       
         
           
-            <ul>
-<li>今天整理了一些常用的数组操作，如最大值，查找，排序等等</li>
-</ul>
-<h4 id="数组最大值"><a href="#数组最大值" class="headerlink" title="数组最大值"></a>数组最大值</h4><h5 id="值判断"><a href="#值判断" class="headerlink" title="值判断"></a>值判断</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public int maxValue(int[] a)&#123;</span><br><span class="line">        int max = a[0];</span><br><span class="line">        for(int i=0;i&lt;a.length;i++)&#123;</span><br><span class="line">            if(a[i]&gt;max)</span><br><span class="line">                max = a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        return max;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h5 id="下标判断"><a href="#下标判断" class="headerlink" title="下标判断"></a>下标判断</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public int maxIndex(int[] a)&#123;</span><br><span class="line">        int max = 0;</span><br><span class="line">        for(int i=0; i&lt;a.length;i++)&#123;</span><br><span class="line">            if(a[i]&gt;a[max])</span><br><span class="line">                max = i;</span><br><span class="line">        &#125;</span><br><span class="line">        return a[max];</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="数组操作辅助方法"><a href="#数组操作辅助方法" class="headerlink" title="数组操作辅助方法"></a>数组操作辅助方法</h4><h5 id="交换值"><a href="#交换值" class="headerlink" title="交换值"></a>交换值</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public void swap(int[] arr,int a,int b)&#123;</span><br><span class="line">        int temp = 0;</span><br><span class="line">        temp = arr[a];</span><br><span class="line">        arr[a] = arr[b];</span><br><span class="line">        arr[b] = temp;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h5 id="输出链表"><a href="#输出链表" class="headerlink" title="输出链表"></a>输出链表</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public void printList(int[] arr)&#123;</span><br><span class="line">        for(int i = 0;i&lt;arr.length;i++)</span><br><span class="line">            System.out.print(arr[i]+&quot; &quot;);</span><br><span class="line">        System.out.println();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="数组选择排序"><a href="#数组选择排序" class="headerlink" title="数组选择排序"></a>数组选择排序</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public void chooseSort(int[] arr)&#123;                //选择排序</span><br><span class="line">        int temp = 0;</span><br><span class="line">        for(int i=0;i&lt;arr.length-1;i++) &#123;</span><br><span class="line">            for (int j = i + 1; j &lt; arr.length; j++) &#123;</span><br><span class="line">                if(arr[j]&gt;arr[i])&#123;</span><br><span class="line">                    //swap(arr,i,j);</span><br><span class="line">                    temp = arr[i];</span><br><span class="line">                    arr[i] = arr[j];</span><br><span class="line">                    arr[j] = temp;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h5 id="选择排序改进版"><a href="#选择排序改进版" class="headerlink" title="选择排序改进版"></a>选择排序改进版</h5><ul>
-<li>改进版的选择排序，设置了角标值和数组值<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public void chooseSort2(int[] arr)&#123;</span><br><span class="line">        for(int i=0;i&lt;arr.length-1;i++) &#123;</span><br><span class="line">            int number = arr[i];</span><br><span class="line">            int index = i;</span><br><span class="line">            for (int j = i + 1; j &lt; arr.length; j++) &#123;</span><br><span class="line">                if (number &gt; arr[j]) &#123;</span><br><span class="line">                    number = arr[j];</span><br><span class="line">                    index = j;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            if (index!=i)</span><br><span class="line">                swap(arr,i,index);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="数组冒泡排序"><a href="#数组冒泡排序" class="headerlink" title="数组冒泡排序"></a>数组冒泡排序</h4><ul>
-<li>冒泡排序，五个数为例，共进行4+3+2+1  10次比较<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public void ppSort(int[] arr)&#123;                  //便于理解</span><br><span class="line">        int temp = 0;</span><br><span class="line">        for(int i = 0;i&lt;arr.length-1;i++)</span><br><span class="line">            for (int j=0;j&lt;arr.length-1-i;j++)&#123;</span><br><span class="line">                if(arr[j]&gt;arr[j+1])&#123;</span><br><span class="line">                    //swap(arr,j,j+1);</span><br><span class="line">                    temp = arr[j];</span><br><span class="line">                    arr[j] = arr[j+1];</span><br><span class="line">                    arr[j+1] =temp;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h5 id="冒泡排序改进版"><a href="#冒泡排序改进版" class="headerlink" title="冒泡排序改进版"></a>冒泡排序改进版</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public void ppsort2(int[] arr)&#123;         //改进版冒泡</span><br><span class="line">        int temp = 0;</span><br><span class="line">        for (int i = arr.length-1;i&gt;0;i--)</span><br><span class="line">            for(int j=0;j&lt;i;j++)&#123;</span><br><span class="line">                if(arr[j]&gt;arr[j+1])&#123;</span><br><span class="line">                    //swap(arr,j,j+1);</span><br><span class="line">                    temp = arr[j];</span><br><span class="line">                    arr[j] = arr[j+1];</span><br><span class="line">                    arr[j+1] =temp;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h4><h5 id="通过值查找"><a href="#通过值查找" class="headerlink" title="通过值查找"></a>通过值查找</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public int findByValue(int[] arr,int key)&#123;      //通过值查找</span><br><span class="line">        int index = -1;</span><br><span class="line">        for (int i = 0;i&lt;arr.length;i++)&#123;</span><br><span class="line">            if(key == arr[i])</span><br><span class="line">                index = i + 1;</span><br><span class="line">        &#125;</span><br><span class="line">        return index;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h5 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public int findHalf(int[] arr,int key)&#123;                             //二分查找</span><br><span class="line">        list list = new list();</span><br><span class="line">        list.chooseSort2(arr);</span><br><span class="line">        int max = arr.length-1;</span><br><span class="line">        int min = 0;</span><br><span class="line">        int mid ;</span><br><span class="line">        while(min&lt;=max)&#123;</span><br><span class="line">            mid = (max + min)&gt;&gt;1;</span><br><span class="line">            if(key&gt;arr[mid])</span><br><span class="line">                min = mid + 1;</span><br><span class="line">            else if(key&lt;arr[mid])</span><br><span class="line">                max = mid - 1;</span><br><span class="line">            else</span><br><span class="line">                return mid;</span><br><span class="line">        &#125;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h5 id="练习题"><a href="#练习题" class="headerlink" title="练习题"></a>练习题</h5><ul>
-<li><p>给定一个有序的数组，如果往该数组中存储一个元素，并保证这个数组还是有序的，那么这个元素的存储的角标该如何获取？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public int getJiaoBiao(int[] arr,int key)&#123;         /</span><br><span class="line">            list list = new list();</span><br><span class="line">            list.chooseSort2(arr);</span><br><span class="line">            int min =0;</span><br><span class="line">            int max =arr.length-1;</span><br><span class="line">            int mid;</span><br><span class="line">            while(min&lt;=max)&#123;</span><br><span class="line">                mid = (min+max)&gt;&gt;1;</span><br><span class="line">                if(key&gt;arr[mid])</span><br><span class="line">                    min = mid + 1;</span><br><span class="line">                else if (key&lt;arr[mid])</span><br><span class="line">                    max = mid - 1;</span><br><span class="line">                else</span><br><span class="line">                    return mid;</span><br><span class="line">            &#125;</span><br><span class="line">            return min;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在系统自带的Arrays类中，有这个方法，不过和我这个写的不一样，比我的更好一些，我把源码粘贴上来</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">private static int binarySearch0(int[] a, int fromIndex, int toIndex,</span><br><span class="line">                                     int key) &#123;</span><br><span class="line">        int low = fromIndex;</span><br><span class="line">        int high = toIndex - 1;</span><br><span class="line"></span><br><span class="line">        while (low &lt;= high) &#123;</span><br><span class="line">            int mid = (low + high) &gt;&gt;&gt; 1;</span><br><span class="line">            int midVal = a[mid];</span><br><span class="line"></span><br><span class="line">            if (midVal &lt; key)</span><br><span class="line">                low = mid + 1;</span><br><span class="line">            else if (midVal &gt; key)</span><br><span class="line">                high = mid - 1;</span><br><span class="line">            else</span><br><span class="line">                return mid; // key found</span><br><span class="line">        &#125;</span><br><span class="line">        return -(low + 1);  // key not found.</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>不同的是返回值 比如我的答案如果是6，那么他的答案就会是-7，为什么那？</p>
-</li>
-<li>因为要插入的这个数是不存在于数组中的，所以给他一个负数的位置，那么-7怎么来的？-6-1，因为还有1个值，就是用我的方法得到0的那个值，取了负数还是0，不好分辨，所以就整体取负后再减一</li>
-<li>总结说：存在，返回具体的角标位置，不存在的话 返回 -插入点-1 </li>
-</ul>
-
           
+今天整理了一些常用的数组操作，如最大值，查找，排序等等
+
+数组最大值值判断12345678public int maxValue(int[] a)&#123;        int max = a[0];        for(int i=0;i&lt;a.length;i++)&#123;   
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/09/Java-数组常见操作/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -686,130 +791,25 @@
       
         
           
-            <ul>
-<li>今天整理了Java函数，数组，内存加载使用的问题，在这之前我先把昨天剩下的for语句写下来。</li>
-</ul>
-<h3 id="for语句"><a href="#for语句" class="headerlink" title="for语句"></a>for语句</h3><blockquote>
-<p><a href="http://www.runoob.com/java/java-loop.html" target="_blank" rel="noopener">Java for语句基础</a></p>
-</blockquote>
-<ul>
-<li><p>\n 回车<br>\t 制表符<br>\b 退格<br>\r 按下回车键</p>
-</li>
-<li><p>windows系统中回车符其实是由两个符号组成 \r \n<br>linux 回车符只是 \n</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(&quot;\&quot;hello world\&quot;&quot;);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>上段代码最后输出结果是 “hello world” 有引号的，\会将他下一个字符转义</p>
-</li>
-</ul>
-<h4 id="break-跳出"><a href="#break-跳出" class="headerlink" title="break 跳出"></a>break 跳出</h4><ul>
-<li><p>作用范围：swich语句 or 循环语句</p>
-</li>
-<li><p>当break语句单独存在时，下面不要定义其他语句，因为执行不到</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">A:for(int x=0; x&lt;3; x++)&#123;</span><br><span class="line">    B:for(int y=0; y&lt;6; y++)&#123;</span><br><span class="line">        System.out.println(x);</span><br><span class="line">        break A;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>大家观察一下上面的语句，这就是break的特殊用法，可以将for循环定义名字，break选择性的使用。</p>
-</li>
-</ul>
-<h4 id="continue-继续"><a href="#continue-继续" class="headerlink" title="continue 继续"></a>continue 继续</h4><ul>
-<li><p>作用范围：循环结构</p>
-</li>
-<li><p>结束本次循环，继续下次循环</p>
-</li>
-<li><p>continue语句单独存在时，下面不要定义其他语句，因为执行不到</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for(int x=0; x&lt;9; x++)&#123;</span><br><span class="line">    if(x%2 == 0)</span><br><span class="line">        continue;</span><br><span class="line">    System.out.println(x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><ul>
-<li>函数：定义在类中具有特定功能的一段小程序，也称方法。</li>
-</ul>
-<h4 id="定义及格式"><a href="#定义及格式" class="headerlink" title="定义及格式"></a>定义及格式</h4><ul>
-<li>定义函数格式：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">修饰符 返回值类型 函数（参数类型 形参1, ... ... ,）&#123;</span><br><span class="line">    执行语句;</span><br><span class="line">    return 返回值;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>无具体返回值时，返回值类型用void，return可以忽略不写</li>
-</ul>
-<h4 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h4><ul>
-<li><p>1 定义函数可将代码封装</p>
-</li>
-<li><p>2 便于对该功能复用</p>
-</li>
-<li><p>3 函数只有被调用才能执行</p>
-</li>
-</ul>
-<h4 id="两个明确"><a href="#两个明确" class="headerlink" title="两个明确"></a>两个明确</h4><ul>
-<li>1 函数功能结果是什么？</li>
-<li>2 实现过程中是否需要未知内容参与运算？</li>
-</ul>
-<h4 id="函数重载"><a href="#函数重载" class="headerlink" title="函数重载"></a>函数重载</h4><ul>
-<li>1 同一个类中的同名函数</li>
-<li>2 参数个数不同或者是参数类型不同</li>
-<li>3 函数重载与返回值无关</li>
-<li>4 Java严谨性语言，如果函数出现调用不确定性，会编译失败（比如int返回值却是double参数类型）</li>
-</ul>
-<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><blockquote>
-<p><a href="http://www.runoob.com/java/java-array.html" target="_blank" rel="noopener">Java数组基础</a></p>
-</blockquote>
-<h3 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h3><ul>
-<li>内存的划分<ul>
-<li>寄存器</li>
-<li>本地方法区</li>
-<li>方法区</li>
-<li>栈内存</li>
-<li>堆内存</li>
-</ul>
-</li>
-</ul>
-<h4 id="栈内存"><a href="#栈内存" class="headerlink" title="栈内存"></a>栈内存</h4><ul>
-<li>存储的都是局部变量，变量所属作用域一旦结束，该变量就自动释放</li>
-</ul>
-<h4 id="堆内存"><a href="#堆内存" class="headerlink" title="堆内存"></a>堆内存</h4><ul>
-<li>储存数组和对象（数组就是对象），new 建立的都在堆上</li>
-<li>特点：<ol>
-<li>每个实体都有首地址值</li>
-<li>堆内存中每个变量都有默认内存初始值，根据类型不同而不同<br>（int -&gt; 0,double -&gt; 0.0,float -&gt; 0.0f,boolean -&gt; false,char -&gt; ‘\u0000’）</li>
-<li>垃圾回收机制</li>
-</ol>
-</li>
-</ul>
-<h4 id="数组运行内存图解"><a href="#数组运行内存图解" class="headerlink" title="数组运行内存图解"></a>数组运行内存图解</h4><h5 id="一维数组"><a href="#一维数组" class="headerlink" title="一维数组"></a>一维数组</h5><ul>
-<li><p>接下来我就通过这段代码来演示运行时的内存变化</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int[] x = new int[3];</span><br><span class="line">int[] y = new int[3];</span><br><span class="line">x[0] = 9;</span><br><span class="line">y[0] = 34;</span><br><span class="line">x = y;</span><br><span class="line">System.out.println(x[0]);</span><br><span class="line">y = null;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>栈中运行main然后存入x数组名，堆中分配地址（16进制），找到这个地址，开辟数组大小的空间，并给予其初始值。然后将数组地址传回栈中。<br><img src="http://p6wpjrumy.bkt.clouddn.com/~U@C8%5DXA9%5B32W_CT8PJIC4K.png" alt=""></p>
-</li>
-<li>给x[0],y[0]赋值时，就是直接在堆内存中更改数据</li>
-<li>x=y 语句的执行实质上就是将y的地址赋给x，下次再调用x的时候，即直接找到y的地址<br><img src="http://p6wpjrumy.bkt.clouddn.com/3R%29INTHR83Q%7DW66%25OUDESUP.png" alt=""></li>
-<li><p>当y = null; 就是将堆内存 和栈内存的指向关系删去，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int[] x = new int[3];</span><br><span class="line">System.out.println(x[]);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果直接运行上段代码，所得到的结果是一串字符</p>
-</li>
-<li><p>[I@1540e19d （我运行后的值）</p>
-</li>
-<li><p>[: 代表数组<br>I：int 实体类型<br>1540e19d：16进制的哈希值（地址）</p>
-</li>
-</ul>
-<h5 id="二维数组"><a href="#二维数组" class="headerlink" title="二维数组"></a>二维数组</h5><ul>
-<li>直接来是二维数组的图解<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int[][] arr = new int[3][2];</span><br><span class="line">arr[1][1] = 89;</span><br><span class="line">arr[2][2] = 89; //error</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><img src="http://p6wpjrumy.bkt.clouddn.com/1.png" alt=""></p>
-<ul>
-<li><p>大家看下图，以上图为例，所谓二维数组就是栈内存中存下指向堆内存的地址，这个地址是大小为3的数组，初始值为空，然后再创建3个小的数组，每个小数组还有一个地址，将这些地址对应存到之前大小为3的数组中。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int[][] arr = new int[3][2];</span><br><span class="line">System.out.println(arr);</span><br><span class="line">System.out.println(arr[0]);</span><br><span class="line">System.out.println(arr[0][0]);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>输出的结果</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[[I@1540e19d</span><br><span class="line">[I@677327b6</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>再来看看另一种定义下的情况</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int[][] arr = new int[3][];</span><br><span class="line">System.out.println(arr);</span><br><span class="line">System.out.println(arr[0]);</span><br><span class="line">System.out.println(arr[0][0]);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>结果如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[[I@1540e19d</span><br><span class="line">null</span><br><span class="line">Exception in thread &quot;main&quot; java.lang.NullPointerException</span><br></pre></td></tr></table></figure></li>
-</ul>
-
           
+今天整理了Java函数，数组，内存加载使用的问题，在这之前我先把昨天剩下的for语句写下来。
+
+for语句
+Java for语句基础
+
+
+\n 回车\t 制表符\b 退格\r 按下回车键
+
+windows系统中回车符其实是由两个符号组成 \r \nlinux 回车符只是 \n
+1System.ou
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/08/Java函数及数组内存图解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -949,126 +949,19 @@
       
         
           
-            <ul>
-<li>今天重温的主要是Java运算符，在这里我把之前已经遗忘的一些点记录下来，以后回顾的时候可以翻阅。</li>
-</ul>
-<h3 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h3><h4 id="异或："><a href="#异或：" class="headerlink" title="^异或："></a>^异或：</h4><ul>
-<li>符号两边的结果相同为False，不同则为True<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">True  ^ True  = False ;</span><br><span class="line">False ^ True  = True  ;</span><br><span class="line">True  ^ False = True  ;</span><br><span class="line">False ^ False = False ;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="！非："><a href="#！非：" class="headerlink" title="！非："></a>！非：</h4><ul>
-<li>两次非运算就是原数<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">!true  = false ;</span><br><span class="line">!!true = true  ;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><h4 id="amp-和-amp-amp-的区别："><a href="#amp-和-amp-amp-的区别：" class="headerlink" title="&amp;和&amp;&amp;的区别："></a>&amp;和&amp;&amp;的区别：</h4><ul>
-<li><p>让我们先来看一段代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int x = 1;</span><br><span class="line">if(x&gt;2 &amp;&amp; x&lt;5)</span><br><span class="line">    System.out.println();</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在上面的情况中，在对 &amp;&amp; 左边的式子进行判断后，得出左边的式子值是false，因为两数相与，只要有一个flase，整体式子的结果就是false。所以停止运算右侧式子，直接给出false的结果。</p>
-</li>
-<li><p>但是使用 &amp; 运算符的时候，无论左边式子是什么，右边都参与运算。</p>
-</li>
-<li><p>&amp;&amp; 和 &amp; 运算结果一样，过程有一些小区别<br>&amp;  ：无论左边式子是什么，右边都参与运算<br>&amp;&amp; ：当式子左边为false时，右边不参与运算，结果为false</p>
-</li>
-</ul>
-<h4 id="和-的区别"><a href="#和-的区别" class="headerlink" title="|和||的区别"></a>|和||的区别</h4><ul>
-<li>上面我们说了 &amp; 和 &amp;&amp; 的区别，其实原理是一样的</li>
-<li>|| 和 | 运算结果一样，过程有一些小区别<br>|  ：无论左边式子是什么，右边都参与运算<br>|| ：当式子左边为true时，右边不参与运算，结果为true</li>
-</ul>
-<h3 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h3><h4 id="amp-位运算"><a href="#amp-位运算" class="headerlink" title="&amp; 位运算"></a>&amp; 位运算</h4><ul>
-<li><p>下面我用一个小例子来演示</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">6 &amp; 3 = ?</span><br><span class="line">内存中</span><br><span class="line">  0000-0000 0000-0000 0000-0000 0000-0110</span><br><span class="line">&amp; 0000-0000 0000-0000 0000-0000 0000-0011</span><br><span class="line">-----------------------------------------</span><br><span class="line">  0000-0000 0000-0000 0000-0000 0000-0010</span><br><span class="line">∴ 6 &amp; 3 = 2</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>6 &amp; 3 在内存中变化的实质是，转换为2进制，各位相对应的进行 &amp; 运算</p>
-</li>
-<li><p>应用场景：<br>  取0100 0000 1100 0101的后四位，如何进行操作？<br>  答 ：用0000 0000 0000 1111与其进行 &amp; 运算。</p>
-</li>
-</ul>
-<h4 id="位运算-1"><a href="#位运算-1" class="headerlink" title="| 位运算"></a>| 位运算</h4><ul>
-<li>原理同上 例如 6 | 3 = 7</li>
-</ul>
-<h4 id="位运算-2"><a href="#位运算-2" class="headerlink" title="^ 位运算"></a>^ 位运算</h4><ul>
-<li><p>原理同上</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">6 ^ 3 = ?</span><br><span class="line">内存中(简化)</span><br><span class="line">     0110</span><br><span class="line">   ^ 0011</span><br><span class="line">    ------</span><br><span class="line">     0101</span><br><span class="line">∴ 6 ^ 3 = 5</span><br><span class="line"></span><br><span class="line">继续 ^ 3</span><br><span class="line">5 ^ 3 = ?</span><br><span class="line">演算后</span><br><span class="line">   5 ^ 3 = 6</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>不知道大家发没发现这个运算的一些小秘密，那就是一个数连续两次与相同的数进行异或运算后，结果会是最初的数。用公式写就是： a ^ b ^ b = a </p>
-</li>
-<li>那么这个究竟可以用作干什么那？可以用于文件的加密！</li>
-</ul>
-<h4 id="反码"><a href="#反码" class="headerlink" title="~ 反码"></a>~ 反码</h4><ul>
-<li><p>大家可以在自己的电脑上试一下下面的代码，看看是不是自己猜测的值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int a = 2;</span><br><span class="line">System.out.println(~a);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>结果是 -3 ，很多人可能都以为反码的意思就是将a的二进制10取反为01，猜测结果是1</p>
-</li>
-<li>为什么不是这样的运算过程那？</li>
-</ul>
-<h5 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h5><p>这就要从计算机常用的几个码说起了。首先，java存储的是有符号数，在计算机中，有符号数通常是使用补码存储的，java也不例外。先来看看什么叫原码，反码，补码。</p>
-<h5 id="原码"><a href="#原码" class="headerlink" title="原码"></a>原码</h5><p>原码就是符号位加上真值的绝对值,即用第一位表示符号, 其余位表示值. 比如如果是8位二进制:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[+1]原 = 0000 0001</span><br></pre></td></tr></table></figure></p>
-<h5 id="反码-1"><a href="#反码-1" class="headerlink" title="反码"></a>反码</h5><p>正数的反码是其本身<br>负数的反码是在其原码的基础上,符号位不变，其余各个位取反.<br>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[+1] = [00000001]原 = [00000001]反</span><br></pre></td></tr></table></figure></p>
-<h5 id="补码"><a href="#补码" class="headerlink" title="补码"></a>补码</h5><p>正数的补码就是其本身<br>负数的补码是在反码的基础上+1。<br>例如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[+1] = [00000001]原 = [00000001]反 = [00000001]补</span><br></pre></td></tr></table></figure></p>
-<h5 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h5><p>所以回到一开始的问题，int a = 2 a在计算机中是以补码存储的。</p>
-<ul>
-<li>对于2这个正数来说，补码、反码、原码都是相同的，又由于是数值型，在这里我先用八位bit来表示一下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">原码:0000 0010</span><br><span class="line">反码:0000 0010</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>补码:0000 0010</p>
-<ul>
-<li><p>取反<br>取反过程是在补码的基础上进行的，由于是按位取反，无论符号位还是数值位都要取反，所以结果如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">取反后的补码: 1111 1101</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>换算为值<br>那么取反后的补码的实际值是多少呢？我们需要先把他转化为原码，过程如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">反码 = 1111 1101 - 1 = 1111 1100</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>原码 = 反码符号位不变，其余取反 = 1000 0011</p>
-<p>所以，最后的值-3</p>
-<h4 id="lt-lt-左移"><a href="#lt-lt-左移" class="headerlink" title="&lt;&lt; 左移"></a>&lt;&lt; 左移</h4><ul>
-<li><p>这个符号之前并没有听说过，在这次学习中进行了掌握（开始我还以为是C++的cout那）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">3 &lt;&lt; 2 = ?</span><br><span class="line">内存中</span><br><span class="line">0000-0000 0000-0000 0000-0000 0000-0011</span><br><span class="line">结果</span><br><span class="line">0000-0000 0000-0000 0000-0000 0000-1100</span><br><span class="line">∴ 3 &lt;&lt; 2 = 12</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>上面的运算实质是 3的2进制 整题左移两位，多余的舍弃，空位用0补</p>
-</li>
-<li>一个数进行左移运算时，左移n位，即是该数乘以2的n次幂</li>
-</ul>
-<h4 id="gt-gt-右移"><a href="#gt-gt-右移" class="headerlink" title="&gt;&gt; 右移"></a>&gt;&gt; 右移</h4><ul>
-<li>原理几乎一样，只有略微的不同<br>原来最高位是什么，用什么补空位（因为最高位为1时是负数）</li>
-<li>右移n位，即是该数除以2的n次幂<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-12 &gt;&gt; 2 = ?</span><br><span class="line">答： -3</span><br><span class="line"> 12 &gt;&gt; 2 = ?</span><br><span class="line">答：  3</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="gt-gt-gt-无符号右移"><a href="#gt-gt-gt-无符号右移" class="headerlink" title="&gt;&gt;&gt; 无符号右移"></a>&gt;&gt;&gt; 无符号右移</h4><ul>
-<li>高位空位，全部填0，用0补位<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-12 &gt;&gt;&gt; 2 = ?</span><br><span class="line">答：  3</span><br><span class="line"> 12 &gt;&gt;&gt; 2 = ?</span><br><span class="line">答：  3</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h4><ul>
-<li><p>请用效率最高的方法求出 2*8 的值。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(2&lt;&lt;3);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>两个整数值互换（不使用第三方变量）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">方法1：（不建议使用，如果数值过大，可能丢失精度）</span><br><span class="line">int a = 3, b = 5;</span><br><span class="line">a = a + b;</span><br><span class="line">b = a - b;</span><br><span class="line">a = a - b</span><br><span class="line"></span><br><span class="line">方法2：（利用异或位运算）</span><br><span class="line">int a = 3, b = 5;</span><br><span class="line">a = a ^ b;</span><br><span class="line">b = a ^ b;</span><br><span class="line">a = a ^ b;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="三元运算符"><a href="#三元运算符" class="headerlink" title="三元运算符"></a>三元运算符</h3><ul>
-<li>（条件表达式）？表达式1：表达式2</li>
-<li>若条件为true ，结果为表达式1<br>若条件为false，结果为表达式2<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">练习：在x , y中取 值较大的整数</span><br><span class="line">int x = 3, y = 4;</span><br><span class="line">int max = ( x&gt;y )? x : y;</span><br><span class="line">System.out.println(max);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="swich-和-if-else-与-三元运算符"><a href="#swich-和-if-else-与-三元运算符" class="headerlink" title="swich 和 if else 与 三元运算符"></a>swich 和 if else 与 三元运算符</h3><ul>
-<li><p>三元运算符必须有结果，if else可有，可不有结果。当if else有具体运算结果时，可以使用三元运算符。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">swich使用示范：</span><br><span class="line">    int x = 3;</span><br><span class="line">    swich(x)</span><br><span class="line">    &#123;</span><br><span class="line">        case 1:</span><br><span class="line">                System.out.println(x);</span><br><span class="line">                break;</span><br><span class="line">        case 2:</span><br><span class="line">                System.out.println(x);</span><br><span class="line">                break;</span><br><span class="line">        case 3:</span><br><span class="line">                System.out.println(x);</span><br><span class="line">                break;                     </span><br><span class="line">        case default:</span><br><span class="line">                System.out.println(x);</span><br><span class="line">                break;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>if：</p>
-<pre><code>对几个具体值进行判断
-对区间判断
-对运算结果boolean类型表达式判断
-</code></pre><p>swich：</p>
-<pre><code>对几个具体值进行判断
-值的个数通常是固定的
-</code></pre></li>
-<li>对几个固定值判断，建议使用swich，swich将答案存在内存中，效率高</li>
-</ul>
-
           
+今天重温的主要是Java运算符，在这里我把之前已经遗忘的一些点记录下来，以后回顾的时候可以翻阅。
+
+比较运算符^异或：
+符号两边的结果相同为False，不同则为True1234True  ^ True  = False ;False ^ True  = True  ;True  ^ False =
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/07/Java运算符基础/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1208,12 +1101,16 @@
       
         
           
-            <ul>
-<li>分享一下我用java实现的链表<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br></pre></td><td class="code"><pre><span class="line">public class LinkList&lt;T&gt; &#123;</span><br><span class="line">    private Node&lt;T&gt; head;   //头节点</span><br><span class="line">    private Node&lt;T&gt; tail;   //尾节点</span><br><span class="line">    /**</span><br><span class="line">     * 构造空链表</span><br><span class="line">     */</span><br><span class="line">    public LinkList()&#123;</span><br><span class="line">        head = tail = null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 链表内部的节点类</span><br><span class="line">     */</span><br><span class="line">    private static class Node&lt;T&gt;&#123;</span><br><span class="line">        T data;         //节点的数据</span><br><span class="line">        Node&lt;T&gt; next;   //该节点指向下一个节点的指针</span><br><span class="line">        Node(T data)&#123;</span><br><span class="line">            this.data = data;</span><br><span class="line">            this.next = null;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 为空链表增加头节点</span><br><span class="line">     */</span><br><span class="line">    public void addHead(T point)&#123;</span><br><span class="line">        this.head = new Node&lt;T&gt;(point);</span><br><span class="line">        if(tail == null)&#123;</span><br><span class="line">            tail = head;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    /**</span><br><span class="line">     * 为链表增加尾节点</span><br><span class="line">     */</span><br><span class="line">    public void addTail(T point)&#123;</span><br><span class="line">        tail = new Node&lt;T&gt;(point);</span><br><span class="line">        head.next = tail;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 插入节点（头插法）</span><br><span class="line">     */</span><br><span class="line">    public void addNode(T point)&#123;</span><br><span class="line">        if(this.head==null)                     //添加头节点</span><br><span class="line">            addHead(point);</span><br><span class="line">        else if(this.tail==this.head)          //在头节点后添加尾节点</span><br><span class="line">            addTail(point);</span><br><span class="line">        else&#123;</span><br><span class="line">            Node&lt;T&gt; newNode = new Node&lt;T&gt;(point);</span><br><span class="line">            newNode.next = head.next;</span><br><span class="line">            head.next = newNode;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    /**</span><br><span class="line">     * 删除节点（通过数据值）</span><br><span class="line">     */</span><br><span class="line">    public void deleteNode(T data)&#123;</span><br><span class="line">        Node&lt;T&gt; curr = head ,pre = null;</span><br><span class="line">        boolean flag = false;   //判断要删除的节点是否存在</span><br><span class="line">        while(curr != null)&#123;</span><br><span class="line">            if(curr.data.equals(data))&#123;</span><br><span class="line">                if (curr==head)&#123;        //删除头节点</span><br><span class="line">                    System.out.println(&quot;delete the head Node&quot;);</span><br><span class="line">                    head = curr.next;</span><br><span class="line">                    flag = true;</span><br><span class="line">                &#125;else if (curr==tail)&#123;  //删除尾节点</span><br><span class="line">                    System.out.println(&quot;delete the tail Node&quot;);</span><br><span class="line">                    tail = pre;</span><br><span class="line">                    pre.next = null;</span><br><span class="line">                    flag = true;</span><br><span class="line">                &#125;else &#123;                  //删除中间节点</span><br><span class="line">                    System.out.println(&quot;delete the center Node&quot;);</span><br><span class="line">                    pre.next = curr.next;</span><br><span class="line">                    flag = true;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            pre = curr;</span><br><span class="line">            curr = curr.next;</span><br><span class="line">        &#125;</span><br><span class="line">        if (flag == false)</span><br><span class="line">            System.out.println(&quot;链表中不存在该数据&quot;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    /**</span><br><span class="line">     *  查找链表中的元素（通过位置）</span><br><span class="line">     */</span><br><span class="line">    public void findKth(T point)&#123;</span><br><span class="line">        Node&lt;T&gt; curr = head , pre = null;</span><br><span class="line">        int k = 1;</span><br><span class="line">        boolean flag = false;</span><br><span class="line">        while (curr != null)&#123;</span><br><span class="line">            if(point.equals(k))&#123;</span><br><span class="line">                System.out.println(&quot;第&quot;+k+&quot;位的值是&quot;+curr.data);</span><br><span class="line">                flag = true;</span><br><span class="line">            &#125;</span><br><span class="line">            pre = curr;</span><br><span class="line">            curr = curr.next;</span><br><span class="line">            k++;</span><br><span class="line">        &#125;</span><br><span class="line">        if(flag==false)</span><br><span class="line">            System.out.println(&quot;查找的位置在链表中不存在&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     *  查找链表中的元素（通过值）</span><br><span class="line">     */</span><br><span class="line">    public void findByValue(T data)&#123;</span><br><span class="line">        Node&lt;T&gt; curr = head ;</span><br><span class="line">        int k = 1;</span><br><span class="line">        boolean flag = false;</span><br><span class="line">        while(curr!=null)&#123;</span><br><span class="line">            if(curr.data==data)&#123;</span><br><span class="line">                System.out.println(&quot;查找的值在链表中的第&quot;+k+&quot;位&quot;);</span><br><span class="line">                flag = true;</span><br><span class="line">            &#125;</span><br><span class="line">            curr = curr.next;</span><br><span class="line">            k++;</span><br><span class="line">        &#125;</span><br><span class="line">        if(flag==false)</span><br><span class="line">            System.out.println(&quot;查找的值在链表中不存在&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     *  输出链表</span><br><span class="line">     */</span><br><span class="line">    public void printlnLink()&#123;</span><br><span class="line">        Node&lt;T&gt; curr = this.head;</span><br><span class="line">        if(curr==null)&#123;</span><br><span class="line">            System.out.println(&quot;linklist is null&quot;);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            while(curr!=null)&#123;</span><br><span class="line">                System.out.print(curr.data+&quot; &quot;);</span><br><span class="line">                curr = curr.next;</span><br><span class="line">            &#125;System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        LinkList linkList = new LinkList&lt;Integer&gt;();</span><br><span class="line">        linkList.addNode(5);</span><br><span class="line">        linkList.addNode(8);</span><br><span class="line">        linkList.addNode(10);</span><br><span class="line">        linkList.addNode(6);</span><br><span class="line">        linkList.addNode(9);</span><br><span class="line">        System.out.println(&quot;TailNode: &quot;+linkList.tail.data);</span><br><span class="line">        linkList.deleteNode(8);</span><br><span class="line">        linkList.printlnLink();</span><br><span class="line">        linkList.findByValue(5);</span><br><span class="line">        linkList.findKth(10);</span><br><span class="line">        System.out.print(&quot;&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
           
+分享一下我用java实现的链表12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/06/Java-链表实现/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1353,45 +1250,18 @@
       
         
           
-            <ul>
-<li>最近在看Java基础知识的视频，因为距离大二学习基础知识的时光有些久远了，并且当时也并没有进行总结，所以写下这个博客权当做笔记，方便温故而知新。</li>
-</ul>
-<h3 id="强制转换"><a href="#强制转换" class="headerlink" title="强制转换"></a>强制转换</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">第一种情况</span><br><span class="line">    byte a = 1;</span><br><span class="line">    a = 3 + 4;</span><br><span class="line">    System.out.println(a);</span><br><span class="line">    </span><br><span class="line">第二种情况</span><br><span class="line">    byte a = 1;</span><br><span class="line">    byte b = 3;</span><br><span class="line">    byte c = 4;</span><br><span class="line">    a = b + c;</span><br><span class="line">    System.out.println(a);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>在这两种情况下，最后运行的值有什么不同那？</li>
-</ul>
-<ul>
-<li>第一个的值最后为7；第二个运行后运行错误，显示可能损失精度。</li>
-<li>第一种情况下，因为3和4是int值，a是byte值，当a=3+4时，运算符对左右两边进行了一个判断，如果右边的数在byte的范围内，则自动将其强制转换，赋值给a。</li>
-<li>第二种情况下，b、c都是变量，系统不可以自动将其强制转换，因为他们可能是一个大于byte范围的数。</li>
-</ul>
-<h3 id="算数运算符"><a href="#算数运算符" class="headerlink" title="算数运算符"></a>算数运算符</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">第一种情况</span><br><span class="line">    int x = 3, y;</span><br><span class="line">    y = x++;</span><br><span class="line">    System.out.println(x);</span><br><span class="line">    System.out.println(y);</span><br><span class="line">    </span><br><span class="line">第二种情况</span><br><span class="line">    int x = 3, y;</span><br><span class="line">    y = ++x;</span><br><span class="line">    System.out.println(x);</span><br><span class="line">    System.out.println(y);</span><br><span class="line">        </span><br><span class="line">第三种情况</span><br><span class="line">    int a = 3;</span><br><span class="line">    a = a++;</span><br><span class="line">    System.out.println(a);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>运行结果分别是什么？</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = 4  y = 3</span><br><span class="line">x = 4  y = 4</span><br><span class="line">a = 3</span><br></pre></td></tr></table></figure>
-<ul>
-<li>第一种情况涉及到了运算符的原理，系统是如何对 y=x++ 这个式子进行处理的那，先将 x 原先的值3存储起来，再对x进行++运算，最后进行=运算的时候将预存的x的值赋给y。</li>
-<li>第二种情况主要式子是 y=++x ，这次是直接进行 ++x 的运算，再将他赋给y。</li>
-<li>第三种情况和第一种情况大致相同，为了方便理解，我将 a = a++ 在内存中的处理过程写成程序。通过下面的代码就能够了解为什么最后的结果是3了。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int a = 3;</span><br><span class="line">temp = a;</span><br><span class="line">a++;</span><br><span class="line">a = temp;</span><br></pre></td></tr></table></figure>
-<h3 id="运算问题"><a href="#运算问题" class="headerlink" title="+=运算问题"></a>+=运算问题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">short s = 3;</span><br><span class="line">s += 4;</span><br><span class="line">s = s + 4;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>第二个式子和第三个式子有什么不同？</p>
-</li>
-<li><p>第二个式子可以运行成功，第三个式子不可以。在这里4是int值，+=是一个<br>运算符，他会对右边的数进行判断，是否在short的范围内再自动进行强制转换，<br>赋值给s。而第三个式子=的右面面对的是变量s，必须手动进行强制转换。</p>
-</li>
-</ul>
-<h3 id="运算问题-1"><a href="#运算问题-1" class="headerlink" title="%运算问题"></a>%运算问题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = -5 %  2;</span><br><span class="line">b =  5 % -2;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>a和b的值分别是多少？</p>
-</li>
-<li><p>a = -1，b = 1 取模运算只有 %左边是负数的情况下对结果有影响</p>
-</li>
-</ul>
-
           
+最近在看Java基础知识的视频，因为距离大二学习基础知识的时光有些久远了，并且当时也并没有进行总结，所以写下这个博客权当做笔记，方便温故而知新。
+
+强制转换1234567891011第一种情况    byte a = 1;    a = 3 + 4;    System.out.println(a
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/06/Java易错知识点/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1531,68 +1401,21 @@
       
         
           
-            <ul>
-<li>经过了好一段时间的折腾，终于成功搭建好了博客。我就在这里分享一些使用Hexo+Github搭建的心得。既是为了分享，也是为了防止自己遗忘，备份之用。</li>
-</ul>
-<h3 id="搭建前准备工作"><a href="#搭建前准备工作" class="headerlink" title="搭建前准备工作"></a>搭建前准备工作</h3><ul>
-<li>1.安装node.js</li>
-<li>2.安装git</li>
-<li>3.安装hexo （右键git bash 运行$ npm install -g hexo）</li>
-</ul>
-<h3 id="本地搭建静态博客"><a href="#本地搭建静态博客" class="headerlink" title="本地搭建静态博客"></a>本地搭建静态博客</h3><ul>
-<li>1.新建一个文件夹 如MyBlog</li>
-<li>2.生成git模板 在MyBlog文件夹内，右键git bash输入$ hexo init</li>
-<li>3.运行npm install</li>
-<li>4.运行npm server</li>
-<li>5.<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 可以看到本地搭建的博客</li>
-</ul>
-<h3 id="将博客关联github"><a href="#将博客关联github" class="headerlink" title="将博客关联github"></a>将博客关联github</h3><ul>
-<li>在github上创建名字为XXX.github.io项目(XXX为用户名)</li>
-<li><p>打开本地MyBlog文件夹内的_config.yml配置文件<br>  ,拉到最底下，更改为</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repository: https://github.com/OrangeTop/OrangeTop.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>第一次使用git需要配置ssh,引号处填写自己的邮箱</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git bash $ ssh-keygen -t rsa -C <span class="string">"your_email@youremail.com"</span></span><br></pre></td></tr></table></figure>
-<p>  然后一路回车即可成功生成.ssh文件</p>
-</li>
-<li><p>在C:\users\用户名.ssh文件夹中，打开id_rsa.pub，全部复制。然后回到github网站，<br>进入setting<br>选择SSH and GPG–&gt;New SSh Key<br>title随意填，Key粘贴</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">验证:git bash   $ ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>上传本地仓库，<br> 右键git bash。<br> (引号处注意填写自己的信息)</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;your name&quot; </span><br><span class="line">$ git config --global user.email &quot;your_email@youremail.com&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>继续部署，中途需要输入用户名密码</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>最后在浏览器输入OrangeTop.github.io 即可看见博客</p>
-</li>
-</ul>
-<h3 id="The-First-Blog"><a href="#The-First-Blog" class="headerlink" title="The First Blog"></a>The First Blog</h3><ul>
-<li>进入MyBlog文件夹右键git bash<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//创建新的博客，文件在source-&gt;_posts文件夹下</span><br><span class="line">hexo new &quot;新的文件名&quot;</span><br><span class="line">//运行hexo，访问本地localhost:4000可预览</span><br><span class="line">hexo s</span><br><span class="line">//进入MyBlog文件夹下的public文件夹</span><br><span class="line">cd public</span><br><span class="line">//本地生成静态文件</span><br><span class="line">hexo g</span><br><span class="line">//返回MyBlog文件夹</span><br><span class="line">cd ..</span><br><span class="line">//将本地静态文件推送至github</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="报错解决"><a href="#报错解决" class="headerlink" title="报错解决"></a>报错解决</h3><ul>
-<li><p>下载hexo报错</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo</span><br><span class="line"></span><br><span class="line">npm ERR! Unexpected end of JSON input while parsing near &apos;...&quot;commander&quot;:&quot;*&quot;&#125;,&quot;opt&apos;</span><br><span class="line">npm ERR! A complete log of this run can be found in:</span><br><span class="line">npm ERR!     C:\Users\75173\AppData\Roaming\npm-cache\_logs\2018-03-27T13_25_30_385Z-debug.log</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>解决方法</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">更换为淘宝镜像</span><br><span class="line">npm --registry https://registry.npm.taobao.org install express </span><br><span class="line">检验是否更换成功</span><br><span class="line">npm config get registry</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>若不成功，继续</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">清理缓存</span><br><span class="line">npm cache clean –force</span><br><span class="line">重新安装</span><br><span class="line">npm install -g hexo</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用一段时间后，hexo d上传失败，ssh连接github失败<br><img src="http://p6wpjrumy.bkt.clouddn.com/042501.png" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">打开C:\Windows\System32\drivers\etc目录下的hosts文件</span><br><span class="line">再最后面加上下面两行</span><br><span class="line">192.30.253.112 github.com</span><br><span class="line">192.30.253.113 github.com</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><blockquote>
-<p><a href="http://mp.weixin.qq.com/s/rMZZkHbMeKXsSAvAdsgyRw" target="_blank" rel="noopener">教你搭一个博客</a></p>
-</blockquote>
-<blockquote>
-<p><a href="https://thief.one/2017/03/03/Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/" target="_blank" rel="noopener">Hexo博客搭建教程</a></p>
-</blockquote>
-
           
+经过了好一段时间的折腾，终于成功搭建好了博客。我就在这里分享一些使用Hexo+Github搭建的心得。既是为了分享，也是为了防止自己遗忘，备份之用。
+
+搭建前准备工作
+1.安装node.js
+2.安装git
+3.安装hexo （右键git bash 运行$ npm install -g hexo）
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/28/搭建hexo博客/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1710,12 +1533,19 @@
       
         
           
-            <p>尼采说：</p>
-<blockquote>
-<p>Was mich nicht umbringt, macht mich <strong>stärker</strong>.</p>
-</blockquote>
+          尼采说：
+
+Was mich nicht umbringt, macht mich stärker.
+
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/28/第一篇文章/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1833,17 +1663,15 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/28/hello-world/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1927,7 +1755,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1949,7 +1777,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
