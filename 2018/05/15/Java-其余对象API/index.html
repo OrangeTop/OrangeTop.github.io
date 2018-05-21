@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java,JavaSE," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="System类 System：类中的方法和属性都是静态的。  常用方法currentTimeMillis 获取当前时间的毫秒值。  1public static long currentTimeMillis(); 与1970.1.1午夜时间的差 Properties 获取系统的属性信息，并存储到了Properties集合中。 properties集合中存储都是String类型的键和值。 最好使用它">
+<meta name="keywords" content="Java,JavaSE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java-其余对象API">
+<meta property="og:url" content="http://yoursite.com/2018/05/15/Java-其余对象API/index.html">
+<meta property="og:site_name" content="Orange&#39;s Blog">
+<meta property="og:description" content="System类 System：类中的方法和属性都是静态的。  常用方法currentTimeMillis 获取当前时间的毫秒值。  1public static long currentTimeMillis(); 与1970.1.1午夜时间的差 Properties 获取系统的属性信息，并存储到了Properties集合中。 properties集合中存储都是String类型的键和值。 最好使用它">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-16T11:53:12.321Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java-其余对象API">
+<meta name="twitter:description" content="System类 System：类中的方法和属性都是静态的。  常用方法currentTimeMillis 获取当前时间的毫秒值。  1public static long currentTimeMillis(); 与1970.1.1午夜时间的差 Properties 获取系统的属性信息，并存储到了Properties集合中。 properties集合中存储都是String类型的键和值。 最好使用它">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/15/Java-其余对象API/"/>
+
+
+
+
+
+  <title>Java-其余对象API | Orange's Blog</title>
+  <!-- 背景动画 -->
+  <script type="text/javascript" src="/js/src/particle.js"></script>
+  
+
+
+
+
+
+
+
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+  <!-- 背景动画 -->
+  <script type="text/javascript" src="/js/src/particle.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Orange's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/15/Java-其余对象API/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Orange">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Orange's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java-其余对象API</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-15T19:57:11+08:00">
+                2018-05-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaSE/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaSE</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/05/15/Java-其余对象API/" class="leancloud_visitors" data-flag-title="Java-其余对象API">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="System类"><a href="#System类" class="headerlink" title="System类"></a>System类</h2><ul>
+<li>System：类中的方法和属性都是静态的。</li>
+</ul>
+<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><h4 id="currentTimeMillis"><a href="#currentTimeMillis" class="headerlink" title="currentTimeMillis"></a>currentTimeMillis</h4><ul>
+<li>获取当前时间的毫秒值。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">currentTimeMillis</span><span class="params">()</span></span>; 与<span class="number">1970.1</span>.1午夜时间的差</span><br></pre></td></tr></table></figure>
+<h4 id="Properties"><a href="#Properties" class="headerlink" title="Properties"></a>Properties</h4><ul>
+<li>获取系统的属性信息，并存储到了Properties集合中。</li>
+<li>properties集合中存储都是String类型的键和值。</li>
+<li>最好使用它自己的存储和取出的方法来完成元素的操作。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">demo_1</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	Properties prop = System.getProperties();</span><br><span class="line"></span><br><span class="line">	Set&lt;String&gt; nameSet = prop.stringPropertyNames();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(String name : nameSet)&#123;</span><br><span class="line">	String value = prop.getProperty(name);</span><br><span class="line"></span><br><span class="line">	System.out.println(name+<span class="string">"::"</span>+value);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在linux、windows上换行符号是不一样的</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//如果这样写的话，这个换行符在哪个系统中都不会出问题</span></span><br><span class="line">System.out.println(System.getProperty(<span class="string">"hello"</span>+<span class="string">"line_separator"</span>+<span class="string">"world"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//如果多次调用太麻烦，就可以将他在文件中用final定义</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String LINE_SEPARATOR = System.getProperty(<span class="string">"line.separator"</span>);</span><br><span class="line">System.out.println(<span class="string">"hello"</span>+LINE_SEPARATOR+<span class="string">" world"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="Runtime类"><a href="#Runtime类" class="headerlink" title="Runtime类"></a>Runtime类</h2><ul>
+<li>Runtime：没有构造方法摘要，说明该类不可以创建对象。</li>
+<li>又发现还有非静态的方法。说明该类应该提供静态的返回该类对象的方法</li>
+<li>而且只有一个，说明Runtime类使用了<strong>单例设计模式</strong>。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException, InterruptedException </span>&#123;</span><br><span class="line"></span><br><span class="line">	Runtime r = Runtime.getRuntime();</span><br><span class="line"></span><br><span class="line"><span class="comment">//	execute: 执行。 xxx.exe </span></span><br><span class="line"></span><br><span class="line">	Process p = r.exec(<span class="string">"notepad.exe"</span>);</span><br><span class="line"><span class="comment">//  r.exec("D:\\abc\\asd\\xxxx.exe");</span></span><br><span class="line">	Thread.sleep(<span class="number">5000</span>);	<span class="comment">//延迟</span></span><br><span class="line">	p.destroy();	<span class="comment">//杀死进程，只能杀掉他开启的</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Math类"><a href="#Math类" class="headerlink" title="Math类"></a>Math类</h2><ul>
+<li>Math：提供了操作数学运算的方法。都是静态的</li>
+<li>常用的方法：<ul>
+<li>ceil()：返回大于参数的最小整数。（如18.6 返回19）</li>
+<li>floor()：返回小于参数的最大整数。（如18.6 返回18）</li>
+<li>round()：返回四舍五入的整数。  （如18.6 返回19）</li>
+<li>pow(a,b)：a的b次方。</li>
+<li>random()：返回大于0.0且小于1.0的一个伪随机数</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">	<span class="keyword">double</span> d1 = Math.ceil(Math.random()*<span class="number">10</span>);	<span class="comment">//返回 1 到 10 的数值</span></span><br><span class="line">	<span class="keyword">double</span> d2 = Math.ceil(Math.random()*<span class="number">10</span>);	<span class="comment">//返回 0 到 9 的数值</span></span><br><span class="line">	<span class="keyword">double</span> d3 = (<span class="keyword">int</span>)(Math.random()*<span class="number">10</span>+<span class="number">1</span>);		<span class="comment">//返回 1 到 10 的数值</span></span><br><span class="line">	System.out.println(d1);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Random也有自己的对象</span></span><br><span class="line">Random r = <span class="keyword">new</span> Random();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">double</span> d4 = (<span class="keyword">int</span>)(r.nextDouble()*<span class="number">6</span>+<span class="number">1</span>);	</span><br><span class="line">    <span class="keyword">int</span> d5 = r.nextInt(<span class="number">6</span>);			<span class="comment">//限定数值大于0 小于6</span></span><br><span class="line">    System.out.println(d5);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Date类"><a href="#Date类" class="headerlink" title="Date类"></a>Date类</h2><ul>
+<li>月份：0–11 （代表12个月）</li>
+</ul>
+<h3 id="日期对象、毫秒值之间的转换"><a href="#日期对象、毫秒值之间的转换" class="headerlink" title="日期对象、毫秒值之间的转换"></a>日期对象、毫秒值之间的转换</h3><ul>
+<li>毫秒值–&gt;日期对象 ： <ul>
+<li>1，通过Date对象的构造方法  new Date(timeMillis);</li>
+<li>2，还可以通过setTime设置。 </li>
+<li>因为可以通过Date对象的方法对该日期中的各个字段(年月日等)进行操作。</li>
+</ul>
+</li>
+<li>日期对象–&gt;毫秒值：<ul>
+<li>2，getTime方法。</li>
+<li>因为可以通过具体的数值进行运算。 </li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(System.currentTimeMillis());</span><br><span class="line">Date d = <span class="keyword">new</span> Date(<span class="number">1526459420372L</span>);		<span class="comment">//因为数值太大，所以加上L</span></span><br><span class="line">System.out.println(d);</span><br></pre></td></tr></table></figure>
+<h3 id="将日期对象进行格式化"><a href="#将日期对象进行格式化" class="headerlink" title="将日期对象进行格式化"></a>将日期对象进行格式化</h3><ul>
+<li>将日期对象–&gt;日期格式的字符串 </li>
+<li>使用的是DateFormat类中的format方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">methodDemo</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	Date date = <span class="keyword">new</span> Date();</span><br><span class="line"></span><br><span class="line">	<span class="comment">//获取日期格式对象。具体着默认的风格。 FULL LONG等可以指定风格。</span></span><br><span class="line">	DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.LONG);</span><br><span class="line">	dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG,DateFormat.LONG);</span><br><span class="line"><span class="comment">//		System.out.println(dateFormat);</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//如果风格是自定义的如何解决呢？</span></span><br><span class="line">	dateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy--MM--dd"</span>);</span><br><span class="line"></span><br><span class="line">	String str_date = dateFormat.format(date);</span><br><span class="line"></span><br><span class="line">	System.out.println(str_date);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将日期格式的字符串–&gt;日期对象</li>
+<li>使用的是Date    Format类中的parse()方法。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span>  <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">methodDemo_3</span><span class="params">()</span> <span class="keyword">throws</span> ParseException </span>&#123;</span><br><span class="line"></span><br><span class="line">    String str_date1 = <span class="string">"2018年5月16日"</span>;</span><br><span class="line">    DateFormat dateFormat1 = DateFormat.getDateInstance(DateFormat.LONG);</span><br><span class="line"></span><br><span class="line">    String str_date2 = <span class="string">"2018---6---6"</span>;</span><br><span class="line">    DateFormat dateFormat2 = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy---MM---dd"</span>);</span><br><span class="line"></span><br><span class="line">    Date date1 = dateFormat1.parse(str_date1);</span><br><span class="line">    Date date2 = dateFormat2.parse(str_date2);</span><br><span class="line">    System.out.println(date1);</span><br><span class="line">    System.out.println(date2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><ul>
+<li>计算2018-04-11与2018-05-16中间相差多少天</li>
+<li>思路：<ul>
+<li>日期字符串转日期对象</li>
+<li>日期对象转毫秒值</li>
+<li>毫秒值相减，取绝对值</li>
+<li>将结果转换成天数</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DateTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ParseException </span>&#123;</span><br><span class="line">        String str1 = <span class="string">"2018-04-11"</span>;</span><br><span class="line">        String str2 = <span class="string">"2018-05-16"</span>;</span><br><span class="line">        <span class="keyword">int</span> day = datetest(str1, str2);</span><br><span class="line">        System.out.println(day);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">datetest</span><span class="params">(String str1,String str2)</span> <span class="keyword">throws</span> ParseException </span>&#123;</span><br><span class="line">        DateFormat dateFormat = DateFormat.getDateInstance();</span><br><span class="line">        Date date1 = dateFormat.parse(str1);</span><br><span class="line">        Date date2 = dateFormat.parse(str2);</span><br><span class="line">        <span class="keyword">long</span> date = Math.abs(date2.getTime()-date1.getTime());</span><br><span class="line">        <span class="keyword">int</span> day = getDay(date);</span><br><span class="line">        <span class="keyword">return</span> day;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getDay</span><span class="params">(<span class="keyword">long</span> date)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> day = (<span class="keyword">int</span>)(date/<span class="number">1000</span>/<span class="number">60</span>/<span class="number">60</span>/<span class="number">24</span>);</span><br><span class="line">        <span class="keyword">return</span> day;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="calendar类"><a href="#calendar类" class="headerlink" title="calendar类"></a>calendar类</h2><ul>
+<li>Date类中已经过时的类，都是在calendar中被替换</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">showDate</span><span class="params">(Calendar c)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> year = c.get(Calendar.YEAR);</span><br><span class="line">    <span class="keyword">int</span> month = c.get(Calendar.MONTH)+<span class="number">1</span>;	<span class="comment">//表示月份的数字是0-11</span></span><br><span class="line">    <span class="keyword">int</span> day = c.get(Calendar.DAY_OF_MONTH);</span><br><span class="line">    <span class="keyword">int</span> week = c.get(Calendar.DAY_OF_WEEK);	<span class="comment">//这里的周日为美国的周一</span></span><br><span class="line">    System.out.println(year+<span class="string">"年"</span>+month+<span class="string">"月"</span>+day+<span class="string">"日"</span>+getWeek(week));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getWeek</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    String[] weeks = &#123;<span class="string">""</span>,<span class="string">"星期日"</span>,<span class="string">"星期一"</span>,<span class="string">"星期二"</span>,<span class="string">"星期三"</span>,<span class="string">"星期四"</span>,<span class="string">"星期五"</span>,<span class="string">"星期六"</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> weeks[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>calendar中的add方法，偏移日期</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Calendar c = Calendar.getInstance();</span><br><span class="line">c.set(<span class="number">2018</span>, <span class="number">11</span>, <span class="number">20</span>);</span><br><span class="line">c.add(Calendar.MONTH, <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+          
+            <a href="/tags/JavaSE/" rel="tag"><i class="fa fa-tag"></i> JavaSE</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/10/Java-集合框架/" rel="next" title="Java-集合框架">
+                <i class="fa fa-chevron-left"></i> Java-集合框架
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/16/Java-IO流/" rel="prev" title="Java-IO流">
+                Java-IO流 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Orange</p>
+              <p class="site-description motion-element" itemprop="description">welcome everyone to my blog!</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#System类"><span class="nav-number">1.</span> <span class="nav-text">System类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用方法"><span class="nav-number">1.1.</span> <span class="nav-text">常用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#currentTimeMillis"><span class="nav-number">1.1.1.</span> <span class="nav-text">currentTimeMillis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Properties"><span class="nav-number">1.1.2.</span> <span class="nav-text">Properties</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Runtime类"><span class="nav-number">2.</span> <span class="nav-text">Runtime类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Math类"><span class="nav-number">3.</span> <span class="nav-text">Math类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Date类"><span class="nav-number">4.</span> <span class="nav-text">Date类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#日期对象、毫秒值之间的转换"><span class="nav-number">4.1.</span> <span class="nav-text">日期对象、毫秒值之间的转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将日期对象进行格式化"><span class="nav-number">4.2.</span> <span class="nav-text">将日期对象进行格式化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#练习"><span class="nav-number">4.3.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#calendar类"><span class="nav-number">5.</span> <span class="nav-text">calendar类</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Orange</span>
+
+  
+</div>
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+-->
+
+
+<!--
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次  |
+</span>
+<span id="busuanzi_container_site_uv">
+  本站访客数<i class="fas fa-user-alt"></i><span id="busuanzi_value_site_uv"></span>人次
+</span>
+-->
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("LuHGRLaVuohiDBVc9oUVcCtW-gzGzoHsz", "x62miE9CqsHHdw9OWtAryAns");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+
+</body>
+</html>
