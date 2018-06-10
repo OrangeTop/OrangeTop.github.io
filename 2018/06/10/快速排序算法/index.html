@@ -83,7 +83,7 @@
 
 
 
-  <meta name="keywords" content="Java,JavaSE," />
+  <meta name="keywords" content="Java,快速排序,算法," />
 
 
 
@@ -94,23 +94,20 @@
 
 
 
-<meta name="description" content="昨天学习了如何编写一个工具类，及如何给他注释再去生成专属于他的API文档。今天我将这个过程以及一些遇到的报错解决整理到博客中。  编写Java工具类（以数组工具类为例） 工具类中包含了一些简单的操作1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545">
-<meta name="keywords" content="Java,JavaSE">
+<meta name="description" content="快排的算法在平均状况下，排序效率为 O（N*LogN），运算效率是最高的，所以最受欢迎。而且在快速排序的算法中还体现着 分冶 思想，这几天我学习了一下这个算法，整理一下他的算法思路。  快速排序算法-维基百科  算法原理快速排序算法使用分冶法来把一个序列分为两个序列  从数列中挑出一个元素，称为“基准”（pivot） 重新排序数列，所有比基准值小的元素摆放在基准前面，所有比基准值大的元素摆在基准后">
+<meta name="keywords" content="Java,快速排序,算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java编写工具类及API文档">
-<meta property="og:url" content="http://yoursite.com/2018/04/18/Java编写工具类及API文档/index.html">
+<meta property="og:title" content="快速排序算法">
+<meta property="og:url" content="http://yoursite.com/2018/06/10/快速排序算法/index.html">
 <meta property="og:site_name" content="Orange&#39;s Blog">
-<meta property="og:description" content="昨天学习了如何编写一个工具类，及如何给他注释再去生成专属于他的API文档。今天我将这个过程以及一些遇到的报错解决整理到博客中。  编写Java工具类（以数组工具类为例） 工具类中包含了一些简单的操作1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545">
+<meta property="og:description" content="快排的算法在平均状况下，排序效率为 O（N*LogN），运算效率是最高的，所以最受欢迎。而且在快速排序的算法中还体现着 分冶 思想，这几天我学习了一下这个算法，整理一下他的算法思路。  快速排序算法-维基百科  算法原理快速排序算法使用分冶法来把一个序列分为两个序列  从数列中挑出一个元素，称为“基准”（pivot） 重新排序数列，所有比基准值小的元素摆放在基准前面，所有比基准值大的元素摆在基准后">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p6wpjrumy.bkt.clouddn.com/0417%E6%95%B0%E7%BB%84%E5%B7%A5%E5%85%B7%E5%8C%85.png">
-<meta property="og:image" content="http://p6wpjrumy.bkt.clouddn.com/0417%E7%94%9F%E6%88%90%E7%9A%84%E6%96%87%E6%A1%A3.png">
-<meta property="og:image" content="http://p6wpjrumy.bkt.clouddn.com/0417%E6%8A%A5%E9%94%991.png">
-<meta property="og:image" content="http://p6wpjrumy.bkt.clouddn.com/0417%E6%8A%A5%E9%94%992.png">
-<meta property="og:updated_time" content="2018-04-18T04:18:04.141Z">
+<meta property="og:image" content="http://p6wpjrumy.bkt.clouddn.com/QuickSort.gif">
+<meta property="og:updated_time" content="2018-06-10T12:41:58.017Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java编写工具类及API文档">
-<meta name="twitter:description" content="昨天学习了如何编写一个工具类，及如何给他注释再去生成专属于他的API文档。今天我将这个过程以及一些遇到的报错解决整理到博客中。  编写Java工具类（以数组工具类为例） 工具类中包含了一些简单的操作1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545">
-<meta name="twitter:image" content="http://p6wpjrumy.bkt.clouddn.com/0417%E6%95%B0%E7%BB%84%E5%B7%A5%E5%85%B7%E5%8C%85.png">
+<meta name="twitter:title" content="快速排序算法">
+<meta name="twitter:description" content="快排的算法在平均状况下，排序效率为 O（N*LogN），运算效率是最高的，所以最受欢迎。而且在快速排序的算法中还体现着 分冶 思想，这几天我学习了一下这个算法，整理一下他的算法思路。  快速排序算法-维基百科  算法原理快速排序算法使用分冶法来把一个序列分为两个序列  从数列中挑出一个元素，称为“基准”（pivot） 重新排序数列，所有比基准值小的元素摆放在基准前面，所有比基准值大的元素摆在基准后">
+<meta name="twitter:image" content="http://p6wpjrumy.bkt.clouddn.com/QuickSort.gif">
 
 
 
@@ -140,13 +137,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/18/Java编写工具类及API文档/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/10/快速排序算法/"/>
 
 
 
 
 
-  <title>Java编写工具类及API文档 | Orange's Blog</title>
+  <title>快速排序算法 | Orange's Blog</title>
   <!-- 背景动画 -->
   <script type="text/javascript" src="/js/src/particle.js"></script>
   
@@ -269,7 +266,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/18/Java编写工具类及API文档/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/10/快速排序算法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Orange">
@@ -286,7 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Java编写工具类及API文档</h1>
+          <h1 class="post-title" itemprop="name headline">快速排序算法</h1>
         
 
         <div class="post-meta">
@@ -298,8 +295,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-18T09:56:35+08:00">
-                2018-04-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-10T19:23:04+08:00">
+                2018-06-10
               </time>
             
 
@@ -321,8 +318,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaSE/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaSE</span>
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
                   </a>
                 </span>
 
@@ -338,7 +335,7 @@
 
           
           
-             <span id="/2018/04/18/Java编写工具类及API文档/" class="leancloud_visitors" data-flag-title="Java编写工具类及API文档">
+             <span id="/2018/06/10/快速排序算法/" class="leancloud_visitors" data-flag-title="快速排序算法">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -369,40 +366,26 @@
       
 
       
-        <ul>
-<li>昨天学习了如何编写一个工具类，及如何给他注释再去生成专属于他的API文档。今天我将这个过程以及一些遇到的报错解决整理到博客中。</li>
-</ul>
-<h3 id="编写Java工具类（以数组工具类为例）"><a href="#编写Java工具类（以数组工具类为例）" class="headerlink" title="编写Java工具类（以数组工具类为例）"></a>编写Java工具类（以数组工具类为例）</h3><ul>
-<li>工具类中包含了一些简单的操作<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">    *这是一个可以对数组进行操作的工具类，该类中提供了如最值获取，排序等功能。</span><br><span class="line">    * @author Orange</span><br><span class="line">    * @version 1.0</span><br><span class="line">    */</span><br><span class="line">   public class ArrayTool &#123;</span><br><span class="line">   </span><br><span class="line">       //</span><br><span class="line">       private ArrayTool()&#123;&#125;</span><br><span class="line">   </span><br><span class="line">       /**</span><br><span class="line">        *获取一个整型数组中的最大值</span><br><span class="line">        * @param  arr 接收一个 int 类型的数组</span><br><span class="line">        * @return 会返回一个该数组中最大值</span><br><span class="line">        */</span><br><span class="line">       public static int getMax(int[] arr)&#123;</span><br><span class="line">           selectSort(arr);</span><br><span class="line">           int max = arr[0];</span><br><span class="line">           for(int i=0 ;i&lt;arr.length; i++)&#123;</span><br><span class="line">               if(arr[i]&gt;max)</span><br><span class="line">                   max = arr[i];</span><br><span class="line">           &#125;</span><br><span class="line">           return max;</span><br><span class="line">       &#125;</span><br><span class="line">   </span><br><span class="line">       /**</span><br><span class="line">        * 给int数组进行选择排序。</span><br><span class="line">        * @param arr 接收一个 int 类型的数组</span><br><span class="line">        */</span><br><span class="line">       public static void selectSort(int[] arr)&#123;</span><br><span class="line">           for(int i=0 ;i&lt;arr.length-1; i++)&#123;</span><br><span class="line">               int number = arr[i];</span><br><span class="line">               int index = i;</span><br><span class="line">               for(int j=i+1;j&lt;arr.length;j++)&#123;</span><br><span class="line">                   if(number&gt;arr[j])&#123;</span><br><span class="line">                       number = arr[j];</span><br><span class="line">                       index = j;</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125;</span><br><span class="line">               if(index != i)</span><br><span class="line">                   swap(arr,i,index);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   </span><br><span class="line">       //因为 swap 方法是 priavte ，所以只写普通注释就可以了</span><br><span class="line">       //给数组中元素进行位置的置换</span><br><span class="line">       private static void swap(int[] arr,int a,int b)&#123;</span><br><span class="line">           int temp = arr[a];</span><br><span class="line">           arr[a] = arr[b];</span><br><span class="line">           arr[b] = temp;</span><br><span class="line">       &#125;</span><br><span class="line">   </span><br><span class="line">       /**</span><br><span class="line">        * 将 int 形式的数组转换成字符串形式。打印形式是[s1,s2,s3,.....]</span><br><span class="line">        * @param arr 接收一个 int 类型的数组</span><br><span class="line">        * @return 返回该 int 数组的字符串表现形式</span><br><span class="line">        */</span><br><span class="line">       public static String ArrayToString(int[] arr)&#123;</span><br><span class="line">           String str = &quot;[&quot;;</span><br><span class="line">           int point = 0;</span><br><span class="line">           for(int i=0 ;i&lt;arr.length ;i++)&#123;</span><br><span class="line">               if(i != arr.length-1)</span><br><span class="line">                   str = str + arr[i] + &quot;,&quot;;</span><br><span class="line">               else</span><br><span class="line">                   str = str + arr[i] + &quot;]&quot;;</span><br><span class="line">           &#125;</span><br><span class="line">           return str;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="注释的添加"><a href="#注释的添加" class="headerlink" title="注释的添加"></a>注释的添加</h3><blockquote>
-<p><a href="http://www.runoob.com/java/java-documentation.html" target="_blank" rel="noopener">Java文档注释|菜鸟教程</a></p>
+        <p>快排的算法在平均状况下，排序效率为 O（N*LogN），运算效率是最高的，所以最受欢迎。而且在快速排序的算法中还体现着 <strong>分冶</strong> 思想，这几天我学习了一下这个算法，整理一下他的算法思路。</p>
+<blockquote>
+<p><a href="https://zh.wikipedia.org/wiki/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F" target="_blank" rel="noopener">快速排序算法-维基百科</a></p>
 </blockquote>
-<h3 id="javadoc工具软件"><a href="#javadoc工具软件" class="headerlink" title="javadoc工具软件"></a>javadoc工具软件</h3><ul>
-<li>javadoc 语法</li>
-<li>javadoc [ options ] [ packagenames ] [ sourcefiles ] [ @files ] </li>
-</ul>
-<h4 id="DOS界面使用javadoc编写API"><a href="#DOS界面使用javadoc编写API" class="headerlink" title="DOS界面使用javadoc编写API"></a>DOS界面使用javadoc编写API</h4><ul>
-<li>WIN-R 运行 cmd 进入 DOS 界面</li>
-<li>通过使用CMD的命令进入包含该java工具类的文件夹</li>
-<li>输入：javadoc -d myhelp -author -version ArrayTool.java</li>
-</ul>
-<h4 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h4><p><img src="http://p6wpjrumy.bkt.clouddn.com/0417%E6%95%B0%E7%BB%84%E5%B7%A5%E5%85%B7%E5%8C%85.png" alt=""><br><img src="http://p6wpjrumy.bkt.clouddn.com/0417%E7%94%9F%E6%88%90%E7%9A%84%E6%96%87%E6%A1%A3.png" alt=""></p>
-<h3 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h3><h4 id="编码GBK的不可映射字符"><a href="#编码GBK的不可映射字符" class="headerlink" title="编码GBK的不可映射字符"></a>编码GBK的不可映射字符</h4><p><img src="http://p6wpjrumy.bkt.clouddn.com/0417%E6%8A%A5%E9%94%991.png" alt=""></p>
+<h2 id="算法原理"><a href="#算法原理" class="headerlink" title="算法原理"></a>算法原理</h2><p>快速排序算法使用<strong>分冶法</strong>来把一个序列分为两个序列</p>
 <ul>
-<li>解决方法<ul>
-<li>关闭编译器要编写的那个工具类</li>
-<li>用记事本打开 Java 源文件</li>
-<li>另存为，选择 ANSI 编码</li>
-<li>覆盖后，在DOS界面重试</li>
-<li>成功后，将编码改回原格式</li>
+<li>从数列中挑出一个元素，称为<strong>“基准”（pivot）</strong></li>
+<li>重新排序数列，所有比基准值小的元素摆放在基准前面，所有比基准值大的元素摆在基准后面</li>
+<li>在这个分区结束之后，该基准就处于数列的中间位置。这个称为<strong>分区（partition）</strong>操作</li>
+<li>递归地把 小于基准值元素的子数列 和 大于基准值元素的子数列 排序</li>
 </ul>
-</li>
+<p>下面的图片来自于维基百科，通过看这张图可以观察到使用该算法后数据的变化</p>
+<p><img src="http://p6wpjrumy.bkt.clouddn.com/QuickSort.gif" alt=""></p>
+<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><ul>
+<li>在这个类中，为了方便理解，我创建了多个方法互相调用，并在函数上面加上了注释</li>
 </ul>
-<h4 id="错误2"><a href="#错误2" class="headerlink" title="错误2"></a>错误2</h4><ul>
-<li>生成错误原因：改为ANSI编码后，打开了编译器，汉字都变成了乱码<br><img src="http://p6wpjrumy.bkt.clouddn.com/0417%E6%8A%A5%E9%94%992.png" alt=""></li>
-<li>切记，记事本改完编码后，不要。立即用编辑器打开该文件</li>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QuickSort</span> </span>&#123;</span><br><span class="line">    <span class="comment">//判断数组是否为空</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> arr == <span class="keyword">null</span> || arr.length == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//在主类中调用该方法，对数组进行排序</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (isEmpty(arr))</span><br><span class="line">            System.out.println(<span class="string">"数组为空，请输入数据后再排序！！！"</span>);</span><br><span class="line">        quickSort(arr, <span class="number">0</span>, arr.length - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    <span class="comment">//也可以选择在主类中调用该方法，对数组指定位置进行排序</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (isEmpty(arr))</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span> (low &lt; high) &#123;</span><br><span class="line">            <span class="comment">//基准数据在数组中所在的角标</span></span><br><span class="line">            <span class="keyword">int</span> pivotKey = partion(arr, low, high);</span><br><span class="line">            <span class="comment">//将基准左部递归排序</span></span><br><span class="line">            quickSort(arr, low, pivotKey - <span class="number">1</span>);</span><br><span class="line">            <span class="comment">//将基准右部递归排序</span></span><br><span class="line">            quickSort(arr, pivotKey + <span class="number">1</span>, high);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">partion</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//以第一个数据为基准</span></span><br><span class="line">        <span class="keyword">int</span> pivot = arr[start];</span><br><span class="line">        <span class="keyword">while</span> (start &lt; end) &#123;</span><br><span class="line">            <span class="comment">//从数组右端开始，若数据大于基准值，end指针-1</span></span><br><span class="line">            <span class="comment">//反之则交换该数据值和基准值，并且将start++</span></span><br><span class="line">            <span class="keyword">while</span> (arr[end] &gt;= pivot &amp;&amp; start &lt; end)</span><br><span class="line">                end--;</span><br><span class="line">            <span class="keyword">if</span> (start &lt; end) &#123;</span><br><span class="line">                swap(arr, start, end);</span><br><span class="line">                start++;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//从数组左端开始，若数据小于基准值，start指针+1</span></span><br><span class="line">            <span class="comment">//反之则交换该数据值和基准值，并且将end--</span></span><br><span class="line">            <span class="keyword">while</span> (arr[start] &lt; pivot &amp;&amp; start &lt; end)</span><br><span class="line">                start++;</span><br><span class="line">            <span class="keyword">if</span> (start &lt; end) &#123;</span><br><span class="line">                swap(arr, end, start);</span><br><span class="line">                end--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//返回基准值在数组中的角标</span></span><br><span class="line">        <span class="keyword">return</span> start;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//函数功能：交换数组中两个数据值</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] arr,<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp = arr[i];</span><br><span class="line">        arr[i] = arr[j];</span><br><span class="line">        arr[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><ul>
+<li>在上面可以发现，代码的基准一直选取的是第一个数，在某些糟糕的情况下，该算法效率并不佳</li>
+<li>过段时间，我会再补上优化的部分</li>
 </ul>
 
       
@@ -423,7 +406,9 @@
           
             <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
           
-            <a href="/tags/JavaSE/" rel="tag"><i class="fa fa-tag"></i> JavaSE</a>
+            <a href="/tags/快速排序/" rel="tag"><i class="fa fa-tag"></i> 快速排序</a>
+          
+            <a href="/tags/算法/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
           
         </div>
       
@@ -436,8 +421,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/15/Java构造函数及关键字/" rel="next" title="Java构造函数及关键字">
-                <i class="fa fa-chevron-left"></i> Java构造函数及关键字
+              <a href="/2018/05/31/Java-DOM/" rel="next" title="Java-DOM">
+                <i class="fa fa-chevron-left"></i> Java-DOM
               </a>
             
           </div>
@@ -445,10 +430,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/21/Java单例模式/" rel="prev" title="Java单例模式">
-                Java单例模式 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -583,7 +564,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#编写Java工具类（以数组工具类为例）"><span class="nav-number">1.</span> <span class="nav-text">编写Java工具类（以数组工具类为例）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注释的添加"><span class="nav-number">2.</span> <span class="nav-text">注释的添加</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#javadoc工具软件"><span class="nav-number">3.</span> <span class="nav-text">javadoc工具软件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DOS界面使用javadoc编写API"><span class="nav-number">3.1.</span> <span class="nav-text">DOS界面使用javadoc编写API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#效果展示"><span class="nav-number">3.2.</span> <span class="nav-text">效果展示</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#报错"><span class="nav-number">4.</span> <span class="nav-text">报错</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#编码GBK的不可映射字符"><span class="nav-number">4.1.</span> <span class="nav-text">编码GBK的不可映射字符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#错误2"><span class="nav-number">4.2.</span> <span class="nav-text">错误2</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法原理"><span class="nav-number">1.</span> <span class="nav-text">算法原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码示例"><span class="nav-number">2.</span> <span class="nav-text">代码示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化"><span class="nav-number">3.</span> <span class="nav-text">优化</span></a></li></ol></div>
             
 
           </div>
