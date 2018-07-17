@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode-四数之和]]></title>
+    <url>%2F2018%2F07%2F17%2FLeetCode-%E5%9B%9B%E6%95%B0%E4%B9%8B%E5%92%8C%2F</url>
+    <content type="text"><![CDATA[题目 出处：LeetCode 算法第18题 给定一个包含 n 个整数的数组 nums 和一个目标值 target，判断 nums 中是否存在四个元素 a，**b，c 和 d ，使得 a + b + c + d 的值与 target 相等？找出所有满足条件且不重复的四元组。 注意： 答案中不可以包含重复的四元组。 示例： 12345678给定数组 nums = [1, 0, -1, 0, -2, 2]，和 target = 0。满足要求的四元组集合为：[ [-1, 0, 0, 1], [-2, -1, 1, 2], [-2, 0, 0, 2]] 思路 首先对数组进行排序，设置两个for循环，作为四个数中的前两个数，有可能有两个相同的数，遇到相同的数跳过，这样做是为了避免重复 四个数中的后两个数怎么办，通过设置两个指针m和n，m从数组前往后进行遍历，n用来从数组后往前进行遍历。m&gt;=n是结束循环的条件 遇到 target == a + b + c + d 的数就加到ArrayList中 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263public class Basic18 &#123; public static List&lt;List&lt;Integer&gt;&gt; forSun(int[] num, int target) &#123; List&lt;List&lt;Integer&gt;&gt; list = new ArrayList(); //将数组进行排序 Arrays.sort(num); //第一个加数 for (int i = 0; i &lt; num.length - 3; i++) &#123; //判断第一个加数使用是否重复 if (i != 0 &amp;&amp; num[i] == num[i - 1]) &#123; continue; &#125; //第二个加数 for (int j = i + 1; j &lt; num.length - 2; j++) &#123; //判断第二个加数使用是否重复 if (j != i + 1 &amp;&amp; num[j] == num[j - 1]) &#123; continue; &#125; //第三个数 int left = j + 1; //第四个数 int right = num.length - 1; while (left &lt; right) &#123; int sum = num[i] + num[j] + num[left] + num[right]; if (sum &lt; target) &#123; left++; &#125; else if (sum &gt; target) &#123; right--; &#125; else &#123; List&lt;Integer&gt; temp = new ArrayList&lt;&gt;(); temp.add(num[i]); temp.add(num[j]); temp.add(num[left]); temp.add(num[right]); list.add(temp); left++; right--; //保证再次使用第三个数不重复 while (left &lt; right &amp;&amp; num[left] == num[left - 1]) &#123; left++; &#125; //保证再次使用第四个数不重复 while (left &lt; right &amp;&amp; num[right] == num[right + 1]) &#123; right--; &#125; &#125; &#125; &#125; &#125; return list; &#125; @Test public void test1() &#123; int[] num = new int[]&#123;1, 0, -1, 0, -2, 2&#125;; int target = 0; List list = forSun(num, target); for (Iterator it = list.iterator(); it.hasNext(); ) &#123; System.out.println(it.next()); &#125; &#125;&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>算法</tag>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Android实训总结]]></title>
     <url>%2F2018%2F07%2F10%2FAndroid%E5%AE%9E%E8%AE%AD%E6%80%BB%E7%BB%93%2F</url>
     <content type="text"><![CDATA[在学校实训的一个多星期中，掌握了一部分的安卓技术，也可以做出来一个安卓app 安卓新闻App]]></content>
@@ -17,8 +30,8 @@
       </categories>
       <tags>
         <tag>Java</tag>
-        <tag>回溯</tag>
         <tag>算法</tag>
+        <tag>回溯</tag>
       </tags>
   </entry>
   <entry>
