@@ -1,6 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode-括号生成]]></title>
+    <url>%2F2018%2F08%2F18%2FLeetCode-%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90%2F</url>
+    <content type="text"><![CDATA[题目 出处：LeetCode 算法第22题 给出 n 代表生成括号的对数，请你写出一个函数，使其能够生成所有可能的并且有效的括号组合。 例如，给出 n = 3，生成结果为： 1234567[ &quot;((()))&quot;, &quot;(()())&quot;, &quot;(())()&quot;, &quot;()(())&quot;, &quot;()()()&quot;] 暴力法 我们可以生成所有 2的2n次方 个 &#39;(&#39; 和 &#39;)&#39; 字符构成的序列。然后，我们将检查每一个是否有效。 为了生成所有序列，我们使用递归。长度为 n 的序列就是 &#39;(&#39; 加上所有长度为 n-1 的序列，以及 &#39;)&#39; 加上所有长度为 n-1 的序列。 为了检查序列是否为有效的，我们会跟踪平衡，也就是左括号的数量减去右括号的数量的净值。如果这个值始终小于零或者不以零结束，该序列就是无效的，否则它是有效的。 1234567891011121314151617181920212223242526272829class Solution &#123; public List&lt;String&gt; generateParenthesis(int n) &#123; List&lt;String&gt; combinations = new ArrayList(); generateAll(new char[2 * n], 0, combinations); return combinations; &#125; public void generateAll(char[] current, int pos, List&lt;String&gt; result) &#123; if (pos == current.length) &#123; if (valid(current)) result.add(new String(current)); &#125; else &#123; current[pos] = '('; generateAll(current, pos+1, result); current[pos] = ')'; generateAll(current, pos+1, result); &#125; &#125; public boolean valid(char[] current) &#123; int balance = 0; for (char c: current) &#123; if (c == '(') balance++; else balance--; if (balance &lt; 0) return false; &#125; return (balance == 0); &#125;&#125; 回溯法 只有在我们知道序列仍然保持有效时才添加 &#39;(&#39; or &#39;)&#39;，而不是像方法一那样每次添加。我们可以通过跟踪到目前为止放置的左括号和右括号的数目来做到这一点 如果我们还剩一个位置，我们可以开始放一个左括号。 如果它不超过左括号的数量，我们可以放一个右括号 12345678910111213141516171819class Solution &#123; public List&lt;String&gt; generateParenthesis(int n) &#123; List&lt;String&gt; ans = new ArrayList(); backtrack(ans, "", 0, 0, n); return ans; &#125; public void backtrack(List&lt;String&gt; ans, String cur, int open, int close, int max)&#123; if (str.length() == max * 2) &#123; ans.add(cur); return; &#125; if (open &lt; max) backtrack(ans, cur+"(", open+1, close, max); if (close &lt; open) backtrack(ans, cur+")", open, close+1, max); &#125;&#125; 参考文章LeetCode 22题解析]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>算法</tag>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode-合并有序链表]]></title>
+    <url>%2F2018%2F08%2F14%2FLeetCode-%E5%90%88%E5%B9%B6%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%2F</url>
+    <content type="text"><![CDATA[题目 出处：LeetCode 算法第21题 将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 示例： 12输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4 思路遍历解法 先判断链表为空的情况 创建一个新链表，并在其前面加上一个哑节点，用于简化各种极端操作 创建一个指针，指向这个哑节点 循环判断 两个链表头节点值的大小 ，谁的值小将谁传入新链表 如果两个链表不一样长，剩余的部分也要加在新链表的后面 递归算法 递归算法写出来看着十分简洁，就是如果太多层的调用的话，调用太多栈会性能下降 谁的头节点小，就将该头节点作为最终链表的头节点 再一层层递归下去，反复调用自身函数，成功将链表合并 需要注意的是：如果两链表长度不想等，一定要在后面加上长链表剩余的部分 代码遍历1234567public class ListNode &#123; int val; ListNode next; ListNode(int x) &#123; val = x; &#125; &#125; 123456789101112131415161718192021public ListNode mergeTwoLists(ListNode l1, ListNode l2) &#123; if (l1 == null) &#123; return l2; &#125; else if (l2 == null) &#123; return l1; &#125; ListNode dummy = new ListNode(-1); ListNode curr = dummy; while (l1 != null &amp;&amp; l2 != null) &#123; if (l1.val &lt;= l2.val) &#123; curr.next = l1; l1 = l1.next; &#125; else &#123; curr.next = l2; l2 = l2.next; &#125; curr = curr.next; &#125; curr.next = (l1 == null) ? l2 : l1; return dummy.next; &#125; 递归1234567891011public ListNode mergeTwoLists(ListNode l1, ListNode l2) &#123; if (l1 == null) return l2; if (l2 == null) return l1; if (l1.val &lt;= l2.val) &#123; l1.next = mergeTwoLists(l1.next, l2); return l1; &#125; else &#123; l2.next = mergeTwoLists(l1, l2.next); return l2; &#125; &#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>算法</tag>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode-有效的括号]]></title>
+    <url>%2F2018%2F08%2F10%2FLeetCode-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7%2F</url>
+    <content type="text"><![CDATA[题目 出处：LeetCode 算法第20题 给定一个只包括 &#39;(&#39;，&#39;)&#39;，&#39;{&#39;，&#39;}&#39;，&#39;[&#39;，&#39;]&#39; 的字符串，判断字符串是否有效。 有效字符串需满足： 左括号必须用相同类型的右括号闭合。 左括号必须以正确的顺序闭合。 注意空字符串可被认为是有效字符串。 示例 1: 12输入: &quot;()&quot;输出: true 示例 2: 12输入: &quot;()[]&#123;&#125;&quot;输出: true 示例 3: 12输入: &quot;(]&quot;输出: false 示例 4: 12输入: &quot;([)]&quot;输出: false 示例 5: 12输入: &quot;&#123;[]&#125;&quot;输出: true 思路 大家应该都还记得数据结构中有一个栈的概念，我们可以利用栈的先进后出的特性来做这道题 先将他们转换为char类型的字符串，将其一个一个字符的进行判断，如果它是这三种类型中任意一个的左括号则将他们压栈；如果它是右括号，则查看栈顶是否是与之相对应的左括号，若是则将该左括号弹栈，继续下一个字符的操作；若不是，则该字符串不是一个有效的字符串 代码12345678910111213141516171819202122232425262728class Solution &#123; public boolean isValid(String s) &#123; Stack&lt;Character&gt; stack = new Stack(); for (int i = 0; i &lt; s.length(); i++)&#123; char ch = s.charAt(i); if(ch == '(' || ch == '[' || ch == '&#123;' )&#123; stack.push(ch); &#125; else&#123; if (stack.isEmpty())&#123; return false; &#125; char topChar = stack.pop(); if(ch == ')' &amp;&amp; topChar != '(' )&#123; return false; &#125;else if(ch == ']' &amp;&amp; topChar != '[' )&#123; return false; &#125;else if(ch == '&#125;' &amp;&amp; topChar != '&#123;' )&#123; return false; &#125; &#125; &#125; return stack.isEmpty(); &#125;&#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>算法</tag>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode-删除链表的倒数第N个节点]]></title>
+    <url>%2F2018%2F08%2F05%2FLeetCode-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9%2F</url>
+    <content type="text"><![CDATA[题目 出处：LeetCode 算法第19题 给定一个链表，删除链表的倒数第 n 个节点，并且返回链表的头结点 示例： 123给定一个链表: 1-&gt;2-&gt;3-&gt;4-&gt;5, 和 n = 2.当删除了倒数第二个节点后，链表变为 1-&gt;2-&gt;3-&gt;5. 说明： 给定的 n 保证是有效的。 进阶： 你能尝试使用一趟扫描实现吗？ 思路 Leetcode的解答已经十分详细了，这就是上面的解析，原文的链接附在参考文章中 两次遍历 这个问题可以容易地简化成另一个问题：删除从列表开头数起的第 (L - n + 1) 个结点，其中 L 是列表的长度。只要我们找到列表的长度 L，这个问题就很容易解决 首先我们将添加一个哑结点作为辅助，该结点位于列表头部。哑结点用来简化某些极端情况，例如列表中只含有一个结点，或需要删除列表的头部。在第一次遍历中，我们找出列表的长度 L。然后设置一个指向哑结点的指针，并移动它遍历列表，直至它到达第 (L - n)个结点那里。我们把第 (L - n) 个结点的 next 指针重新链接至第 (L - n + 2) 个结点，完成这个算法。 一次遍历 上述算法可以优化为只使用一次遍历。我们可以使用两个指针而不是一个指针。第一个指针从列表的开头向前移动 n+1 步，而第二个指针将从列表的开头出发。现在，这两个指针被 n 个结点分开。我们通过同时移动两个指针向前来保持这个恒定的间隔，直到第一个指针到达最后一个结点。此时第二个指针将指向从最后一个结点数起的第 n 个结点。我们重新链接第二个指针所引用的结点的 next 指针指向该结点的下下个结点。 代码两次遍历12345678910111213141516171819202122232425262728public class Basic19 &#123; public class ListNode &#123; int val; ListNode next; ListNode(int x) &#123; val = x; &#125; &#125; public ListNode removeNthFormEnd(ListNode head, int n) &#123; ListNode pre = new ListNode(0); pre.next = head; int length = 0; ListNode curr = head; while (curr != null) &#123; length++; curr = curr.next; &#125; length -= n; curr = pre; while (length &gt; 0) &#123; length--; curr = curr.next; &#125; curr.next = curr.next.next; return pre.next; &#125;&#125; 一次遍历123456789101112131415161718192021222324252627public class Basic19 &#123; public class ListNode &#123; int val; ListNode next; ListNode(int x) &#123; val = x; &#125; &#125; public ListNode removeNthFromEnd(ListNode head, int n) &#123; ListNode dummy = new ListNode(0); dummy.next = head; ListNode first = dummy; ListNode second = dummy; // 前进第一个指针，使第一个和第二个之间的间隙分开n个节点 for (int i = 1; i &lt;= n + 1; i++) &#123; first = first.next; &#125; // 先移动到最后，保持差距 while (first != null) &#123; first = first.next; second = second.next; &#125; second.next = second.next.next; return dummy.next; &#125;&#125; 参考文章 LeetCode 19题解答]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>算法</tag>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[u盘容量未知-解决]]></title>
     <url>%2F2018%2F08%2F01%2Fu%E7%9B%98%E5%AE%B9%E9%87%8F%E6%9C%AA%E7%9F%A5-%E8%A7%A3%E5%86%B3%2F</url>
     <content type="text"><![CDATA[问题前几天公司发的电脑，一直没有刷系统，昨天弄了一下，结果在安装时将u盘拔出，导致了下面这种情况，u盘容量未知，并且无法格式化 解决 win+R输入control打开控制面板 点击系统安全，点击管理工具，新界面寻找计算机管理 点击磁盘管理，找到u盘界面，右键新建卷，即可解决问题 或者直接win+R输入diskmgmt.msc进入磁盘管理]]></content>
