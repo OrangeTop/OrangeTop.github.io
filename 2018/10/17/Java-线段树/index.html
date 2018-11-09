@@ -103,9 +103,9 @@
 <meta property="og:description" content="为什么需要线段树1234题目一：10000个正整数，编号1到10000，用A[1],A[2],A[10000]表示。修改：无统计：1.编号从L到R的所有数之和为多少？ 其中1&amp;lt;= L &amp;lt;= R &amp;lt;= 10000.  方法一：对于统计L,R ，需要求下标从L到R的所有数的和，从L到R的所有下标记做[L..R],问题就是对A[L..R]进行求和。这样求和，对于每个询问，需要将(R-L">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/%E5%85%AB%E5%AD%90%E9%9B%86%E7%BA%BF%E6%AE%B5%E6%A0%91.png">
-<meta property="og:image" content="http://p6wpjrumy.bkt.clouddn.com/%E5%8D%81%E5%AD%90%E9%9B%86%E7%BA%BF%E6%AE%B5%E6%A0%91.png">
-<meta property="og:image" content="http://p6wpjrumy.bkt.clouddn.com/%E6%95%B0%E7%BB%84%E5%A4%A7%E5%B0%8F.png">
-<meta property="og:updated_time" content="2018-11-09T05:38:32.835Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/%E5%8D%81%E5%AD%90%E9%9B%86%E7%BA%BF%E6%AE%B5%E6%A0%91.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/%E6%95%B0%E7%BB%84%E5%A4%A7%E5%B0%8F.png">
+<meta property="og:updated_time" content="2018-11-09T05:46:39.532Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java-线段树">
 <meta name="twitter:description" content="为什么需要线段树1234题目一：10000个正整数，编号1到10000，用A[1],A[2],A[10000]表示。修改：无统计：1.编号从L到R的所有数之和为多少？ 其中1&amp;lt;= L &amp;lt;= R &amp;lt;= 10000.  方法一：对于统计L,R ，需要求下标从L到R的所有数的和，从L到R的所有下标记做[L..R],问题就是对A[L..R]进行求和。这样求和，对于每个询问，需要将(R-L">
@@ -402,8 +402,8 @@
 </table>
 <p>从上表可以看出，方法一修改快，求和慢。 方法二求和快，修改慢。</p>
 <p>那有没有一种结构，修改和求和都比较快呢？答案当然是线段树。</p>
-<h2 id="线段树"><a href="#线段树" class="headerlink" title="线段树"></a>线段树</h2><p><img src="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/%E5%85%AB%E5%AD%90%E9%9B%86%E7%BA%BF%E6%AE%B5%E6%A0%91.png" alt=""></p>
-<p><img src="http://p6wpjrumy.bkt.clouddn.com/%E5%8D%81%E5%AD%90%E9%9B%86%E7%BA%BF%E6%AE%B5%E6%A0%91.png" width="300" height="200" alt="" align="center"></p>
+<h2 id="线段树"><a href="#线段树" class="headerlink" title="线段树"></a>线段树</h2><p><img src="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/%E5%85%AB%E5%AD%90%E9%9B%86%E7%BA%BF%E6%AE%B5%E6%A0%91.png" width="300" height="200" alt="" align="center"></p>
+<p><img src="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/%E5%8D%81%E5%AD%90%E9%9B%86%E7%BA%BF%E6%AE%B5%E6%A0%91.png" width="300" height="200" alt="" align="center"></p>
 <ul>
 <li><p>如上我们可以看出<strong>线段树</strong>不是完全二叉树，而<strong>是平衡二叉树</strong>，<strong>堆</strong>也是平衡二叉树</p>
 </li>
@@ -422,7 +422,7 @@
 <li>所以线段树需要的空间是n的两倍到四倍之间的某个数，一般就开4 * n的空间就好</li>
 <li>如果空间不够，可以自己算好最大值来省点空间。</li>
 </ul>
-<p><img src="http://p6wpjrumy.bkt.clouddn.com/%E6%95%B0%E7%BB%84%E5%A4%A7%E5%B0%8F.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/%E6%95%B0%E7%BB%84%E5%A4%A7%E5%B0%8F.png" alt=""></p>
 <h4 id="如何表示"><a href="#如何表示" class="headerlink" title="如何表示"></a>如何表示</h4><ul>
 <li>假设某个节点的编号为v，那么它的左子节点编号为2 * v，右子节点编号为2 * v+1</li>
 <li>然后规定根节点为1，这样一颗二叉树就构造完成了</li>

@@ -102,14 +102,14 @@
 <meta property="og:site_name" content="Orange&#39;s Blog">
 <meta property="og:description" content="概述 集合类的由来： 对象用于封装特有数据，对象多了需要存储，如果对象的个数不确定。就使用集合容器进行存储。   集合特点： 用于存储对象的容器。 集合的长度是可变的。 集合中不可以存储基本数据类型值。     体系 集合容器因为内部的数据结构不同，有多种具体容器。不断的向上抽取，就形成了集合框架。 框架的顶层就是Collection接口： List：有序(存入和取出的顺序一致),元素都有索引(角">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p6wpjrumy.bkt.clouddn.com/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.bmp">
-<meta property="og:image" content="http://p6wpjrumy.bkt.clouddn.com/KeySet%E5%9B%BE%E8%A7%A3.bmp">
-<meta property="og:image" content="http://p6wpjrumy.bkt.clouddn.com/entrySet%E5%9B%BE%E8%A7%A3.bmp">
-<meta property="og:updated_time" content="2018-05-14T13:31:30.143Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.bmp">
+<meta property="og:image" content="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/KeySet%E5%9B%BE%E8%A7%A3.bmp">
+<meta property="og:image" content="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/entrySet%E5%9B%BE%E8%A7%A3.bmp">
+<meta property="og:updated_time" content="2018-11-09T05:56:07.237Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java-集合框架">
 <meta name="twitter:description" content="概述 集合类的由来： 对象用于封装特有数据，对象多了需要存储，如果对象的个数不确定。就使用集合容器进行存储。   集合特点： 用于存储对象的容器。 集合的长度是可变的。 集合中不可以存储基本数据类型值。     体系 集合容器因为内部的数据结构不同，有多种具体容器。不断的向上抽取，就形成了集合框架。 框架的顶层就是Collection接口： List：有序(存入和取出的顺序一致),元素都有索引(角">
-<meta name="twitter:image" content="http://p6wpjrumy.bkt.clouddn.com/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.bmp">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.bmp">
 
 
 
@@ -419,7 +419,7 @@
 <li><p>迭代器图解</p>
 </li>
 </ul>
-<p><img src="http://p6wpjrumy.bkt.clouddn.com/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.bmp" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.bmp" alt=""></p>
 <h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><ul>
 <li><p>List：有序(存入和取出的顺序一致),元素都有索引(角标)，元素可以重复。</p>
 </li>
@@ -630,12 +630,12 @@
 <li>取出map中所有元素</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//取出map中的所有元素。</span></span><br><span class="line"><span class="comment">//原理，通过keySet方法获取map中所有的键所在的Set集合，在通过Set的迭代器获取到每一个键，</span></span><br><span class="line"><span class="comment">//在对每一个键通过map集合的get方法获取其对应的值即可。</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">keySetDemo</span><span class="params">(Map&lt;Integer,String&gt; map)</span></span>&#123;</span><br><span class="line">    Set&lt;Integer&gt; keySet = map.keySet();</span><br><span class="line">    Iterator&lt;Integer&gt; it = keySet.iterator();</span><br><span class="line">	</span><br><span class="line">    <span class="keyword">while</span>(it.hasNext())&#123;</span><br><span class="line">    	Integer key = it.next();</span><br><span class="line">    	String value = map.get(key);</span><br><span class="line">    	System.out.println(key+<span class="string">":"</span>+value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="http://p6wpjrumy.bkt.clouddn.com/KeySet%E5%9B%BE%E8%A7%A3.bmp" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/KeySet%E5%9B%BE%E8%A7%A3.bmp" alt=""></p>
 <ul>
 <li>取出map中所有元素–&gt;第二种方法</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 通过Map转成set就可以迭代。</span></span><br><span class="line"><span class="comment">* 找到了另一个方法。entrySet。</span></span><br><span class="line"><span class="comment">* 该方法将键和值的映射关系作为对象存储到了Set集合中，而这个映射关系的类型就是Map.Entry类型(结婚证)</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">keySetDemo</span><span class="params">(Map&lt;Integer,String&gt; map)</span></span>&#123;</span><br><span class="line">	Set&lt;Map.Entry&lt;Integer, String&gt;&gt; entrySet = map.entrySet();</span><br><span class="line"></span><br><span class="line">	Iterator&lt;Map.Entry&lt;Integer, String&gt;&gt; it = entrySet.iterator();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span>(it.hasNext())&#123;</span><br><span class="line">		Map.Entry&lt;Integer, String&gt; me = it.next();</span><br><span class="line">		Integer key = me.getKey();</span><br><span class="line">		String value = me.getValue();</span><br><span class="line">		System.out.println(key+<span class="string">"::::"</span>+value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="http://p6wpjrumy.bkt.clouddn.com/entrySet%E5%9B%BE%E8%A7%A3.bmp" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/entrySet%E5%9B%BE%E8%A7%A3.bmp" alt=""></p>
 <h3 id="常用子类"><a href="#常用子类" class="headerlink" title="常用子类"></a>常用子类</h3><ul>
 <li>Hashtable :内部结构是哈希表，是同步的。不允许null作为键，null作为值。<ul>
 <li>Properties：用来存储键值对型的配置文件的信息，可以和IO技术相结合<br>   。         </li>

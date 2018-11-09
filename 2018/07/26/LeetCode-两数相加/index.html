@@ -102,12 +102,12 @@
 <meta property="og:site_name" content="Orange&#39;s Blog">
 <meta property="og:description" content="出处：LeetCode 算法第2题 给定两个非空链表来表示两个非负整数。位数按照逆序方式存储，它们的每个节点只存储单个数字。将两数相加返回一个新的链表。 你可以假设除了数字 0 之外，这两个数字都不会以零开头。 示例：  123输入：(2 -&amp;gt; 4 -&amp;gt; 3) + (5 -&amp;gt; 6 -&amp;gt; 4)输出：7 -&amp;gt; 0 -&amp;gt; 8原因：342 + 465 = 807 思路">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p6wpjrumy.bkt.clouddn.com/two_numbers_add.png">
-<meta property="og:updated_time" content="2018-07-26T14:52:51.425Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/two_numbers_add.png">
+<meta property="og:updated_time" content="2018-11-09T05:49:07.630Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode-两数相加">
 <meta name="twitter:description" content="出处：LeetCode 算法第2题 给定两个非空链表来表示两个非负整数。位数按照逆序方式存储，它们的每个节点只存储单个数字。将两数相加返回一个新的链表。 你可以假设除了数字 0 之外，这两个数字都不会以零开头。 示例：  123输入：(2 -&amp;gt; 4 -&amp;gt; 3) + (5 -&amp;gt; 6 -&amp;gt; 4)输出：7 -&amp;gt; 0 -&amp;gt; 8原因：342 + 465 = 807 思路">
-<meta name="twitter:image" content="http://p6wpjrumy.bkt.clouddn.com/two_numbers_add.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/two_numbers_add.png">
 
 
 
@@ -376,7 +376,7 @@
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ul>
 <li>本来想自己写解析的，不过后来看LeetCode上面的解析写得真不错，于是就粘贴过来啦</li>
 </ul>
-<p><img src="http://p6wpjrumy.bkt.clouddn.com/two_numbers_add.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/two_numbers_add.png" alt=""></p>
 <p><em>如图，对两数相加方法的可视化: 342 + 465 = 807，每个节点都包含一个数字，并且数字按位逆序存储。</em></p>
 <p>就像你在纸上计算两个数字的和那样，我们首先从最低有效位也就是列表 <strong>l1</strong> 和 <strong>l2</strong> 的表头开始相加。由于每位数字都应当处于 <strong>0…9</strong> 的范围内，我们计算两个数字的和时可能会出现“溢出”。例如，<strong>5 + 7 = 12</strong>。在这种情况下，我们会将当前位的数值设置为 2，并将进位 <strong>carry = 1</strong> 带入下一次迭代。进位 <strong>carry</strong> 必定是 <strong>0 或 1</strong>，这是因为两个数字相加（考虑到进位）可能出现的最大和为 <strong>9 + 9 + 1 = 19</strong>。</p>
 <p><strong>伪代码如下：</strong></p>

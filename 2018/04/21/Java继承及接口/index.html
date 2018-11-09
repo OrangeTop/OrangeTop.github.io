@@ -102,13 +102,13 @@
 <meta property="og:site_name" content="Orange&#39;s Blog">
 <meta property="og:description" content="继承 什么时候继承？ 当类中存在所属关系时，就定义继承。狗和狼都是犬科，所以他们都可以继承犬科 所属关系：is a 关系  谁是谁中的一种  优点 提高代码复用性 让类与类之间产生了联系，为多态提供了前提  缺点 打破封装性 解决方法看下面的final关键字  注意 Java中支持单继承，不直接支持多继承，但对C++中多继承进行了改良 单继承：一个子类只能有一个父类 多继承：一个子类可以有多个父类">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p6wpjrumy.bkt.clouddn.com/20180422.png">
-<meta property="og:image" content="http://p6wpjrumy.bkt.clouddn.com/042302.png">
-<meta property="og:updated_time" content="2018-04-27T02:12:07.237Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/20180422.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/042302.png">
+<meta property="og:updated_time" content="2018-11-09T06:02:41.338Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java继承及接口">
 <meta name="twitter:description" content="继承 什么时候继承？ 当类中存在所属关系时，就定义继承。狗和狼都是犬科，所以他们都可以继承犬科 所属关系：is a 关系  谁是谁中的一种  优点 提高代码复用性 让类与类之间产生了联系，为多态提供了前提  缺点 打破封装性 解决方法看下面的final关键字  注意 Java中支持单继承，不直接支持多继承，但对C++中多继承进行了改良 单继承：一个子类只能有一个父类 多继承：一个子类可以有多个父类">
-<meta name="twitter:image" content="http://p6wpjrumy.bkt.clouddn.com/20180422.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/20180422.png">
 
 
 
@@ -417,7 +417,7 @@
 <li>以如下代码为例<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class Father&#123;</span><br><span class="line">    int num = 4;</span><br><span class="line">&#125;</span><br><span class="line">public class extends Son&#123;</span><br><span class="line">    int num = 5;</span><br><span class="line">    void show()&#123;</span><br><span class="line">        System.out.println(this.num+super.num);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class Demo&#123;</span><br><span class="line">    public static void main(Sting[] args)&#123;</span><br><span class="line">        Son s = new Son();</span><br><span class="line">        s.show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><img src="http://p6wpjrumy.bkt.clouddn.com/20180422.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/20180422.png" alt=""></p>
 <ul>
 <li>运行Demo类，main方法进栈，执行下一句话，创建一个子类对象，因为它是继承的父类，所以方法区需要先加载父类函数及构造方法，再加载子类构造方法。接下来在堆中开辟空间，给予地址，num值在父类子类中都有体现，所以存储时num值系统会通过关键字标注好。show方法入栈，this关键字指向son的num，super关键字指向father的num。</li>
 </ul>
@@ -475,7 +475,7 @@
 <li>以下面代码为示,<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">public class Father &#123;</span><br><span class="line">    Father()&#123;</span><br><span class="line">        //super();</span><br><span class="line">        show();</span><br><span class="line">        //return;</span><br><span class="line">    &#125;</span><br><span class="line">    public void show()&#123;</span><br><span class="line">        System.out.println(&quot;Father show&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class Son extends Father&#123;</span><br><span class="line">    int num = 8;</span><br><span class="line">    public Son()&#123;</span><br><span class="line">        super();</span><br><span class="line">        //-&gt;通过super初始化父类内容时，子类的成员变量并未显示初始化。</span><br><span class="line">        //等super()父类初始化结束后，才对子类成员变量初始化</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    public void show() &#123;</span><br><span class="line">        System.out.println(&quot;Son show &quot;+num);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class test &#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        Son s = new Son();</span><br><span class="line">        s.show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">/*</span><br><span class="line">运行结果：Son show 0</span><br><span class="line">          Son show 8</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><img src="http://p6wpjrumy.bkt.clouddn.com/042302.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/042302.png" alt=""></p>
 <h4 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h4><ul>
 <li>一个对象的实例化过程<ul>
 <li>1、JVM会读取指定路径下的Person.class文件，并加载进内存，并会加载Person的父类（如果有直接父类的情况下）</li>

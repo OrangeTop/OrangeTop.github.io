@@ -102,15 +102,15 @@
 <meta property="og:site_name" content="Orange&#39;s Blog">
 <meta property="og:description" content="概述 进程：计算机中的程序关于某数据集合的一次运行活动，是系统进行资源分配和调度的基本单位。 线程：就是进程中的一个负责程序执行的控制单元（执行路径）。 一个进程中可以有多个执行路径，称之为多线程。 一个进程中至少要有一个线程 开启多个线程是为了同时运行多部分代码 每一个线程都有自己运行的内容，这个内容可以称为线程要执行的任务  利弊 多线程操作，可以让多个任务并行执行，a任务等待硬盘响应时，让b">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p6wpjrumy.bkt.clouddn.com/050501.png">
-<meta property="og:image" content="http://p6wpjrumy.bkt.clouddn.com/050502.png">
-<meta property="og:image" content="http://p6wpjrumy.bkt.clouddn.com/050503.png">
-<meta property="og:image" content="http://p6wpjrumy.bkt.clouddn.com/050504.png">
-<meta property="og:updated_time" content="2018-05-07T13:31:23.085Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/050501.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/050502.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/050503.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/050504.png">
+<meta property="og:updated_time" content="2018-11-09T06:03:40.086Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java-多线程">
 <meta name="twitter:description" content="概述 进程：计算机中的程序关于某数据集合的一次运行活动，是系统进行资源分配和调度的基本单位。 线程：就是进程中的一个负责程序执行的控制单元（执行路径）。 一个进程中可以有多个执行路径，称之为多线程。 一个进程中至少要有一个线程 开启多个线程是为了同时运行多部分代码 每一个线程都有自己运行的内容，这个内容可以称为线程要执行的任务  利弊 多线程操作，可以让多个任务并行执行，a任务等待硬盘响应时，让b">
-<meta name="twitter:image" content="http://p6wpjrumy.bkt.clouddn.com/050501.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/050501.png">
 
 
 
@@ -412,11 +412,11 @@
 <li>运行后可以试着4.5行注释掉，6行解除注释试一下，发现可以自己给线程名称赋值了</li>
 </ul>
 <h3 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h3><ul>
-<li>开启了多线程后，栈内存就和之前不一样了，以前面代码为示例<br><img src="http://p6wpjrumy.bkt.clouddn.com/050501.png" alt=""></li>
+<li>开启了多线程后，栈内存就和之前不一样了，以前面代码为示例<br><img src="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/050501.png" alt=""></li>
 <li>如果在上文倒数第三行加上一句代码“System.out.println(4/0);”</li>
 <li>观察运行结果，发现main函数已经抛出异常终止了，其余两线程仍能正常进行</li>
 </ul>
-<h3 id="线程的状态"><a href="#线程的状态" class="headerlink" title="线程的状态"></a>线程的状态</h3><p><img src="http://p6wpjrumy.bkt.clouddn.com/050502.png" alt=""></p>
+<h3 id="线程的状态"><a href="#线程的状态" class="headerlink" title="线程的状态"></a>线程的状态</h3><p><img src="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/050502.png" alt=""></p>
 <h3 id="创建方式二"><a href="#创建方式二" class="headerlink" title="创建方式二"></a>创建方式二</h3><ul>
 <li>实现Runnable接口<ul>
 <li>1、定义类实现Runnable接口</li>
@@ -438,7 +438,7 @@
 <li>所以创建线程的第二种方式比较常用</li>
 </ul>
 <h3 id="卖票示例"><a href="#卖票示例" class="headerlink" title="卖票示例"></a>卖票示例</h3><ul>
-<li>在火车站一共有100张票，4个窗口同时卖票，用多线程来描述<br><img src="http://p6wpjrumy.bkt.clouddn.com/050503.png" alt=""></li>
+<li>在火车站一共有100张票，4个窗口同时卖票，用多线程来描述<br><img src="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/050503.png" alt=""></li>
 <li>运行图中左侧代码后发现，并不是想象中的卖100张，而是变成了4*100张，可以选择将ticket类中的num值变成静态变量，但这不是最好的选择。</li>
 <li>另外还有人说可以不在堆中创建那么多的对象，只创建一个对象，进行4次线程开启，这是不可取的，多次启动一个线程是非法的。</li>
 </ul>
@@ -446,7 +446,7 @@
 <ul>
 <li>通过继承的方式创建没有达到我们的目的，于是就采用上述代码中接口的方式创建</li>
 </ul>
-<h2 id="线程安全隐患"><a href="#线程安全隐患" class="headerlink" title="线程安全隐患"></a>线程安全隐患</h2><p><img src="http://p6wpjrumy.bkt.clouddn.com/050504.png" alt=""></p>
+<h2 id="线程安全隐患"><a href="#线程安全隐患" class="headerlink" title="线程安全隐患"></a>线程安全隐患</h2><p><img src="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/050504.png" alt=""></p>
 <ul>
 <li>以车站卖票为示例，如果当车票只剩一张时，t1进入临时堵塞状态，有执行资格不具备执行权，推给t2执行，t2也临时堵塞一下，继续往后推，然后假设t3，t4也是临时堵塞，那他们现在都具备执行资格，没有执行权，然后t1卖出一张票，票数为0，但是t2.3.4都已经进入循环，可以卖票，于是分别卖出了第0.-1.-2张票。这对于铁路局来说是不允许的，有安全隐患。</li>
 <li><p>有人说为什么我运行很多次都没有出现这种错误那，因为这只是有一定可能发生的，为了看起来更清晰，可以人为的方式，使产生安全隐患概率增加</p>

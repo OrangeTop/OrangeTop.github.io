@@ -102,15 +102,15 @@
 <meta property="og:site_name" content="Orange&#39;s Blog">
 <meta property="og:description" content="昨天学习了如何编写一个工具类，及如何给他注释再去生成专属于他的API文档。今天我将这个过程以及一些遇到的报错解决整理到博客中。  编写Java工具类（以数组工具类为例） 工具类中包含了一些简单的操作1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p6wpjrumy.bkt.clouddn.com/0417%E6%95%B0%E7%BB%84%E5%B7%A5%E5%85%B7%E5%8C%85.png">
-<meta property="og:image" content="http://p6wpjrumy.bkt.clouddn.com/0417%E7%94%9F%E6%88%90%E7%9A%84%E6%96%87%E6%A1%A3.png">
-<meta property="og:image" content="http://p6wpjrumy.bkt.clouddn.com/0417%E6%8A%A5%E9%94%991.png">
-<meta property="og:image" content="http://p6wpjrumy.bkt.clouddn.com/0417%E6%8A%A5%E9%94%992.png">
-<meta property="og:updated_time" content="2018-04-18T04:18:04.141Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/0417%E6%95%B0%E7%BB%84%E5%B7%A5%E5%85%B7%E5%8C%85.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/0417%E7%94%9F%E6%88%90%E7%9A%84%E6%96%87%E6%A1%A3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/0417%E6%8A%A5%E9%94%991.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/0417%E6%8A%A5%E9%94%992.png">
+<meta property="og:updated_time" content="2018-11-09T06:02:31.713Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java编写工具类及API文档">
 <meta name="twitter:description" content="昨天学习了如何编写一个工具类，及如何给他注释再去生成专属于他的API文档。今天我将这个过程以及一些遇到的报错解决整理到博客中。  编写Java工具类（以数组工具类为例） 工具类中包含了一些简单的操作1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545">
-<meta name="twitter:image" content="http://p6wpjrumy.bkt.clouddn.com/0417%E6%95%B0%E7%BB%84%E5%B7%A5%E5%85%B7%E5%8C%85.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/0417%E6%95%B0%E7%BB%84%E5%B7%A5%E5%85%B7%E5%8C%85.png">
 
 
 
@@ -388,8 +388,8 @@
 <li>通过使用CMD的命令进入包含该java工具类的文件夹</li>
 <li>输入：javadoc -d myhelp -author -version ArrayTool.java</li>
 </ul>
-<h4 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h4><p><img src="http://p6wpjrumy.bkt.clouddn.com/0417%E6%95%B0%E7%BB%84%E5%B7%A5%E5%85%B7%E5%8C%85.png" alt=""><br><img src="http://p6wpjrumy.bkt.clouddn.com/0417%E7%94%9F%E6%88%90%E7%9A%84%E6%96%87%E6%A1%A3.png" alt=""></p>
-<h3 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h3><h4 id="编码GBK的不可映射字符"><a href="#编码GBK的不可映射字符" class="headerlink" title="编码GBK的不可映射字符"></a>编码GBK的不可映射字符</h4><p><img src="http://p6wpjrumy.bkt.clouddn.com/0417%E6%8A%A5%E9%94%991.png" alt=""></p>
+<h4 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h4><p><img src="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/0417%E6%95%B0%E7%BB%84%E5%B7%A5%E5%85%B7%E5%8C%85.png" alt=""><br><img src="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/0417%E7%94%9F%E6%88%90%E7%9A%84%E6%96%87%E6%A1%A3.png" alt=""></p>
+<h3 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h3><h4 id="编码GBK的不可映射字符"><a href="#编码GBK的不可映射字符" class="headerlink" title="编码GBK的不可映射字符"></a>编码GBK的不可映射字符</h4><p><img src="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/0417%E6%8A%A5%E9%94%991.png" alt=""></p>
 <ul>
 <li>解决方法<ul>
 <li>关闭编译器要编写的那个工具类</li>
@@ -401,7 +401,7 @@
 </li>
 </ul>
 <h4 id="错误2"><a href="#错误2" class="headerlink" title="错误2"></a>错误2</h4><ul>
-<li>生成错误原因：改为ANSI编码后，打开了编译器，汉字都变成了乱码<br><img src="http://p6wpjrumy.bkt.clouddn.com/0417%E6%8A%A5%E9%94%992.png" alt=""></li>
+<li>生成错误原因：改为ANSI编码后，打开了编译器，汉字都变成了乱码<br><img src="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/0417%E6%8A%A5%E9%94%992.png" alt=""></li>
 <li>切记，记事本改完编码后，不要。立即用编辑器打开该文件</li>
 </ul>
 
