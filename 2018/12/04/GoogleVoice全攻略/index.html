@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="最近弄来了一个Google Voice 的号码，感觉挺有用的，本想写篇文章科普一下。但是后来发现网上有许多文章，于是就挑了一篇不错的转载了过来！  获取一个美国手机号，Google Voice 攻略全记录 转载自：数字移民 ‘s Blog  0. Null获得一个长期可用、完全属于自己的手机号十分有必要。一方面，注册美区 PayPal 时需要绑定美国手机号，同时众多互联网服务提升账户安全性（账户异">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GoogleVoice全攻略">
+<meta property="og:url" content="http://yoursite.com/2018/12/04/GoogleVoice全攻略/index.html">
+<meta property="og:site_name" content="Orange&#39;s Blog">
+<meta property="og:description" content="最近弄来了一个Google Voice 的号码，感觉挺有用的，本想写篇文章科普一下。但是后来发现网上有许多文章，于是就挑了一篇不错的转载了过来！  获取一个美国手机号，Google Voice 攻略全记录 转载自：数字移民 ‘s Blog  0. Null获得一个长期可用、完全属于自己的手机号十分有必要。一方面，注册美区 PayPal 时需要绑定美国手机号，同时众多互联网服务提升账户安全性（账户异">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://digitalimmigrant.org/wp-content/uploads/2018/08/1.1.jpg">
+<meta property="og:image" content="https://digitalimmigrant.org/wp-content/uploads/2018/08/1.2.jpg">
+<meta property="og:image" content="https://digitalimmigrant.org/wp-content/uploads/2018/08/1.3.jpg">
+<meta property="og:image" content="https://digitalimmigrant.org/wp-content/uploads/2018/08/1.4.jpg">
+<meta property="og:image" content="https://digitalimmigrant.org/wp-content/uploads/2018/08/1.5.jpg">
+<meta property="og:image" content="https://digitalimmigrant.org/wp-content/uploads/2018/08/1.6.jpg">
+<meta property="og:image" content="https://digitalimmigrant.org/wp-content/uploads/2018/08/2.1.png">
+<meta property="og:image" content="https://digitalimmigrant.org/wp-content/uploads/2018/08/2.2.jpg">
+<meta property="og:updated_time" content="2018-12-04T13:29:20.211Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GoogleVoice全攻略">
+<meta name="twitter:description" content="最近弄来了一个Google Voice 的号码，感觉挺有用的，本想写篇文章科普一下。但是后来发现网上有许多文章，于是就挑了一篇不错的转载了过来！  获取一个美国手机号，Google Voice 攻略全记录 转载自：数字移民 ‘s Blog  0. Null获得一个长期可用、完全属于自己的手机号十分有必要。一方面，注册美区 PayPal 时需要绑定美国手机号，同时众多互联网服务提升账户安全性（账户异">
+<meta name="twitter:image" content="https://digitalimmigrant.org/wp-content/uploads/2018/08/1.1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/04/GoogleVoice全攻略/"/>
+
+
+
+
+
+  <title>GoogleVoice全攻略 | Orange's Blog</title>
+  <!-- 背景动画 -->
+  <script type="text/javascript" src="/js/src/particle.js"></script>
+  
+
+
+
+
+
+
+
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+  <!-- 背景动画 -->
+  <script type="text/javascript" src="/js/src/particle.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Orange's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/04/GoogleVoice全攻略/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Orange">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Orange's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">GoogleVoice全攻略</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-04T21:17:06+08:00">
+                2018-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/12/04/GoogleVoice全攻略/" class="leancloud_visitors" data-flag-title="GoogleVoice全攻略">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近弄来了一个Google Voice 的号码，感觉挺有用的，本想写篇文章科普一下。但是后来发现网上有许多文章，于是就挑了一篇不错的转载了过来！</p>
+<blockquote>
+<p><a href="https://digitalimmigrant.org/348" target="_blank" rel="noopener">获取一个美国手机号，Google Voice 攻略全记录</a></p>
+<p>转载自：<a href="https://digitalimmigrant.org/" target="_blank" rel="noopener">数字移民 ‘s Blog</a></p>
+</blockquote>
+<h1 id="0-Null"><a href="#0-Null" class="headerlink" title="0. Null"></a>0. Null</h1><p>获得一个长期可用、完全属于自己的手机号十分有必要。一方面，<a href="https://digitalimmigrant.org/171" target="_blank" rel="noopener">注册美区 PayPal </a>时需要绑定美国手机号，同时众多互联网服务提升账户安全性（账户异常需绑定手机号增加安全性），两步验证也需要手机号。提供美国虚拟号码的服务有很多，但是稳定且方便实惠的只有 Google Voice 一个。虽然有关 Google voice 的教程已经很多了，但是作为一项基本技能，「数字移民」博客还是有必要再介绍一下。本文介绍 Google Voice 的获取，绑定，充值，保留等。</p>
+<h1 id="1-Google-Voice-简介"><a href="#1-Google-Voice-简介" class="headerlink" title="1. Google Voice 简介"></a>1. Google Voice 简介</h1><p>Google Voice 是由 Google 推出的 VOIP 服务。简单来说，你可以获得一个虚拟美国号码，可以接听其他绑定的实体美国号码，也可以单独使用这个号码拨打电话，接收短信等；拨打美国号码免费，其他地区费率也极低。</p>
+<h1 id="2-Google-Voice-获取及转移"><a href="#2-Google-Voice-获取及转移" class="headerlink" title="2. Google Voice 获取及转移"></a>2. Google Voice 获取及转移</h1><p>拥有美国实体号码的情况下，可以直接验证获取一个 Google voice 虚拟号码。很多人会尝试钻漏洞，用各种免费软件提供的虚拟号码来进行验证，时间成本过高，且成功率不高，在此不赘述。推荐在淘宝上直接购买。购买会获得一个 Google 账号 和其中含有的 Google voice 手机号，推荐购买后转移到自己的 Google 账号下。</p>
+<p>下面介绍转移过程</p>
+<ul>
+<li>1.1 进入 <a href="https://voice.google.com/u/0/" target="_blank" rel="noopener">Google voice</a> 界面，登陆含有 Google voice 的 Google 账号，输入账号密码后，一般会验证密保邮箱，这个卖家一般也会提供。进入<a href="https://voice.google.com/u/0/settings" target="_blank" rel="noopener">设置</a> 界面，点击 Transfer</li>
+</ul>
+<p><img src="https://digitalimmigrant.org/wp-content/uploads/2018/08/1.1.jpg" alt="1.1">￼</p>
+<ul>
+<li>1.2 会自动跳转老版本的 Google voice 界面，继续点击 transfer</li>
+</ul>
+<p><img src="https://digitalimmigrant.org/wp-content/uploads/2018/08/1.2.jpg" alt="1.2">￼</p>
+<ul>
+<li>1.3 点击登陆自己的 Google 账号（即目标账号）<br><img src="https://digitalimmigrant.org/wp-content/uploads/2018/08/1.3.jpg" alt="1.3">￼</li>
+<li>1.4 登陆后点击选中自己的 Google 账号</li>
+</ul>
+<p><img src="https://digitalimmigrant.org/wp-content/uploads/2018/08/1.4.jpg" alt="1.4">￼</p>
+<ul>
+<li>1.5 点击继续</li>
+</ul>
+<p><img src="https://digitalimmigrant.org/wp-content/uploads/2018/08/1.5.jpg" alt="1.5">￼</p>
+<ul>
+<li>1.6 忽略需要添加实体号码的提醒，点击继续，即可转移成功。</li>
+</ul>
+<p><img src="https://digitalimmigrant.org/wp-content/uploads/2018/08/1.6.jpg" alt="1.6">￼</p>
+<h1 id="3-使用-Hangouts-拨打电话"><a href="#3-使用-Hangouts-拨打电话" class="headerlink" title="3. 使用 Hangouts 拨打电话"></a>3. 使用 Hangouts 拨打电话</h1><p>Google voice 提供 App 可以用来接收短信和电话，但 <strong>Google voice</strong> 这个 app 限制必须绑定美国真实手机号后才能拨打电话，所以推荐使用 <strong>Google Hangouts</strong>，可以绕过限制。Google hangouts 是 Google 的一个即时通讯软件，Gmail 中左下角聊天功能即是 Google hangouts。</p>
+<p>具体设置方法：</p>
+<ul>
+<li>2.1 登陆 <a href="https://hangouts.google.com/" target="_blank" rel="noopener">Google Hangouts</a> ，进入设置，在设置中勾选 <strong>接收 Google voice短信及电话</strong></li>
+</ul>
+<p><img src="https://digitalimmigrant.org/wp-content/uploads/2018/08/2.1.png" alt="2.1">￼</p>
+<ul>
+<li>2.2 验证是否成功，在Google voice 的<a href="https://voice.google.com/u/0/settings" target="_blank" rel="noopener">设置</a>界面即可查看是否绑定成功。<br><img src="https://digitalimmigrant.org/wp-content/uploads/2018/08/2.2.jpg" alt="2.2">￼</li>
+</ul>
+<h1 id="4-Google-voice-的用处"><a href="#4-Google-voice-的用处" class="headerlink" title="4. Google voice 的用处"></a>4. Google voice 的用处</h1><ul>
+<li><a href="https://digitalimmigrant.org/171" target="_blank" rel="noopener">注册美区 PayPal </a>可用于验证美国手机号。</li>
+<li>使用美国手机号注册 Telegram，可以减少账号被限制的风险。</li>
+<li>绑定 Facebook 和 Twitter，开启两步验证，避免因使用 VPN 账号导致被封。 （使用部分代理服务可能导致社交账号行为 与 机构养号的行为很接近）</li>
+<li>不建议使用 Google voice 号码来拨打美国各种服务的客服电话，连接效果较差，且有可能被系统识别阻拦等。</li>
+</ul>
+<h1 id="5-Google-Voice-充值"><a href="#5-Google-Voice-充值" class="headerlink" title="5. Google Voice 充值"></a>5. Google Voice 充值</h1><p>Google voice 无法在 iOS 应用中充值。推荐打开 Google voice网页版本（桌面端移动端均可），直接在设置中找到<a href="https://voice.google.com/u/0/settings#payments" target="_blank" rel="noopener">充值页面</a>，单次充值可充10/25/50美元，总余额不能超过70美元。</p>
+<p>因为充值使用的是 Google Pay，需要绑定 Visa/Mastercard 等外币信用卡才能使用，不支持银联信用卡。Google Play 礼品卡冲的余额似乎没发用来充值 Google voice （待确认）。</p>
+<h1 id="6-Google-voice-保号"><a href="#6-Google-voice-保号" class="headerlink" title="6. Google voice 保号"></a>6. Google voice 保号</h1><p>Google voice 作为一项公共资源，Google 会不定期收回不活跃的手机号，回收前会提前一个月进行邮件通知。推荐使用 <a href="https://ifttt.com/applets/131839p-keep-google-voice-active" target="_blank" rel="noopener">IFTTT </a>服务，定时使用 Google voice 拨打电话以保持活跃度。</p>
+<p>即使充值了，若长期只收短信而不是使用也会有被销号的可能。建议添加提醒，每隔一两个月打个电话，或者发个短信保持活跃度。</p>
+<p><a href="https://ifttt.com/applets/131839p-keep-google-voice-active" target="_blank" rel="noopener">IFTTT</a> 使用截图待补充。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/29/Java-并查集/" rel="next" title="Java-并查集">
+                <i class="fa fa-chevron-left"></i> Java-并查集
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/10/平衡二叉树和AVL树/" rel="prev" title="平衡二叉树和AVL树">
+                平衡二叉树和AVL树 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Orange</p>
+              <p class="site-description motion-element" itemprop="description">welcome everyone to my blog!</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-Null"><span class="nav-number">1.</span> <span class="nav-text">0. Null</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Google-Voice-简介"><span class="nav-number">2.</span> <span class="nav-text">1. Google Voice 简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Google-Voice-获取及转移"><span class="nav-number">3.</span> <span class="nav-text">2. Google Voice 获取及转移</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-使用-Hangouts-拨打电话"><span class="nav-number">4.</span> <span class="nav-text">3. 使用 Hangouts 拨打电话</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-Google-voice-的用处"><span class="nav-number">5.</span> <span class="nav-text">4. Google voice 的用处</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-Google-Voice-充值"><span class="nav-number">6.</span> <span class="nav-text">5. Google Voice 充值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-Google-voice-保号"><span class="nav-number">7.</span> <span class="nav-text">6. Google voice 保号</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Orange</span>
+
+  
+</div>
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+-->
+
+
+<!--
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次  |
+</span>
+<span id="busuanzi_container_site_uv">
+  本站访客数<i class="fas fa-user-alt"></i><span id="busuanzi_value_site_uv"></span>人次
+</span>
+-->
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("LuHGRLaVuohiDBVc9oUVcCtW-gzGzoHsz", "x62miE9CqsHHdw9OWtAryAns");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+
+</body>
+</html>

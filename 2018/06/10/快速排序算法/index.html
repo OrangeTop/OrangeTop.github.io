@@ -103,7 +103,7 @@
 <meta property="og:description" content="快排的算法在平均状况下，排序效率为 O（N*LogN），运算效率是最高的，所以最受欢迎。而且在快速排序的算法中还体现着 分冶 思想，这几天我学习了一下这个算法，整理一下他的算法思路。  快速排序算法-维基百科  算法原理快速排序算法使用分冶法来把一个序列分为两个序列  从数列中挑出一个元素，称为“基准”（pivot） 重新排序数列，所有比基准值小的元素摆放在基准前面，所有比基准值大的元素摆在基准后">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/QuickSort.gif">
-<meta property="og:updated_time" content="2018-11-09T05:57:15.766Z">
+<meta property="og:updated_time" content="2019-01-02T14:40:02.555Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="快速排序算法">
 <meta name="twitter:description" content="快排的算法在平均状况下，排序效率为 O（N*LogN），运算效率是最高的，所以最受欢迎。而且在快速排序的算法中还体现着 分冶 思想，这几天我学习了一下这个算法，整理一下他的算法思路。  快速排序算法-维基百科  算法原理快速排序算法使用分冶法来把一个序列分为两个序列  从数列中挑出一个元素，称为“基准”（pivot） 重新排序数列，所有比基准值小的元素摆放在基准前面，所有比基准值大的元素摆在基准后">
@@ -379,10 +379,124 @@
 </ul>
 <p>下面的图片来自于维基百科，通过看这张图可以观察到使用该算法后数据的变化</p>
 <p><img src="https://raw.githubusercontent.com/OrangeTop/BlogImage/master/oldImage/QuickSort.gif" alt=""></p>
+<h2 id="白话快排"><a href="#白话快排" class="headerlink" title="白话快排"></a>白话快排</h2><p>我在CSDN看到一篇非常好的文章讲解了这个算法的原理，在这里转载过来一部分</p>
+<blockquote>
+<p><a href="https://blog.csdn.net/MoreWindows/article/details/6684558" target="_blank" rel="noopener">白话经典算法系列之六 快速排序 快速搞定</a></p>
+</blockquote>
+<p>虽然快速排序称为分治法，但分治法这三个字显然无法很好的概括快速排序的全部步骤。因此我的对快速排序作了进一步的说明：<strong>挖坑填数+分治法</strong>：</p>
+<p>先来看实例吧，定义下面再给出（最好能用自己的话来总结定义，这样对实现代码会有帮助）</p>
+<p>以一个数组作为示例，取区间第一个数为基准数。</p>
+<table>
+<thead>
+<tr>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><em><code>72</code></em></strong></td>
+<td>6</td>
+<td>57</td>
+<td>88</td>
+<td>60</td>
+<td>42</td>
+<td>83</td>
+<td>73</td>
+<td>48</td>
+<td>85</td>
+</tr>
+</tbody>
+</table>
+<p>初始时，start = 0;  end = 9;   pivot = a[i] = 72</p>
+<p>由于已经将a[0]中的数保存到pivot中，可以理解成在数组a[0]上挖了个坑，可以将其它数据填充到这来。</p>
+<p>从j开始向前找一个比pivot小或等于pivot的数。当 end=8，符合条件，将a[8]挖出再填到上一个坑a[0]中。a[0]=a[8]; start++;  这样一个坑a[0]就被搞定了，但又形成了一个新坑a[8]，这怎么办了？简单，再找数字来填a[8]这个坑。这次从start开始向后找一个大于X的数，当start =3，符合条件，将a[3]挖出再填到上一个坑中a[8]=a[3]; end–;</p>
+<p> <strong>数组变为：</strong></p>
+<table>
+<thead>
+<tr>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><em><code>48</code></em></strong></td>
+<td>6</td>
+<td>57</td>
+<td><strong><em><code>88</code></em></strong></td>
+<td>60</td>
+<td>42</td>
+<td>83</td>
+<td>73</td>
+<td><strong><em><code>88</code></em></strong></td>
+<td>85</td>
+</tr>
+</tbody>
+</table>
+<p>start = 3;   end = 7;   pivot =72</p>
+<p>再重复上面的步骤，先从后向前找，再从前向后找。</p>
+<p>从j开始向前找，当end =5，符合条件，将a[5]挖出填到上一个坑中，a[3] = a[5]; start ++;</p>
+<p>从i开始向后找，当start =5时，由于start == end退出。</p>
+<p>此时，start = end = 5，而a[5]刚好又是上次挖的坑，因此将X填入a[5]。</p>
+<p><strong>数组变为：</strong></p>
+<table>
+<thead>
+<tr>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><em><code>48</code></em></strong></td>
+<td>6</td>
+<td>57</td>
+<td><strong><em><code>42</code></em></strong></td>
+<td>60</td>
+<td><strong><em><code>72</code></em></strong></td>
+<td>83</td>
+<td>73</td>
+<td><strong><em><code>88</code></em></strong></td>
+<td>85</td>
+</tr>
+</tbody>
+</table>
+<p>可以<strong>看出a[5]前面的数字都小于它，a[5]后面的数字都大于它</strong>。因此再对a[0…4]和a[6…9]这二个子区间<strong>重复</strong>上述步骤就可以了</p>
+<p>对挖坑填数进行总结</p>
+<p>1．start end pivot共三个参数; 将基准数挖出形成第一个坑a[start]。</p>
+<p>2．end–由后向前找比它小的数，找到后挖出此数填前一个坑a[start]中。</p>
+<p>3．start++由前向后找比它大的数，找到后也挖出此数填到前一个坑a[end]中。</p>
+<p>4．再重复执行2，3二步，直到 start == end，将基准数填入a[start]中。</p>
+<p>照着这个总结很容易实现挖坑填数的代码：</p>
 <h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><ul>
 <li>在这个类中，为了方便理解，我创建了多个方法互相调用，并在函数上面加上了注释</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QuickSort</span> </span>&#123;</span><br><span class="line">    <span class="comment">//判断数组是否为空</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> arr == <span class="keyword">null</span> || arr.length == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//在主类中调用该方法，对数组进行排序</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (isEmpty(arr))</span><br><span class="line">            System.out.println(<span class="string">"数组为空，请输入数据后再排序！！！"</span>);</span><br><span class="line">        quickSort(arr, <span class="number">0</span>, arr.length - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    <span class="comment">//也可以选择在主类中调用该方法，对数组指定位置进行排序</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (isEmpty(arr))</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span> (low &lt; high) &#123;</span><br><span class="line">            <span class="comment">//基准数据在数组中所在的角标</span></span><br><span class="line">            <span class="keyword">int</span> pivotKey = partion(arr, low, high);</span><br><span class="line">            <span class="comment">//将基准左部递归排序</span></span><br><span class="line">            quickSort(arr, low, pivotKey - <span class="number">1</span>);</span><br><span class="line">            <span class="comment">//将基准右部递归排序</span></span><br><span class="line">            quickSort(arr, pivotKey + <span class="number">1</span>, high);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">partion</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//以第一个数据为基准</span></span><br><span class="line">        <span class="keyword">int</span> pivot = arr[start];</span><br><span class="line">        <span class="keyword">while</span> (start &lt; end) &#123;</span><br><span class="line">            <span class="comment">//从数组右端开始，若数据大于基准值，end指针-1</span></span><br><span class="line">            <span class="comment">//反之则交换该数据值和基准值，并且将start++</span></span><br><span class="line">            <span class="keyword">while</span> (arr[end] &gt;= pivot &amp;&amp; start &lt; end)</span><br><span class="line">                end--;</span><br><span class="line">            <span class="keyword">if</span> (start &lt; end) &#123;</span><br><span class="line">                swap(arr, start, end);</span><br><span class="line">                start++;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//从数组左端开始，若数据小于基准值，start指针+1</span></span><br><span class="line">            <span class="comment">//反之则交换该数据值和基准值，并且将end--</span></span><br><span class="line">            <span class="keyword">while</span> (arr[start] &lt; pivot &amp;&amp; start &lt; end)</span><br><span class="line">                start++;</span><br><span class="line">            <span class="keyword">if</span> (start &lt; end) &#123;</span><br><span class="line">                swap(arr, end, start);</span><br><span class="line">                end--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//返回基准值在数组中的角标</span></span><br><span class="line">        <span class="keyword">return</span> start;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//函数功能：交换数组中两个数据值</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] arr,<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp = arr[i];</span><br><span class="line">        arr[i] = arr[j];</span><br><span class="line">        arr[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QuickSort</span> </span>&#123;</span><br><span class="line">    <span class="comment">//判断数组是否为空</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> arr == <span class="keyword">null</span> || arr.length == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//在主类中调用该方法，对数组进行排序</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (isEmpty(arr))</span><br><span class="line">            System.out.println(<span class="string">"数组为空，请输入数据后再排序！！！"</span>);</span><br><span class="line">        quickSort(arr, <span class="number">0</span>, arr.length - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    <span class="comment">//也可以选择在主类中调用该方法，对数组指定位置进行排序</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (isEmpty(arr))</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span> (low &lt; high) &#123;</span><br><span class="line">            <span class="comment">//基准数据在数组中所在的角标</span></span><br><span class="line">            <span class="keyword">int</span> pivotKey = partion(arr, low, high);</span><br><span class="line">            <span class="comment">//将基准左部递归排序</span></span><br><span class="line">            quickSort(arr, low, pivotKey - <span class="number">1</span>);</span><br><span class="line">            <span class="comment">//将基准右部递归排序</span></span><br><span class="line">            quickSort(arr, pivotKey + <span class="number">1</span>, high);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">partion</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//以第一个数据为基准</span></span><br><span class="line">        <span class="keyword">int</span> pivot = arr[start];</span><br><span class="line">        <span class="keyword">while</span> (start &lt; end) &#123;</span><br><span class="line">            <span class="comment">//从数组右端开始，若数据大于基准值，end指针-1</span></span><br><span class="line">            <span class="comment">//反之则交换该数据值和基准值，并且将start++</span></span><br><span class="line">            <span class="keyword">while</span> (arr[end] &gt;= pivot &amp;&amp; start &lt; end)</span><br><span class="line">                end--;</span><br><span class="line">            <span class="keyword">if</span> (start &lt; end) &#123;</span><br><span class="line">                arr[start] = arr[end];</span><br><span class="line">                start++;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//从数组左端开始，若数据小于基准值，start指针+1</span></span><br><span class="line">            <span class="comment">//反之则交换该数据值和基准值，并且将end--</span></span><br><span class="line">            <span class="keyword">while</span> (arr[start] &lt; pivot &amp;&amp; start &lt; end)</span><br><span class="line">                start++;</span><br><span class="line">            <span class="keyword">if</span> (start &lt; end) &#123;</span><br><span class="line">                arr[end] = arr[start];</span><br><span class="line">                end--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//返回基准值在数组中的角标</span></span><br><span class="line">        <span class="keyword">return</span> start;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//函数功能：交换数组中两个数据值</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] arr,<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp = arr[i];</span><br><span class="line">        arr[i] = arr[j];</span><br><span class="line">        arr[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><ul>
 <li>在上面可以发现，代码的基准一直选取的是第一个数，在某些糟糕的情况下，该算法效率并不佳</li>
 <li>过段时间，我会再补上优化的部分</li>
@@ -513,7 +627,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -535,7 +649,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -568,7 +682,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法原理"><span class="nav-number">1.</span> <span class="nav-text">算法原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码示例"><span class="nav-number">2.</span> <span class="nav-text">代码示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化"><span class="nav-number">3.</span> <span class="nav-text">优化</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法原理"><span class="nav-number">1.</span> <span class="nav-text">算法原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#白话快排"><span class="nav-number">2.</span> <span class="nav-text">白话快排</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码示例"><span class="nav-number">3.</span> <span class="nav-text">代码示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化"><span class="nav-number">4.</span> <span class="nav-text">优化</span></a></li></ol></div>
             
 
           </div>
@@ -590,7 +704,7 @@
       <div class="footer-inner">
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
